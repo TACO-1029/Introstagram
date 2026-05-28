@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-label="Play square icon">
+  <rect
+    x="3.2"
+    y="3.2"
+    width="17.6"
+    height="17.6"
+    rx="5.2"
+    ry="5.2"
+    fill="none"
+    stroke="#12141d"
+    stroke-width="2.2"
+  />
+  <path
+    d="M10 8.2L16.2 12L10 15.8V8.2Z"
+    fill="none"
+    stroke="#12141d"
+    stroke-width="2.2"
+    stroke-linejoin="round"
+  />
+</svg>

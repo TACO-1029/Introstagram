@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" role="img" aria-label="Profile icon">
+  <circle
+    cx="10"
+    cy="10"
+    r="7"
+    fill="none"
+    stroke="#000000"
+    stroke-width="1.5"
+  />
+  <circle
+    cx="10"
+    cy="7.8"
+    r="2.4"
+    fill="none"
+    stroke="#000000"
+    stroke-width="1.5"
+  />
+  <path
+    d="M5.2 15C6 12.8 7.8 11.8 10 11.8C12.2 11.8 14 12.8 14.8 15"
+    fill="none"
+    stroke="#000000"
+    stroke-width="1.5"
+    stroke-linecap="round"
+  />
+</svg>

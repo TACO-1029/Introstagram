@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" role="img" aria-label="Video icon">
+  <rect
+    x="3.5"
+    y="3"
+    width="13"
+    height="14"
+    rx="3"
+    ry="3"
+    fill="none"
+    stroke="#000000"
+    stroke-width="1.5"
+  />
+  <path
+    d="M4 7H16M6.5 3.5L9 7M11 3.5L13.5 7"
+    fill="none"
+    stroke="#000000"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M8.2 9.1V13.1L12 11.1L8.2 9.1Z"
+    fill="#000000"
+  />
+</svg>

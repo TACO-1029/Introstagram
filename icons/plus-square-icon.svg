@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" role="img" aria-label="Add icon">
+  <rect
+    x="4"
+    y="3"
+    width="12"
+    height="12"
+    rx="3"
+    ry="3"
+    fill="none"
+    stroke="#000000"
+    stroke-width="1.5"
+  />
+  <path
+    d="M10 6.5V11.5M7.5 9H12.5"
+    fill="none"
+    stroke="#000000"
+    stroke-width="1.5"
+    stroke-linecap="round"
+  />
+</svg>
