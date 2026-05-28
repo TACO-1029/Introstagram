@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-label="Canvas story slide">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#cf4fbb" />
+      <stop offset="0.5" stop-color="#7d73de" />
+      <stop offset="1" stop-color="#5b8be8" />
+    </linearGradient>
+    <pattern id="checker" width="54" height="54" patternUnits="userSpaceOnUse">
+      <rect width="27" height="27" fill="#222229" />
+      <rect x="27" width="27" height="27" fill="#383840" />
+      <rect y="27" width="27" height="27" fill="#383840" />
+      <rect x="27" y="27" width="27" height="27" fill="#222229" />
+    </pattern>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)" />
+  <rect x="262" y="70" width="376" height="760" rx="26" fill="url(#checker)" />
+  <path d="M330 590C410 500 470 690 560 585" fill="none" stroke="#ffffff" stroke-width="22" stroke-linecap="round" />
+  <circle cx="344" cy="750" r="22" fill="#ffffff" />
+  <circle cx="402" cy="750" r="22" fill="#2d9cdb" />
+  <circle cx="460" cy="750" r="22" fill="#ffd15c" />
+  <circle cx="518" cy="750" r="22" fill="#ff4e5e" />
+</svg>

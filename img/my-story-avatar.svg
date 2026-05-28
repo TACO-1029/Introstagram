@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180" role="img" aria-label="My story avatar">
+  <defs>
+    <clipPath id="circle">
+      <circle cx="90" cy="90" r="88" />
+    </clipPath>
+    <linearGradient id="room" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f3eee7" />
+      <stop offset="0.48" stop-color="#d7d0c8" />
+      <stop offset="1" stop-color="#aeb5b8" />
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#circle)">
+    <rect width="180" height="180" fill="url(#room)" />
+    <path d="M12 28C52 38 74 22 110 12C138 4 162 12 184 28V62C140 44 104 54 68 72C42 86 22 83 0 72V34C4 32 8 30 12 28Z" fill="#3b3e44" opacity="0.55" />
+    <path d="M120 2C151 13 166 55 154 98C143 140 113 163 83 154C52 144 38 101 49 59C60 17 90 -8 120 2Z" fill="#d99d4b" />
+    <path d="M128 11C148 25 155 58 146 92C137 130 115 151 92 146C70 140 58 106 67 69C76 31 105 -5 128 11Z" fill="#f1c37a" opacity="0.62" />
+    <ellipse cx="119" cy="96" rx="18" ry="28" fill="#a66a31" opacity="0.42" />
+    <path d="M46 78C58 65 82 66 94 84C106 102 101 127 85 140C68 154 43 145 34 126C25 107 32 92 46 78Z" fill="#e4b35d" />
+    <path d="M35 95C45 85 62 88 70 101C78 114 72 131 59 136C45 142 31 133 27 119C23 109 27 101 35 95Z" fill="#f0ca7a" />
+    <path d="M72 84C84 74 102 79 108 94C114 109 105 125 91 128C77 132 65 122 63 108C61 98 65 90 72 84Z" fill="#f3c06b" />
+    <circle cx="55" cy="109" r="5" fill="#59412b" />
+    <circle cx="90" cy="102" r="5" fill="#59412b" />
+    <path d="M44 62C35 53 22 52 13 60" fill="none" stroke="#e96b23" stroke-width="6" stroke-linecap="round" />
+    <path d="M55 66C63 52 78 45 95 45" fill="none" stroke="#e96b23" stroke-width="6" stroke-linecap="round" />
+  </g>
+</svg>
