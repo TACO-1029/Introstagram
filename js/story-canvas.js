@@ -4,6 +4,7 @@ const brushSize = document.querySelector("#brushSize");
 const colorButtons = document.querySelectorAll("[data-color]");
 const saveButtons = document.querySelectorAll("[data-save]");
 const toolButtons = document.querySelectorAll("[data-tool]");
+const editorImagePicker = document.querySelector("#storyEditorImagePicker");
 const backgroundImage = new Image();
 
 let currentColor = "#ffffff";
@@ -11,12 +12,31 @@ let currentTool = "pen";
 let drawing = false;
 let lastPoint = null;
 
-backgroundImage.src = "../img/story-background.svg";
+backgroundImage.src = sessionStorage.getItem("introstagramStoryImage") || "../img/story-background.svg";
 backgroundImage.addEventListener("load", resetCanvas);
 
 function resetCanvas() {
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+  drawBackgroundCover();
+}
+
+function drawBackgroundCover() {
+  const canvasRatio = canvas.width / canvas.height;
+  const imageRatio = backgroundImage.naturalWidth / backgroundImage.naturalHeight;
+  let sourceX = 0;
+  let sourceY = 0;
+  let sourceWidth = backgroundImage.naturalWidth;
+  let sourceHeight = backgroundImage.naturalHeight;
+
+  if (imageRatio > canvasRatio) {
+    sourceWidth = backgroundImage.naturalHeight * canvasRatio;
+    sourceX = (backgroundImage.naturalWidth - sourceWidth) / 2;
+  } else {
+    sourceHeight = backgroundImage.naturalWidth / canvasRatio;
+    sourceY = (backgroundImage.naturalHeight - sourceHeight) / 2;
+  }
+
+  context.drawImage(backgroundImage, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, canvas.width, canvas.height);
 }
 
 function getCanvasPoint(event) {
@@ -84,6 +104,23 @@ function saveImage() {
   link.click();
 }
 
+function loadEditorImage(event) {
+  const [file] = event.target.files;
+
+  if (!file) {
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.addEventListener("load", () => {
+    sessionStorage.setItem("introstagramStoryImage", reader.result);
+    backgroundImage.src = reader.result;
+  });
+
+  reader.readAsDataURL(file);
+}
+
 canvas.addEventListener("mousedown", startDrawing);
 canvas.addEventListener("mousemove", keepDrawing);
 canvas.addEventListener("mouseup", stopDrawing);
@@ -119,3 +156,5 @@ toolButtons.forEach((button) => {
 saveButtons.forEach((button) => {
   button.addEventListener("click", saveImage);
 });
+
+editorImagePicker.addEventListener("change", loadEditorImage);

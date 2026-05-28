@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1280" viewBox="0 0 720 1280" role="img" aria-label="Dog story face filter">
+  <defs>
+    <radialGradient id="earOuter" cx="50%" cy="42%" r="58%">
+      <stop offset="0" stop-color="#9b6938" />
+      <stop offset="0.62" stop-color="#b78349" />
+      <stop offset="1" stop-color="#6f4525" />
+    </radialGradient>
+    <radialGradient id="earInner" cx="50%" cy="50%" r="55%">
+      <stop offset="0" stop-color="#f7b7bd" />
+      <stop offset="1" stop-color="#b97678" />
+    </radialGradient>
+    <radialGradient id="nose" cx="48%" cy="40%" r="64%">
+      <stop offset="0" stop-color="#5a3b32" />
+      <stop offset="0.42" stop-color="#201513" />
+      <stop offset="1" stop-color="#0c0807" />
+    </radialGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.34" />
+    </filter>
+    <filter id="sparkle">
+      <feGaussianBlur stdDeviation="0.3" />
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <path d="M126 168C100 82 156 48 246 80C308 102 309 168 252 210C191 255 145 231 126 168Z" fill="url(#earOuter)" />
+    <path d="M170 154C158 102 194 91 241 109C275 122 273 158 242 184C208 211 179 194 170 154Z" fill="url(#earInner)" opacity="0.82" />
+    <path d="M594 168C620 82 564 48 474 80C412 102 411 168 468 210C529 255 575 231 594 168Z" fill="url(#earOuter)" />
+    <path d="M550 154C562 102 526 91 479 109C445 122 447 158 478 184C512 211 541 194 550 154Z" fill="url(#earInner)" opacity="0.82" />
+  </g>
+
+  <g filter="url(#softShadow)">
+    <ellipse cx="360" cy="560" rx="86" ry="60" fill="#8d6a51" opacity="0.92" />
+    <ellipse cx="360" cy="534" rx="54" ry="38" fill="url(#nose)" />
+    <ellipse cx="342" cy="522" rx="15" ry="9" fill="#ffffff" opacity="0.24" />
+    <path d="M360 568C360 602 334 620 306 624" fill="none" stroke="#5d3828" stroke-width="12" stroke-linecap="round" opacity="0.7" />
+    <path d="M360 568C360 602 386 620 414 624" fill="none" stroke="#5d3828" stroke-width="12" stroke-linecap="round" opacity="0.7" />
+  </g>
+
+  <g fill="#ffe7b6" opacity="0.82" filter="url(#sparkle)">
+    <circle cx="245" cy="275" r="3" />
+    <circle cx="286" cy="242" r="2.4" />
+    <circle cx="330" cy="265" r="3.2" />
+    <circle cx="378" cy="250" r="2.7" />
+    <circle cx="420" cy="278" r="3.1" />
+    <circle cx="468" cy="246" r="2.4" />
+    <circle cx="496" cy="300" r="3" />
+    <circle cx="222" cy="328" r="2.6" />
+    <circle cx="312" cy="342" r="2.2" />
+    <circle cx="402" cy="332" r="2.5" />
+    <circle cx="478" cy="360" r="2.4" />
+  </g>
+</svg>

@@ -37,12 +37,14 @@
         </header>
 
         <nav class="story-list" aria-label="Team member pages">
-          <a class="story-item" href="./pages/story.html">
-            <span class="story-ring">
-              <span class="story-avatar">+</span>
+          <button class="story-item my-story-item" type="button" data-story-picker>
+            <span class="my-story-avatar">
+              <img src="./img/my-story-avatar.svg" alt="" />
+              <span class="my-story-plus">+</span>
             </span>
-            <span>Story</span>
-          </a>
+            <span>내 스토리</span>
+          </button>
+          <input id="storyImagePicker" class="visually-hidden" type="file" accept="image/*" />
           <a class="story-item" href="./pages/member-1.html">
             <span class="story-ring">
               <span class="story-avatar">1</span>
@@ -70,23 +72,8 @@
         </nav>
 
         <article class="post-card">
-          <header class="post-header">
-            <div class="profile-dot"></div>
-            <div class="post-meta">
-              <strong>introstagram_team</strong>
-              <span>Team Intro, Static Web Project</span>
-            </div>
-            <button class="more-button" aria-label="More options">...</button>
-          </header>
-
-          <section class="post-visual" aria-label="Team project main visual">
-            <span class="slide-count">1/3</span>
-            <div class="visual-content">
-              <p class="project-label">HDF Team Project</p>
-              <h2>팀소개와 개인소개를 담은 정적 웹페이지</h2>
-              <p>상단 스토리에서 팀원별 개인 페이지로 이동합니다.</p>
-            </div>
-          </section>
+          <div id="postHeaderRoot"></div>
+          <div id="postVisualRoot"></div>
 
           <section class="post-actions" aria-label="Post actions">
             <div class="action-group">
@@ -100,11 +87,7 @@
                 <span class="icon send"></span>
               </button>
             </div>
-            <div class="pagination-dots" aria-hidden="true">
-              <span class="active"></span>
-              <span></span>
-              <span></span>
-            </div>
+            <div id="postPaginationRoot" class="pagination-dots" aria-hidden="true"></div>
             <button class="icon-button" aria-label="Save">
               <span class="icon bookmark"></span>
             </button>
@@ -160,8 +143,50 @@
         <p class="sidebar-note">상단 스토리 4개는 어느 화면 크기에서도 팀원 개인 페이지 진입점으로 고정됩니다.</p>
       </aside>
     </main>
+
+    <section class="story-camera-modal" data-camera-modal hidden aria-label="Story camera">
+      <div class="story-camera-panel">
+        <header class="story-camera-topbar">
+          <button class="story-camera-icon-button" type="button" data-camera-close aria-label="Close camera">×</button>
+          <button class="story-camera-icon-button" type="button" aria-label="Flash off">⌁</button>
+          <button class="story-camera-icon-button" type="button" aria-label="Camera settings">⚙</button>
+        </header>
+        <div class="story-camera-preview">
+          <video id="storyCameraVideo" autoplay playsinline muted></video>
+          <img class="story-ar-mask" src="./img/dog-face-mask.svg" alt="" data-ar-mask hidden />
+          <p class="story-camera-message" data-camera-message></p>
+          <div class="story-camera-side-tools" aria-label="Story camera tools">
+            <button type="button" aria-label="Text"><span class="story-side-icon story-text-icon"></span></button>
+            <button type="button" aria-label="Loop"><span class="story-side-icon story-infinity-icon"></span></button>
+            <button type="button" aria-label="Layout"><span class="story-side-icon story-layout-icon"></span></button>
+            <button type="button" aria-label="Stop motion"><span class="story-side-icon story-stop-icon"></span></button>
+          </div>
+          <div class="story-camera-capture-row">
+            <button class="story-camera-shutter" type="button" data-camera-capture aria-label="Capture photo"></button>
+            <button class="story-camera-mode-button" type="button" data-filter-toggle aria-label="Toggle AR filter">🐶</button>
+            <button class="story-camera-mode-button" type="button" aria-label="Camera lens">◉</button>
+          </div>
+        </div>
+        <div class="story-camera-actions">
+          <button class="story-gallery-button" type="button" data-file-fallback aria-label="Choose image from files">
+            <img src="./img/my-story-avatar.svg" alt="" />
+          </button>
+          <div class="story-camera-tabs" aria-label="Camera modes">
+            <span>게시물</span>
+            <strong>스토리</strong>
+            <span>릴스</span>
+            <span>라이브</span>
+          </div>
+          <button class="story-camera-flip" type="button" aria-label="Flip camera">⟳</button>
+        </div>
+      </div>
+    </section>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+    <script src="./js/post-components.js"></script>
+    <script src="./js/story-picker.js"></script>
   </body>
 </html>
