@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location</title>
+
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/layout.css" />
+  </head>
+  <body>
+    <main class="app-shell location-shell">
+      <section class="app-device-frame location-frame">
+        <header class="location-header">
+          <a class="icon-button" href="../../index.html" aria-label="Go back">
+            <span class="icon camera"></span>
+          </a>
+          <h1>Location</h1>
+          <span class="location-header-spacer"></span>
+        </header>
+
+        <section class="location-content">
+          <div id="map" class="location-map"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=86f22b2d15e49eda57e3d7cc5ad5b81e&autoload=false"></script>
+
+    <script>
+      kakao.maps.load(function () {
+        const mapContainer = document.getElementById("map");
+
+        const mapOption = {
+          center: new kakao.maps.LatLng(37.566826, 126.9786567),
+          level: 3,
+        };
+
+        const map = new kakao.maps.Map(mapContainer, mapOption);
+
+        setTimeout(() => {
+          map.relayout();
+          map.setCenter(new kakao.maps.LatLng(37.566826, 126.9786567));
+        }, 300);
+      });
+    </script>
+  </body>
+</html>
