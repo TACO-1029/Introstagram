@@ -1,0 +1,39 @@
+:root {
+  --app-device-width: min(100%, 390px);
+  --app-device-height: min(844px, calc(100vh - 32px));
+  --app-device-min-height: min(844px, calc(100vh - 32px));
+  --app-device-radius: 52px;
+  --app-device-shadow: 0 18px 45px rgba(120, 20, 50, 0.2);
+  --app-layout-padding: 42px 22px;
+}
+
+@media (max-width: 899px) {
+  .app-shell,
+  .direct-body {
+    padding: var(--app-layout-padding);
+  }
+
+  .app-device-frame {
+    width: var(--app-device-width);
+    height: var(--app-device-height);
+    min-height: var(--app-device-min-height);
+    border-radius: var(--app-device-radius);
+    overflow: hidden;
+    box-shadow: var(--app-device-shadow);
+  }
+}
+
+@media (max-width: 430px) {
+  .app-shell,
+  .direct-body {
+    padding: 0;
+  }
+
+  .app-device-frame {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    border-radius: var(--app-device-radius);
+    box-shadow: none;
+  }
+}
