@@ -512,9 +512,16 @@ a {
   height: 80px;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   color: #777777;
   font-size: 17px;
   font-weight: 700;
+}
+
+.story-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .my-story-item {
@@ -2046,6 +2053,32 @@ a {
   background: #fff;
 }
 
+.home-feed-list {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.home-feed-card {
+  flex: 0 0 auto;
+  border-bottom: 12px solid #f4f4f4;
+}
+
+.home-feed-card:last-child {
+  border-bottom: 0;
+}
+
+.home-feed-message {
+  margin: 0;
+  padding: 28px 16px;
+  color: #8e8e8e;
+  font-size: 13px;
+  text-align: center;
+}
+
 .post-header {
   display: grid;
   min-height: 54px;
@@ -2260,6 +2293,14 @@ a {
   margin: 0 0 8px;
 }
 
+.caption-hashtag {
+  color: #385185;
+}
+
+a.caption-hashtag {
+  text-decoration: none;
+}
+
 .caption button {
   padding: 0;
   color: #8f8f8f;
@@ -2370,6 +2411,13 @@ a {
 .mini-avatar {
   width: 38px;
   height: 38px;
+  overflow: hidden;
+}
+
+.mini-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .member-row strong {
@@ -2718,8 +2766,10 @@ a {
   align-items: center;
   justify-content: center;
   justify-self: center;
+  padding: 0;
   border: 1px solid #dbdbdb;
   border-radius: 50%;
+  appearance: none;
   background:
     linear-gradient(#f8f8f8, #f8f8f8) padding-box,
     linear-gradient(135deg, #ff5b88, #ffb052) border-box;
@@ -2807,19 +2857,30 @@ a {
 
 .highlight-list {
   display: flex;
-  gap: 20px;
-  padding: 0 0 36px;
+  gap: 28px;
+  overflow-x: auto;
+  padding: 6px 0 38px;
   border-bottom: 1px solid #dbdbdb;
+  scrollbar-width: none;
+}
+
+.highlight-list::-webkit-scrollbar {
+  display: none;
 }
 
 .highlight-item {
   display: flex;
-  width: 76px;
+  width: 86px;
+  flex: 0 0 auto;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  padding: 0;
+  border: 0;
+  appearance: none;
+  background: transparent;
   color: #262626;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   text-align: center;
 }
@@ -2828,20 +2889,21 @@ a {
 .highlight-dot,
 .highlight-cover {
   display: flex;
-  width: 66px;
-  height: 66px;
+  width: 78px;
+  height: 78px;
   align-items: center;
   justify-content: center;
-  border: 1px solid #dbdbdb;
+  border: 4px solid #fff;
   border-radius: 50%;
   background: #fff;
+  box-shadow: 0 0 0 4px #d9dde3;
   color: #8e8e8e;
   font-size: 32px;
   font-weight: 300;
 }
 
 .highlight-dot {
-  background: #eeeeee;
+  background: linear-gradient(135deg, #f2f3f5, #d9dde3);
 }
 
 .highlight-cover {
@@ -2856,11 +2918,7 @@ a {
 }
 
 .highlight-cover::after {
-  position: absolute;
-  inset: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.76);
-  border-radius: 50%;
-  content: "";
+  content: none;
 }
 
 .profile-tabs {
@@ -2961,7 +3019,7 @@ a {
 .post-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 2px;
 }
 
 .grid-tile {
@@ -3116,18 +3174,24 @@ a {
   display: flex;
   align-items: center;
   gap: 9px;
+  cursor: pointer;
   font-size: 13px;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
 }
 
 .story-viewer-avatar {
-  display: inline-block;
+  display: inline-flex;
   width: 34px;
   height: 34px;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   border: 2px solid #fff;
   border-radius: 50%;
   background: #eee;
+  color: #262626;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .story-viewer-avatar img,
@@ -3150,15 +3214,84 @@ a {
   display: block;
   width: auto;
   height: auto;
+  isolation: isolate;
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 16px;
-  background:
-    var(--story-image),
-    linear-gradient(135deg, #e8eaef, #bfc6d2);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  background: linear-gradient(135deg, #e8eaef, #bfc6d2);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+}
+
+.story-viewer-image::before {
+  position: absolute;
+  inset: -28px;
+  z-index: 0;
+  background:
+    linear-gradient(
+      160deg,
+      rgba(0, 0, 0, 0.18),
+      rgba(255, 255, 255, 0.08),
+      rgba(0, 0, 0, 0.22)
+    ),
+    var(--story-image) center / cover no-repeat;
+  content: "";
+  filter: blur(24px);
+  transform: scale(1.08);
+}
+
+.story-viewer-image::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--story-image) center / contain no-repeat;
+  content: "";
+}
+
+.story-nav-button {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.76);
+  color: #262626;
+  transform: translateY(-50%);
+}
+
+.story-nav-button[hidden] {
+  display: none;
+}
+
+.story-nav-prev {
+  right: calc(50% + min(50vw, 195px) + 22px);
+}
+
+.story-nav-next {
+  left: calc(50% + min(50vw, 195px) + 22px);
+}
+
+.story-viewer-video {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 520px) {
+  .story-nav-prev {
+    right: auto;
+    left: 12px;
+  }
+
+  .story-nav-next {
+    right: 12px;
+    left: auto;
+  }
 }
 
 .story-viewer-copy {
@@ -4205,7 +4338,7 @@ a {
   }
 
   .post-grid {
-    gap: 18px;
+    gap: 2px;
   }
 }
 
@@ -4316,28 +4449,25 @@ a {
   }
 
   .highlight-list {
-    gap: 16px;
-    overflow-x: auto;
-    padding: 0 16px 18px;
+    gap: 18px;
+    padding: 5px 16px 22px;
     border-bottom: 1px solid #eeeeee;
-    scrollbar-width: none;
-  }
-
-  .highlight-list::-webkit-scrollbar {
-    display: none;
   }
 
   .highlight-item {
-    width: 60px;
-    flex: 0 0 auto;
-    font-size: 11px;
-    font-weight: 400;
+    width: 68px;
+    gap: 9px;
+    font-size: 12px;
+    font-weight: 700;
   }
 
   .highlight-new,
-  .highlight-dot {
-    width: 54px;
-    height: 54px;
+  .highlight-dot,
+  .highlight-cover {
+    width: 58px;
+    height: 58px;
+    border-width: 3px;
+    box-shadow: 0 0 0 3px #d9dde3;
     font-size: 28px;
   }
 

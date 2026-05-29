@@ -100,76 +100,73 @@
             type="file"
             accept="image/*"
           />
-          <a class="story-item" href="./pages/member/1/index.html">
+          <a
+            class="story-item"
+            href="./pages/member/1/index.html"
+            data-highlight="member-1-profile"
+            data-story-origin="home"
+          >
             <span class="story-ring">
-              <span class="story-avatar">1</span>
+              <span class="story-avatar">
+                <img
+                  src="./pages/static/img/member-1/profile/dogeonwoo-profile.png"
+                  alt=""
+                />
+              </span>
             </span>
-            <span>Member 1</span>
+            <span>dogeonwoo</span>
           </a>
-          <a class="story-item" href="./pages/member/2/index.html">
+          <a
+            class="story-item"
+            href="./pages/member/2/index.html"
+            data-highlight="member-2-profile"
+            data-story-origin="home"
+          >
             <span class="story-ring">
-              <span class="story-avatar">2</span>
+              <span class="story-avatar">
+                <img src="./pages/static/img/introstagram_avatar.png" alt="" />
+              </span>
             </span>
-            <span>Member 2</span>
+            <span>member_two</span>
           </a>
-          <a class="story-item" href="./pages/member/3/index.html">
+          <a
+            class="story-item"
+            href="./pages/member/3/index.html"
+            data-highlight="member-3-profile"
+            data-story-origin="home"
+          >
             <span class="story-ring">
-              <span class="story-avatar">3</span>
+              <span class="story-avatar">
+                <img
+                  src="./pages/static/img/member-3/profile/jaewon-profile.png"
+                  alt=""
+                />
+              </span>
             </span>
-            <span>Member 3</span>
+            <span>jaewonwi</span>
           </a>
-          <a class="story-item" href="./pages/member/4/index.html">
+          <a
+            class="story-item"
+            href="./pages/member/4/index.html"
+            data-highlight="member-4-profile"
+            data-story-origin="home"
+          >
             <span class="story-ring">
-              <span class="story-avatar">4</span>
+              <span class="story-avatar">
+                <img src="./pages/static/img/introstagram_avatar.png" alt="" />
+              </span>
             </span>
-            <span>Member 4</span>
+            <span>member_four</span>
           </a>
         </nav>
 
-        <article class="app-layout-post post-card">
-          <div id="postHeaderRoot"></div>
-          <div id="postVisualRoot"></div>
-
-          <section class="post-actions" aria-label="Post actions">
-            <div class="action-group">
-              <button class="icon-button" aria-label="Like">
-                <span class="comment-like-icon"></span>
-              </button>
-              <button
-                class="icon-button"
-                type="button"
-                aria-label="Comment"
-                data-comments-open
-              >
-                <span class="icon comment"></span>
-              </button>
-              <button class="icon-button" aria-label="Share">
-                <span class="icon send"></span>
-              </button>
-            </div>
-            <div
-              id="postPaginationRoot"
-              class="pagination-dots"
-              aria-hidden="true"
-            ></div>
-            <button class="icon-button" aria-label="Save">
-              <span class="icon bookmark"></span>
-            </button>
-          </section>
-
-          <section class="caption">
-            <p data-post-caption></p>
-            <button
-              type="button"
-              aria-label="Comment"
-              data-comments-open
-              data-comments-label
-              data-comments-count-label
-            >
-              댓글 1개 모두 보기
-            </button>
-          </section>
-        </article>
+        <section
+          id="homeFeedRoot"
+          class="home-feed-list"
+          aria-label="Random member posts"
+        >
+          <p class="home-feed-message">피드를 불러오는 중...</p>
+        </section>
 
         <nav class="app-layout-footer bottom-nav" aria-label="Main navigation">
           <a class="active" href="./index.html" aria-label="Home"
@@ -303,6 +300,45 @@
         </div>
       </section>
 
+      <section
+        class="story-viewer"
+        id="storyViewer"
+        aria-label="Story highlight viewer"
+        aria-hidden="true"
+      >
+        <button
+          class="story-nav-button story-nav-prev"
+          type="button"
+          aria-label="Previous story"
+          hidden
+        >
+          <span class="slide-button-icon slide-prev-icon"></span>
+        </button>
+        <button
+          class="story-nav-button story-nav-next"
+          type="button"
+          aria-label="Next story"
+          hidden
+        >
+          <span class="slide-button-icon slide-next-icon"></span>
+        </button>
+        <div class="story-viewer-panel">
+          <button class="story-close" type="button" aria-label="Close story">×</button>
+          <div class="story-progress" aria-hidden="true"></div>
+          <div class="story-viewer-header">
+            <span class="story-viewer-avatar">
+              <img src="./pages/static/img/introstagram_avatar.png" alt="" />
+            </span>
+            <strong>introstagram_team</strong>
+          </div>
+          <div class="story-viewer-image" role="img" aria-label=""></div>
+          <div class="story-viewer-copy">
+            <strong></strong>
+            <p></p>
+          </div>
+        </div>
+      </section>
+
       <aside
         class="app-layout-sidebar web-sidebar"
         aria-label="Team profile summary"
@@ -321,28 +357,38 @@
             <a href="./index.html">메인</a>
           </div>
           <a class="member-row" href="./pages/member/1/index.html">
-            <span class="mini-avatar">1</span>
-            <span
-              ><strong>Member 1</strong><small>개인 소개 페이지</small></span
-            >
+            <span class="mini-avatar">
+              <img
+                src="./pages/static/img/member-1/profile/dogeonwoo-profile.png"
+                alt=""
+              />
+            </span>
+            <span>
+              <strong>dogeonwoo</strong><small>도건우</small>
+            </span>
           </a>
           <a class="member-row" href="./pages/member/2/index.html">
             <span class="mini-avatar">2</span>
-            <span
-              ><strong>Member 2</strong><small>개인 소개 페이지</small></span
-            >
+            <span>
+              <strong>member_two</strong><small>Member 2</small>
+            </span>
           </a>
           <a class="member-row" href="./pages/member/3/index.html">
-            <span class="mini-avatar">3</span>
-            <span
-              ><strong>Member 3</strong><small>개인 소개 페이지</small></span
-            >
+            <span class="mini-avatar">
+              <img
+                src="./pages/static/img/member-3/profile/jaewon-profile.png"
+                alt=""
+              />
+            </span>
+            <span>
+              <strong>jaewonwi</strong><small>위재원</small>
+            </span>
           </a>
           <a class="member-row" href="./pages/member/4/index.html">
             <span class="mini-avatar">4</span>
-            <span
-              ><strong>Member 4</strong><small>개인 소개 페이지</small></span
-            >
+            <span>
+              <strong>member_four</strong><small>Member 4</small>
+            </span>
           </a>
         </section>
 
@@ -467,7 +513,23 @@
       src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"
       crossorigin="anonymous"
     ></script>
+    <script>
+      window.introstagramHighlightStories = {
+        "member-3-profile": [
+          {
+            title: "Story",
+            text: "",
+            username: "jaewonwi",
+            avatar: "./pages/static/img/member-3/profile/jaewon-profile.png",
+            profileUrl: "./pages/member/3/index.html",
+            video: "./pages/static/img/member-3/stroies/story-1.mp4",
+          },
+        ],
+      };
+    </script>
     <script src="./pages/static/js/post-components.js"></script>
+    <script src="./pages/static/js/home-feed.js"></script>
+    <script src="./pages/static/js/story-viewer.js"></script>
     <script src="./pages/static/js/story-picker.js"></script>
     <script src="./pages/static/js/comments-sheet.js"></script>
   </body>

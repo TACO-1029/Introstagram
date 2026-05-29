@@ -1,13 +1,9 @@
 const COMMENT_STORAGE_KEY = "introstagram_comments";
 
 const commentsSheet = document.querySelector("[data-comments-sheet]");
-const commentsOpenButtons = document.querySelectorAll("[data-comments-open]");
 const commentsCloseButton = document.querySelector("[data-comments-close]");
 
 const commentsList = document.querySelector(".comments-list");
-const commentsCountLabels = document.querySelectorAll(
-  "[data-comments-count-label]",
-);
 const commentInput = document.querySelector("[data-comment-input]");
 const commentSubmitButton = document.querySelector("[data-comment-submit]");
 const reactionButtons = document.querySelectorAll(".comments-reactions button");
@@ -30,6 +26,9 @@ function saveComments(comments) {
 function updateCommentsCountLabel() {
   const count = commentsList.querySelectorAll(".comment-row").length;
   const countText = `댓글 ${count}개 모두 보기`;
+  const commentsCountLabels = document.querySelectorAll(
+    "[data-comments-count-label]",
+  );
 
   commentsCountLabels.forEach((label) => {
     label.textContent = countText;
@@ -119,8 +118,10 @@ function closeComments() {
   commentsSheet.setAttribute("aria-hidden", "true");
 }
 
-commentsOpenButtons.forEach((button) => {
-  button.addEventListener("click", openComments);
+document.addEventListener("click", (event) => {
+  if (event.target.closest("[data-comments-open]")) {
+    openComments();
+  }
 });
 commentsCloseButton.addEventListener("click", closeComments);
 
@@ -145,5 +146,7 @@ reactionButtons.forEach((button) => {
     addComment(button.textContent);
   });
 });
+
+window.introstagramUpdateCommentsCount = updateCommentsCountLabel;
 
 renderStoredComments();
