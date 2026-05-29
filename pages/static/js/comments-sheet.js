@@ -5,9 +5,13 @@ const commentsOpenButtons = document.querySelectorAll("[data-comments-open]");
 const commentsCloseButton = document.querySelector("[data-comments-close]");
 
 const commentsList = document.querySelector(".comments-list");
+const commentsCountLabels = document.querySelectorAll(
+  "[data-comments-count-label]",
+);
 const commentInput = document.querySelector("[data-comment-input]");
 const commentSubmitButton = document.querySelector("[data-comment-submit]");
 const reactionButtons = document.querySelectorAll(".comments-reactions button");
+const commentAvatarSrc = "./pages/static/img/introstagram_avatar.png";
 
 function getStoredComments() {
   const storedComments = localStorage.getItem(COMMENT_STORAGE_KEY);
@@ -23,16 +27,42 @@ function saveComments(comments) {
   localStorage.setItem(COMMENT_STORAGE_KEY, JSON.stringify(comments));
 }
 
+function updateCommentsCountLabel() {
+  const count = commentsList.querySelectorAll(".comment-row").length;
+  const countText = `댓글 ${count}개 모두 보기`;
+
+  commentsCountLabels.forEach((label) => {
+    label.textContent = countText;
+  });
+}
+
+function formatCommentDateTime(createdAt) {
+  const date = createdAt ? new Date(createdAt) : new Date();
+
+  if (Number.isNaN(date.getTime())) {
+    return new Intl.DateTimeFormat("ko-KR", {
+      dateStyle: "short",
+      timeStyle: "short",
+    }).format(new Date());
+  }
+
+  return new Intl.DateTimeFormat("ko-KR", {
+    dateStyle: "short",
+    timeStyle: "short",
+  }).format(date);
+}
+
 function createCommentElement(comment) {
   const commentRow = document.createElement("article");
   commentRow.className = "comment-row";
 
   const isHashText = comment.content.startsWith("#");
+  const commentDateTime = formatCommentDateTime(comment.createdAt);
 
   commentRow.innerHTML = `
-    <span class="comment-avatar gray-avatar"></span>
+    <img class="comment-avatar" src="${commentAvatarSrc}" alt="" />
     <div class="comment-copy">
-      <p><strong>me</strong> <small>방금</small></p>
+      <p><strong>me</strong> <small>${commentDateTime}</small></p>
       <span class="${isHashText ? "comment-hashtag" : ""}">${comment.content}</span>
       <button type="button">답글 달기</button>
     </div>
@@ -51,6 +81,8 @@ function renderStoredComments() {
     const commentElement = createCommentElement(comment);
     commentsList.appendChild(commentElement);
   });
+
+  updateCommentsCountLabel();
 }
 
 function addComment(commentContent) {
@@ -72,6 +104,7 @@ function addComment(commentContent) {
 
   const commentElement = createCommentElement(newComment);
   commentsList.appendChild(commentElement);
+  updateCommentsCountLabel();
 
   commentInput.value = "";
 }
