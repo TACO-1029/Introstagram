@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -8,26 +8,61 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./pages/static/css/style.css" />
+    <link rel="stylesheet" href="./pages/static/css/layout.css" />
   </head>
   <body>
     <header class="web-header">
-      <nav class="container-xl web-header-inner" aria-label="Desktop navigation">
-        <a class="brand-link" href="./index.html" aria-label="Go to main page">Introstagram</a>
+      <nav
+        class="container-xl web-header-inner"
+        aria-label="Desktop navigation"
+      >
+        <a class="brand-link" href="./index.html" aria-label="Go to main page"
+          >Introstagram</a
+        >
         <div class="web-actions" aria-label="Desktop actions">
-          <a class="icon-button active" href="./index.html" aria-label="Home"><span class="icon home"></span></a>
-          <a class="icon-button" href="#" aria-label="Share"><span class="icon send"></span></a>
-          <a class="icon-button" href="#" aria-label="Create"><span class="icon plus"></span></a>
-          <a class="icon-button" href="#" aria-label="Activity"><span class="icon search"></span></a>
-          <a class="icon-button" href="#" aria-label="Profile"><span class="icon user"></span></a>
+          <a class="icon-button active" href="./index.html" aria-label="Home"
+            ><span class="icon home"></span
+          ></a>
+
+          <a
+            class="icon-button"
+            href="./pages/directmessage/index.html"
+            aria-label="Share"
+            ><span class="icon paper-plane-notification"></span
+          ></a>
+          <a class="icon-button" href="#" aria-label="Create"
+            ><span class="icon plus"></span
+          ></a>
+          <!-- GeoLocation -->
+          <a
+            class="icon-button"
+            href="./pages/location/index.html"
+            aria-label="Activity"
+          >
+            <span class="icon search"></span>
+          </a>
+          <a class="icon-button" href="#" aria-label="Profile"
+            ><span class="icon user"></span
+          ></a>
         </div>
       </nav>
     </header>
 
-    <main class="app-shell container-xl" aria-label="Introstagram main page">
-      <section class="phone-frame feed-panel" aria-label="Team introduction feed">
-        <header class="top-bar">
-          <a class="icon-button" href="./index.html" aria-label="Go to main page">
+    <main
+      class="app-layout app-shell container-xl"
+      aria-label="Introstagram main page"
+    >
+      <section
+        class="app-device-frame app-layout-content phone-frame feed-panel"
+        aria-label="Team introduction feed"
+      >
+        <header class="app-layout-header top-bar">
+          <a
+            class="icon-button"
+            href="./index.html"
+            aria-label="Go to main page"
+          >
             <span class="icon camera"></span>
           </a>
           <h1>Introstagram</h1>
@@ -36,34 +71,46 @@
           </button>
         </header>
 
-        <nav class="story-list" aria-label="Team member pages">
-          <button class="story-item my-story-item" type="button" data-story-picker>
+        <nav
+          class="app-layout-stories story-list"
+          aria-label="Team member pages"
+        >
+          <button
+            class="story-item my-story-item"
+            type="button"
+            data-story-picker
+          >
             <span class="my-story-avatar">
-              <img src="./img/my-story-avatar.svg" alt="" />
+              <img src="pages/static/img/introstagram_avatar.png" alt="" />
               <span class="my-story-plus">+</span>
             </span>
             <span>내 스토리</span>
           </button>
-          <input id="storyImagePicker" class="visually-hidden" type="file" accept="image/*" />
-          <a class="story-item" href="./pages/member-1.html">
+          <input
+            id="storyImagePicker"
+            class="visually-hidden"
+            type="file"
+            accept="image/*"
+          />
+          <a class="story-item" href="./pages/member/1/index.html">
             <span class="story-ring">
               <span class="story-avatar">1</span>
             </span>
             <span>Member 1</span>
           </a>
-          <a class="story-item" href="./pages/member-2.html">
+          <a class="story-item" href="./pages/member/2/index.html">
             <span class="story-ring">
               <span class="story-avatar">2</span>
             </span>
             <span>Member 2</span>
           </a>
-          <a class="story-item" href="./pages/member-3.html">
+          <a class="story-item" href="./pages/member/3/index.html">
             <span class="story-ring">
               <span class="story-avatar">3</span>
             </span>
             <span>Member 3</span>
           </a>
-          <a class="story-item" href="./pages/member-4.html">
+          <a class="story-item" href="./pages/member/4/index.html">
             <span class="story-ring">
               <span class="story-avatar">4</span>
             </span>
@@ -71,7 +118,7 @@
           </a>
         </nav>
 
-        <article class="post-card">
+        <article class="app-layout-post post-card">
           <div id="postHeaderRoot"></div>
           <div id="postVisualRoot"></div>
 
@@ -80,35 +127,171 @@
               <button class="icon-button" aria-label="Like">
                 <span class="icon search"></span>
               </button>
-              <button class="icon-button" aria-label="Comment">
+              <button
+                class="icon-button"
+                type="button"
+                aria-label="Comment"
+                data-comments-open
+              >
                 <span class="icon comment"></span>
               </button>
               <button class="icon-button" aria-label="Share">
                 <span class="icon send"></span>
               </button>
             </div>
-            <div id="postPaginationRoot" class="pagination-dots" aria-hidden="true"></div>
+            <div
+              id="postPaginationRoot"
+              class="pagination-dots"
+              aria-hidden="true"
+            ></div>
             <button class="icon-button" aria-label="Save">
               <span class="icon bookmark"></span>
             </button>
           </section>
 
           <section class="caption">
-            <p><strong>introstagram_team</strong> 우리 4명의 이야기를 인스타그램 UI처럼 소개합니다.</p>
-            <button type="button">댓글 1개 모두 보기</button>
+            <p>
+              <strong>introstagram_team</strong> 우리 4명의 이야기를 인스타그램
+              UI처럼 소개합니다.
+            </p>
+            <!-- TODO  -->
+            <button type="button" aria-label="Comment" data-comments-open>
+              댓글 1개 모두 보기
+            </button>
           </section>
         </article>
 
-        <nav class="bottom-nav" aria-label="Main navigation">
-          <a class="active" href="./index.html" aria-label="Home"><span class="icon home"></span></a>
-          <a href="#" aria-label="Search"><span class="icon play-square"></span></a>
-          <a href="#" aria-label="Create"><span class="icon paper-plane-notification"></span></a>
-          <a href="#" aria-label="Activity"><span class="icon search"></span></a>
+        <nav class="app-layout-footer bottom-nav" aria-label="Main navigation">
+          <a class="active" href="./index.html" aria-label="Home"
+            ><span class="icon home"></span
+          ></a>
+          <a href="#" aria-label="Search"
+            ><span class="icon play-square"></span
+          ></a>
+          <a
+            href="./pages/directmessage/index.html"
+            aria-label="Direct messages"
+            ><span class="icon paper-plane-notification"></span
+          ></a>
+          <a href="./pages/location/index.html" aria-label="Activity">
+            <span class="icon search"></span>
+          </a>
           <a href="#" aria-label="Profile"><span class="icon user"></span></a>
         </nav>
       </section>
 
-      <aside class="web-sidebar" aria-label="Team profile summary">
+      <section class="comments-sheet" data-comments-sheet aria-hidden="true">
+        <div class="comments-panel" role="dialog" aria-label="댓글">
+          <section
+            class="comments-media-preview"
+            aria-label="게시물 이미지 미리보기"
+          >
+            <img src="./pages/static/img/post-slide-1.svg" alt="" />
+          </section>
+          <span class="comments-handle" aria-hidden="true"></span>
+          <header class="comments-header">
+            <h2>댓글</h2>
+            <button
+              type="button"
+              data-comments-close
+              aria-label="Close comments"
+            >
+              ×
+            </button>
+          </header>
+          <section class="comments-list" aria-label="Comment list">
+            <article class="comment-row">
+              <span class="comment-avatar ring-avatar"></span>
+              <div class="comment-copy">
+                <p><strong>hyundai_2026</strong> <small>19주</small></p>
+                <span>취업</span>
+                <button type="button">답글 달기</button>
+              </div>
+              <span class="comment-like"
+                ><span class="comment-like-icon"></span><small>1</small></span
+              >
+            </article>
+            <article class="comment-row">
+              <span class="comment-avatar gray-avatar"></span>
+              <div class="comment-copy">
+                <p><strong>future_net</strong> <small>13주</small></p>
+                <span>취업</span>
+                <button type="button">답글 달기</button>
+              </div>
+              <span class="comment-like"
+                ><span class="comment-like-icon"></span
+              ></span>
+            </article>
+            <article class="comment-row">
+              <span class="comment-avatar photo-comment"></span>
+              <div class="comment-copy">
+                <p><strong>frontend_job</strong> <small>20주</small></p>
+                <span>취업</span>
+                <button type="button">답글 달기</button>
+              </div>
+              <span class="comment-like"
+                ><span class="comment-like-icon"></span><small>2</small></span
+              >
+            </article>
+            <article class="comment-row">
+              <span class="comment-avatar photo-comment-alt"></span>
+              <div class="comment-copy">
+                <p><strong>career_ready</strong> <small>18주</small></p>
+                <span>취업</span>
+                <button type="button">답글 달기</button>
+              </div>
+              <span class="comment-like"
+                ><span class="comment-like-icon"></span
+              ></span>
+            </article>
+            <article class="comment-row">
+              <span class="comment-avatar gray-avatar"></span>
+              <div class="comment-copy">
+                <p><strong>bootcamp_goal</strong> <small>18주</small></p>
+                <span>취업</span>
+                <button type="button">답글 달기</button>
+              </div>
+              <span class="comment-like"
+                ><span class="comment-like-icon"></span
+              ></span>
+            </article>
+          </section>
+          <footer class="comments-composer">
+            <div class="comments-reactions" aria-label="Quick reactions">
+              <button type="button">❤️</button>
+              <button type="button">🙌</button>
+              <button type="button">🔥</button>
+              <button type="button">👏</button>
+              <button type="button">🥲</button>
+              <button type="button">😍</button>
+              <button type="button">😮</button>
+              <button type="button">😂</button>
+            </div>
+            <div class="comments-input-row">
+              <img src="./pages/static/img/introstagram_avatar.png" alt="" />
+              <input
+                type="text"
+                placeholder="댓글 추가..."
+                data-comment-input
+              />
+
+              <button
+                type="button"
+                class="comment-submit-btn"
+                aria-label="댓글 게시"
+                data-comment-submit
+              >
+                <span class="comment-submit-icon"></span>
+              </button>
+            </div>
+          </footer>
+        </div>
+      </section>
+
+      <aside
+        class="app-layout-sidebar web-sidebar"
+        aria-label="Team profile summary"
+      >
         <section class="profile-summary">
           <div class="profile-avatar">I</div>
           <div>
@@ -122,54 +305,126 @@
             <span>팀원 페이지</span>
             <a href="./index.html">메인</a>
           </div>
-          <a class="member-row" href="./pages/member-1.html">
+          <a class="member-row" href="./pages/member/1/index.html">
             <span class="mini-avatar">1</span>
-            <span><strong>Member 1</strong><small>개인 소개 페이지</small></span>
+            <span
+              ><strong>Member 1</strong><small>개인 소개 페이지</small></span
+            >
           </a>
-          <a class="member-row" href="./pages/member-2.html">
+          <a class="member-row" href="./pages/member/2/index.html">
             <span class="mini-avatar">2</span>
-            <span><strong>Member 2</strong><small>개인 소개 페이지</small></span>
+            <span
+              ><strong>Member 2</strong><small>개인 소개 페이지</small></span
+            >
           </a>
-          <a class="member-row" href="./pages/member-3.html">
+          <a class="member-row" href="./pages/member/3/index.html">
             <span class="mini-avatar">3</span>
-            <span><strong>Member 3</strong><small>개인 소개 페이지</small></span>
+            <span
+              ><strong>Member 3</strong><small>개인 소개 페이지</small></span
+            >
           </a>
-          <a class="member-row" href="./pages/member-4.html">
+          <a class="member-row" href="./pages/member/4/index.html">
             <span class="mini-avatar">4</span>
-            <span><strong>Member 4</strong><small>개인 소개 페이지</small></span>
+            <span
+              ><strong>Member 4</strong><small>개인 소개 페이지</small></span
+            >
           </a>
         </section>
 
-        <p class="sidebar-note">상단 스토리 4개는 어느 화면 크기에서도 팀원 개인 페이지 진입점으로 고정됩니다.</p>
+        <p class="sidebar-note">
+          상단 스토리 4개는 어느 화면 크기에서도 팀원 개인 페이지 진입점으로
+          고정됩니다.
+        </p>
       </aside>
     </main>
 
-    <section class="story-camera-modal" data-camera-modal hidden aria-label="Story camera">
+    <section
+      class="story-camera-modal"
+      data-camera-modal
+      hidden
+      aria-label="Story camera"
+    >
       <div class="story-camera-panel">
         <header class="story-camera-topbar">
-          <button class="story-camera-icon-button" type="button" data-camera-close aria-label="Close camera">×</button>
-          <button class="story-camera-icon-button" type="button" aria-label="Flash off">⌁</button>
-          <button class="story-camera-icon-button" type="button" aria-label="Camera settings">⚙</button>
+          <button
+            class="story-camera-icon-button"
+            type="button"
+            data-camera-close
+            aria-label="Close camera"
+          >
+            ×
+          </button>
+          <button
+            class="story-camera-icon-button"
+            type="button"
+            aria-label="Flash off"
+          >
+            ⌁
+          </button>
+          <button
+            class="story-camera-icon-button"
+            type="button"
+            aria-label="Camera settings"
+          >
+            ⚙
+          </button>
         </header>
         <div class="story-camera-preview">
           <video id="storyCameraVideo" autoplay playsinline muted></video>
-          <img class="story-ar-mask" src="./img/dog-face-mask.svg" alt="" data-ar-mask hidden />
+          <img
+            class="story-ar-mask"
+            src="./pages/static/img/dog-face-mask.svg"
+            alt=""
+            data-ar-mask
+            hidden
+          />
           <p class="story-camera-message" data-camera-message></p>
           <div class="story-camera-side-tools" aria-label="Story camera tools">
-            <button type="button" aria-label="Text"><span class="story-side-icon story-text-icon"></span></button>
-            <button type="button" aria-label="Loop"><span class="story-side-icon story-infinity-icon"></span></button>
-            <button type="button" aria-label="Layout"><span class="story-side-icon story-layout-icon"></span></button>
-            <button type="button" aria-label="Stop motion"><span class="story-side-icon story-stop-icon"></span></button>
+            <button type="button" aria-label="Text">
+              <span class="story-side-icon story-text-icon"></span>
+            </button>
+            <button type="button" aria-label="Loop">
+              <span class="story-side-icon story-infinity-icon"></span>
+            </button>
+            <button type="button" aria-label="Layout">
+              <span class="story-side-icon story-layout-icon"></span>
+            </button>
+            <button type="button" aria-label="Stop motion">
+              <span class="story-side-icon story-stop-icon"></span>
+            </button>
           </div>
           <div class="story-camera-capture-row">
-            <button class="story-camera-shutter" type="button" data-camera-capture aria-label="Capture photo"></button>
-            <button class="story-camera-mode-button" type="button" data-filter-toggle aria-label="Toggle AR filter">🐶</button>
-            <button class="story-camera-mode-button" type="button" aria-label="Camera lens">◉</button>
+            <button
+              class="story-camera-shutter"
+              type="button"
+              data-camera-capture
+              aria-label="Capture photo"
+            ></button>
+            <button
+              class="story-camera-mode-button"
+              type="button"
+              data-filter-toggle
+              aria-label="Toggle AR filter"
+            >
+              🐶
+            </button>
+            <button
+              class="story-camera-mode-button"
+              type="button"
+              aria-label="Camera lens"
+            >
+              ◉
+            </button>
           </div>
         </div>
         <div class="story-camera-actions">
-          <button class="story-gallery-button" type="button" data-file-fallback aria-label="Choose image from files">
-            <img src="./img/my-story-avatar.svg" alt="" />
+          <button
+            class="story-gallery-button"
+            type="button"
+            data-file-fallback
+            aria-label="Choose image from files"
+          >
+            <img src="./pages/static/img/my-story-avatar.svg" alt="" />
           </button>
           <div class="story-camera-tabs" aria-label="Camera modes">
             <span>게시물</span>
@@ -177,16 +432,24 @@
             <span>릴스</span>
             <span>라이브</span>
           </div>
-          <button class="story-camera-flip" type="button" aria-label="Flip camera">⟳</button>
+          <button
+            class="story-camera-flip"
+            type="button"
+            aria-label="Flip camera"
+          >
+            ⟳
+          </button>
         </div>
       </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"
+      crossorigin="anonymous"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
-    <script src="./js/post-components.js"></script>
-    <script src="./js/story-picker.js"></script>
+    <script src="./pages/static/js/post-components.js"></script>
+    <script src="./pages/static/js/story-picker.js"></script>
+    <script src="./pages/static/js/comments-sheet.js"></script>
   </body>
 </html>

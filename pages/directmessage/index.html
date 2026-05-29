@@ -23,17 +23,14 @@
         <a href="#" aria-label="Reels"
           ><span class="icon play-square"></span
         ></a>
-        <a
-          class="active"
-          href="./index.html"
-          aria-label="Direct messages"
+        <a class="active" href="./index.html" aria-label="Direct messages"
           ><span class="icon paper-plane-notification"></span
         ></a>
         <a href="#" aria-label="Search"><span class="icon search"></span></a>
-        <a href="#" aria-label="Explore"><span class="icon send"></span></a>
-        <a href="#" aria-label="Activity"><span class="icon search"></span></a>
-        <a href="#" aria-label="Create"><span class="icon plus"></span></a>
-        <a class="direct-rail-avatar" href="../../index.html" aria-label="Profile"
+        <a
+          class="direct-rail-avatar"
+          href="../../index.html"
+          aria-label="Profile"
           ><img src="../static/img/my-story-avatar.svg" alt=""
         /></a>
         <span class="direct-rail-spacer"></span>
@@ -63,7 +60,8 @@
           <a class="direct-shortcut" href="#">
             <span class="direct-bubble">새 소식...</span>
             <span class="direct-shortcut-avatar">
-              <img src="../static/img/my-story-avatar.svg" alt="" />
+              <!-- pages/static/img/introstagram_avatar.png -->
+              <img src="../static/img/introstagram_avatar.png" alt="" />
             </span>
             <strong>내 메모</strong>
           </a>
@@ -75,7 +73,7 @@
         </section>
 
         <section class="direct-list" aria-label="Message list">
-          <a class="direct-thread unread" href="#">
+          <a class="direct-thread unread" href="#" data-direct-thread-open>
             <span class="direct-avatar photo-a"></span>
             <span class="direct-thread-copy">
               <strong>현대퓨처넷</strong>
@@ -86,7 +84,11 @@
         </section>
       </section>
 
-      <div id="directChatRoot"></div>
+      <section
+        id="directChatRoot"
+        class="direct-chat"
+        aria-label="Message conversation"
+      ></section>
 
       <nav
         class="bottom-nav direct-bottom-nav"
@@ -98,10 +100,7 @@
         <a href="#" aria-label="Reels"
           ><span class="icon play-square"></span
         ></a>
-        <a
-          class="active"
-          href="./index.html"
-          aria-label="Direct messages"
+        <a class="active" href="./index.html" aria-label="Direct messages"
           ><span class="icon paper-plane-notification"></span
         ></a>
         <a href="#" aria-label="Search"><span class="icon search"></span></a>
