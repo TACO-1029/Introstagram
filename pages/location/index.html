@@ -20,38 +20,249 @@
         </header>
 
         <section class="location-content">
-          <div id="map" class="location-map"></div>
+          <div class="location-map-shell">
+            <nav
+              id="locationToggleBar"
+              class="location-toggle-bar"
+              aria-label="Location quick view"
+            ></nav>
+            <div id="map" class="location-map">
+              <span class="location-map-loading">지도를 불러오는 중...</span>
+            </div>
+          </div>
         </section>
       </section>
     </main>
 
-    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=86f22b2d15e49eda57e3d7cc5ad5b81e&autoload=false"></script>
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=86f22b2d15e49eda57e3d7cc5ad5b81e&autoload=false&libraries=services"></script>
 
     <script>
-      kakao.maps.load(function () {
+      const hyundaiLocations = [
+        {
+          name: "리바트 본사",
+          address: "서울특별시 강남구 압구정로 165 금강쇼핑센터",
+          fallback: { lat: 37.525144, lng: 127.027705 },
+          img: "../static/img/hyundai-logo/livart.png",
+        },
+        {
+          name: "현대홈쇼핑 본사",
+          address: "서울특별시 강동구 올림픽로70길 34",
+          fallback: { lat: 37.540393, lng: 127.123628 },
+          img: "../static/img/hyundai-logo/homeshopping.png",
+        },
+        {
+          name: "그린푸드",
+          address: "경기도 용인시 수지구 문인로 30",
+          fallback: { lat: 37.332508, lng: 127.100742 },
+          img: "../static/img/hyundai-logo/greenfood.png",
+        },
+        {
+          name: "한섬",
+          address: "서울특별시 강동구 성내동 448-3",
+          fallback: { lat: 37.530454, lng: 127.130964 },
+          img: "../static/img/hyundai-logo/handsome.png",
+        },
+        {
+          name: "현대면세점 본사",
+          address: "서울특별시 강남구 영동대로82길 19",
+          fallback: { lat: 37.505614, lng: 127.063153 },
+          img: "../static/img/hyundai-logo/duty-free.png",
+        },
+      ];
+
+      function createLocationPin(location) {
+        return `
+          <article class="location-pin" aria-label="${location.name}">
+            <span class="location-pin-avatar">
+              <img src="${location.img}" alt="" />
+            </span>
+          </article>
+        `;
+      }
+
+      const mapFocusLevel = 2;
+      const locationToggleBar = document.getElementById("locationToggleBar");
+      let selectLocation = focusFallbackLocation;
+
+      function setActiveLocation(index) {
+        locationToggleBar
+          .querySelectorAll("[data-location-index]")
+          .forEach((button) => {
+            const isActive = Number(button.dataset.locationIndex) === index;
+            button.classList.toggle("active", isActive);
+            button.setAttribute("aria-pressed", String(isActive));
+          });
+      }
+
+      function renderLocationControls() {
+        locationToggleBar.innerHTML = hyundaiLocations
+          .map(
+            (location, index) => `
+              <button
+                type="button"
+                class="location-toggle-button"
+                data-location-index="${index}"
+                aria-pressed="false"
+              >
+                <img src="${location.img}" alt="" />
+                <span>${location.name}</span>
+              </button>
+            `,
+          )
+          .join("");
+
+        locationToggleBar.addEventListener("click", function (event) {
+          const button = event.target.closest("[data-location-index]");
+
+          if (!button) {
+            return;
+          }
+
+          selectLocation(Number(button.dataset.locationIndex));
+        });
+      }
+
+      function focusFallbackLocation(index) {
+        const card = document.querySelector(`[data-location-card="${index}"]`);
+
+        if (!card) {
+          return;
+        }
+
+        setActiveLocation(index);
+        card.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
+
+      function showMapFallback() {
         const mapContainer = document.getElementById("map");
+        mapContainer.classList.add("location-map-fallback-mode");
+        const fallbackCards = hyundaiLocations
+          .map(
+            (location, index) => `
+              <article class="location-fallback-card" data-location-card="${index}">
+                ${createLocationPin(location)}
+                <address>${location.address}</address>
+              </article>
+            `,
+          )
+          .join("");
 
-        const mapOption = {
-          center: new kakao.maps.LatLng(37.495918, 127.12454),
-          level: 3,
-        };
+        mapContainer.innerHTML = `
+          <section class="location-fallback-pin-list" aria-label="Location pin list">
+            ${fallbackCards}
+          </section>
+        `;
+      }
 
-        const map = new kakao.maps.Map(mapContainer, mapOption);
-        const mapCenter = mapOption.center;
+      renderLocationControls();
 
-        function syncMapLayout() {
-          map.relayout();
-          map.setCenter(mapCenter);
-        }
+      if (!window.kakao || !kakao.maps) {
+        showMapFallback();
+      } else {
+        kakao.maps.load(function () {
+          const mapContainer = document.getElementById("map");
+          mapContainer.classList.remove("location-map-fallback-mode");
 
-        setTimeout(syncMapLayout, 300);
-        window.addEventListener("resize", syncMapLayout);
+          const mapOption = {
+            center: new kakao.maps.LatLng(37.4979, 127.0276),
+            level: 9,
+          };
 
-        if ("ResizeObserver" in window) {
-          const resizeObserver = new ResizeObserver(syncMapLayout);
-          resizeObserver.observe(mapContainer);
-        }
-      });
+          const map = new kakao.maps.Map(mapContainer, mapOption);
+          const geocoder = new kakao.maps.services.Geocoder();
+          const bounds = new kakao.maps.LatLngBounds();
+          const overlays = [];
+          const locationTargets = new Map();
+          let resolvedCount = 0;
+
+          function addLocationOverlay(location, latlng, index) {
+            const overlay = new kakao.maps.CustomOverlay({
+              position: latlng,
+              content: createLocationPin(location),
+              xAnchor: 0.5,
+              yAnchor: 1,
+              zIndex: 10,
+            });
+
+            overlay.setMap(map);
+            overlays.push(overlay);
+            locationTargets.set(index, { latlng, overlay });
+            bounds.extend(latlng);
+          }
+
+          function fitMapBounds() {
+            if (!overlays.length) {
+              return;
+            }
+
+            map.setBounds(bounds);
+          }
+
+          function getFallbackLatLng(location) {
+            return new kakao.maps.LatLng(
+              location.fallback.lat,
+              location.fallback.lng,
+            );
+          }
+
+          function focusMapLocation(index) {
+            const location = hyundaiLocations[index];
+            const target = locationTargets.get(index) || {
+              latlng: getFallbackLatLng(location),
+            };
+
+            setActiveLocation(index);
+            overlays.forEach((overlay) => overlay.setZIndex(10));
+
+            if (target.overlay) {
+              target.overlay.setZIndex(30);
+            }
+
+            map.setLevel(mapFocusLevel, { animate: true });
+            map.panTo(target.latlng);
+          }
+
+          selectLocation = focusMapLocation;
+
+          function resolveLocation(location, index) {
+            geocoder.addressSearch(location.address, function (result, status) {
+              const latlng =
+                status === kakao.maps.services.Status.OK && result[0]
+                  ? new kakao.maps.LatLng(result[0].y, result[0].x)
+                  : new kakao.maps.LatLng(
+                      location.fallback.lat,
+                      location.fallback.lng,
+                    );
+
+              addLocationOverlay(location, latlng, index);
+              resolvedCount += 1;
+
+              if (resolvedCount === hyundaiLocations.length) {
+                fitMapBounds();
+              }
+            });
+          }
+
+          hyundaiLocations.forEach(resolveLocation);
+
+          function syncMapLayout() {
+            map.relayout();
+            fitMapBounds();
+          }
+
+          setTimeout(syncMapLayout, 300);
+          window.addEventListener("resize", syncMapLayout);
+
+          if ("ResizeObserver" in window) {
+            const resizeObserver = new ResizeObserver(syncMapLayout);
+            resizeObserver.observe(mapContainer);
+          }
+        });
+      }
     </script>
   </body>
 </html>
