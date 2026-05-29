@@ -2692,6 +2692,8 @@ a {
 .grid-tile span {
   position: relative;
   z-index: 1;
+  line-height: 1.25;
+  word-break: keep-all;
 }
 
 .tile-a {
