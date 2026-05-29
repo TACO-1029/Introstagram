@@ -192,7 +192,7 @@ function openStoryImagePicker() {
 
 function goToStoryEditor(dataUrl) {
   sessionStorage.setItem("introstagramStoryImage", dataUrl);
-  window.location.href = "./pages/story/";
+  window.location.href = "./pages/story/index.html";
 }
 
 function captureStoryImage() {
