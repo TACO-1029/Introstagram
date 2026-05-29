@@ -16,7 +16,7 @@ function renderProfileHeader(profile) {
   return `
     <header class="account-profile-header">
       <button class="account-profile-icon-button" type="button" aria-label="Settings">
-       
+
       </button>
       <button class="account-profile-selector" type="button" aria-label="Switch account">
         <strong>${profile.username}</strong>
