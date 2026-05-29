@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../static/css/style.css" />
     <link rel="stylesheet" href="../static/css/layout.css" />
   </head>
-  <body>
+  <body class="location-body">
     <main class="app-shell location-shell">
       <section class="app-device-frame location-frame">
         <header class="location-header">
@@ -32,16 +32,25 @@
         const mapContainer = document.getElementById("map");
 
         const mapOption = {
-          center: new kakao.maps.LatLng(37.566826, 126.9786567),
+          center: new kakao.maps.LatLng(37.495918, 127.12454),
           level: 3,
         };
 
         const map = new kakao.maps.Map(mapContainer, mapOption);
+        const mapCenter = mapOption.center;
 
-        setTimeout(() => {
+        function syncMapLayout() {
           map.relayout();
-          map.setCenter(new kakao.maps.LatLng(37.566826, 126.9786567));
-        }, 300);
+          map.setCenter(mapCenter);
+        }
+
+        setTimeout(syncMapLayout, 300);
+        window.addEventListener("resize", syncMapLayout);
+
+        if ("ResizeObserver" in window) {
+          const resizeObserver = new ResizeObserver(syncMapLayout);
+          resizeObserver.observe(mapContainer);
+        }
       });
     </script>
   </body>
