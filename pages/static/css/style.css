@@ -89,7 +89,7 @@ a {
 .app-shell {
   display: grid;
   min-height: 100vh;
-  grid-template-columns: minmax(360px, 470px) minmax(280px, 340px);
+  grid-template-columns: minmax(360px, 625px) minmax(280px, 340px);
   align-items: start;
   justify-content: center;
   gap: 34px;
@@ -474,8 +474,8 @@ a {
 
 .story-ring {
   display: flex;
-  width: 62px;
-  height: 62px;
+  width: 89px;
+  height: 89px;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
@@ -491,8 +491,8 @@ a {
 
 .story-avatar {
   display: flex;
-  width: 56px;
-  height: 56px;
+  width: 80px;
+  height: 80px;
   align-items: center;
   justify-content: center;
   color: #777777;
@@ -507,8 +507,8 @@ a {
 .my-story-avatar {
   position: relative;
   display: block;
-  width: 66px;
-  height: 66px;
+  width: 89px;
+  height: 89px;
 }
 
 .my-story-avatar img {
@@ -1372,7 +1372,7 @@ a {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding: 0 18px;
+  padding: 0;
   background: rgba(0, 0, 0, 0);
   pointer-events: none;
   transition: background 240ms ease;
@@ -1385,9 +1385,9 @@ a {
 
 .comments-panel {
   display: flex;
-  width: min(100%, 430px);
-  max-height: min(720px, calc(100vh - 80px));
-  min-height: 560px;
+  width: 100%;
+  max-height: min(82vh, 720px);
+  min-height: min(72vh, 640px);
   flex-direction: column;
   overflow: hidden;
   border: 1px solid #eeeeee;
@@ -1525,8 +1525,8 @@ a {
 }
 
 .comment-like-icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   background: currentColor;
   -webkit-mask: url("../icons/heart-icon.svg") center / contain no-repeat;
   mask: url("../icons/heart-icon.svg") center / contain no-repeat;
@@ -1625,6 +1625,16 @@ a {
   transform: scale(0.96);
 }
 
+@media (min-width: 431px) and (max-width: 899px) {
+  .comments-sheet {
+    padding: 0 24px;
+  }
+
+  .comments-panel {
+    max-width: 720px;
+  }
+}
+
 @media (min-width: 900px) {
   .comments-sheet {
     align-items: center;
@@ -1700,8 +1710,8 @@ a {
 @media (max-width: 899px) {
   .direct-body {
     display: grid;
-    place-items: center;
-    background: linear-gradient(135deg, #ff638d 0%, #ff7f6f 100%);
+    place-items: stretch;
+    background: #fff;
   }
 
   .direct-app {
@@ -1898,8 +1908,8 @@ a {
 
 .slide-button-icon {
   display: inline-block;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   background: currentColor;
   -webkit-mask: var(--slide-icon-url) center / contain no-repeat;
   mask: var(--slide-icon-url) center / contain no-repeat;
@@ -2114,13 +2124,13 @@ a {
 
 @media (min-width: 900px) {
   .feed-panel {
-    max-width: 470px;
+    max-width: 625px;
   }
 }
 
 @media (max-width: 899px) {
   body {
-    background: linear-gradient(135deg, #ff638d 0%, #ff7f6f 100%);
+    background: #fff;
   }
 
   .web-header,
@@ -2133,11 +2143,14 @@ a {
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-    padding: 32px 18px;
+    padding: 0;
   }
 
   .phone-frame {
-    box-shadow: 0 18px 45px rgba(120, 20, 50, 0.2);
+    width: min(100%, 625px);
+    min-height: 100vh;
+    border: 0;
+    box-shadow: none;
   }
 
   .top-bar {
@@ -2154,11 +2167,21 @@ a {
   }
 
   .post-visual {
-    min-height: 350px;
+    min-height: clamp(350px, 78vw, 470px);
   }
 
   .bottom-nav {
     display: grid;
+  }
+}
+
+@media (min-width: 431px) and (max-width: 899px) {
+  .app-shell {
+    align-items: flex-start;
+  }
+
+  .feed-panel {
+    min-height: 100vh;
   }
 }
 
@@ -2168,6 +2191,7 @@ a {
   }
 
   .phone-frame {
+    width: 100%;
     border: 0;
     box-shadow: none;
   }
@@ -2292,8 +2316,8 @@ a {
 .tagged-icon {
   position: relative;
   display: inline-block;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   color: #2d2d2d;
 }
 
@@ -2905,7 +2929,7 @@ a {
 
 .location-body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #ff638d 0%, #ff7f6f 100%);
+  background: #fff;
   color: #101116;
 }
 
