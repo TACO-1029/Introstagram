@@ -1817,6 +1817,16 @@ a {
 .profile-dot {
   width: 34px;
   height: 34px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #d8d8d8;
+}
+
+.profile-dot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 14%;
 }
 
 .post-meta {
@@ -1863,7 +1873,12 @@ a {
   position: absolute;
   inset: 0;
   background: linear-gradient(transparent 44%, rgba(0, 0, 0, 0.38));
+  pointer-events: none;
   content: "";
+}
+
+.post-visual:not(:has(.visual-content))::after {
+  content: none;
 }
 
 .post-slide-image {
@@ -2759,15 +2774,19 @@ a {
 .post-template {
   align-items: flex-start;
   background:
-    linear-gradient(transparent 46%, rgba(0, 0, 0, 0.62)),
     var(--post-image),
     linear-gradient(135deg, #d9d9d9, #f3f3f3);
   background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
 .post-template::before {
   opacity: 0.42;
+}
+
+.post-template:empty::after {
+  content: none;
 }
 
 .story-viewer {
@@ -2791,8 +2810,8 @@ a {
   overflow: hidden;
   border-radius: 18px;
   background:
-    linear-gradient(transparent 45%, rgba(0, 0, 0, 0.72)),
-    linear-gradient(135deg, #efefef, #bfc6d2);
+    radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.22), transparent 38%),
+    linear-gradient(160deg, #111318, #262b34 52%, #0c0e12);
   color: #fff;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
 }
@@ -2838,7 +2857,7 @@ a {
 }
 
 .story-progress span.active::before {
-  animation: storyProgress 3s linear forwards;
+  animation: storyProgress 5s linear forwards;
 }
 
 .story-progress span.done::before {
@@ -2879,21 +2898,27 @@ a {
 }
 
 .story-viewer-image {
+  position: absolute;
+  top: 66px;
+  right: 12px;
+  bottom: 18px;
+  left: 12px;
   display: block;
+  width: auto;
+  height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 16px;
   background:
-    linear-gradient(transparent 45%, rgba(0, 0, 0, 0.2)),
-    linear-gradient(135deg, #e3e3e3, #cfd3dc);
+    var(--story-image),
+    linear-gradient(135deg, #e8eaef, #bfc6d2);
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
 }
 
 .story-viewer-copy {
-  position: absolute;
-  right: 20px;
-  bottom: 22px;
-  left: 20px;
-  z-index: 2;
-  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.48);
+  display: none;
 }
 
 .story-viewer-copy strong {
@@ -2944,6 +2969,65 @@ a {
 
 .member-bottom-nav {
   display: none;
+}
+
+.member-post-body {
+  min-height: 100vh;
+  background: #fafafa;
+}
+
+.member-post-page {
+  width: min(100% - 32px, 640px);
+  margin: 0 auto;
+  padding: 28px 0 48px;
+}
+
+.member-post-back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 14px;
+  color: #262626;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.member-post-card {
+  border: 1px solid #dbdbdb;
+}
+
+.member-post-card .post-visual {
+  min-height: auto;
+  aspect-ratio: 1;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, #e9e9e9, #cfcfcf);
+  background-size: 24px 24px, 24px 24px, cover;
+}
+
+.member-post-card .post-slide-image {
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .member-post-page {
+    width: 100%;
+    padding: 0 0 24px;
+  }
+
+  .member-post-back {
+    width: 100%;
+    height: 48px;
+    margin: 0;
+    border-bottom: 1px solid #eeeeee;
+    padding: 0 14px;
+    background: #fff;
+  }
+
+  .member-post-card {
+    border-right: 0;
+    border-left: 0;
+  }
 }
 
 .story-editor-body {

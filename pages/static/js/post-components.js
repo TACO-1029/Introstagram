@@ -1,37 +1,32 @@
-const postData = {
+const defaultPostData = {
   user: {
-    name: "introstagram_team",
-    meta: "Team Intro, Static Web Project",
+    name: "dogeonwoo",
+    meta: "도건우",
+    avatar: "./pages/static/img/member-1/profile/dogeonwoo-profile.png",
   },
+  caption:
+    "게시글 설명을 여기에 작성하세요. 사진은 post-1-1.jpg, post-1-2.jpg처럼 교체하면 됩니다.",
+  commentsLabel: "댓글 1개 모두 보기",
   slides: [
     {
-      image: "./pages/static/img/post-slide-1.svg",
-      label: "HDF Team Project",
-      title: "팀소개와 개인소개를 담은 정적 웹페이지",
-      description: "상단 스토리에서 팀원별 개인 페이지로 이동합니다.",
-    },
-    {
-      image: "./pages/static/img/post-slide-2.svg",
-      label: "Static UI",
-      title: "인스타그램 화면을 닮은 인터페이스",
-      description: "스토리, 피드, 프로필 페이지를 정적 문서로 구성했습니다.",
-    },
-    {
-      image: "./pages/static/img/post-slide-3.svg",
-      label: "Canvas Story",
-      title: "캔버스로 만드는 나만의 스토리",
-      description: "이미지 위에 직접 그림을 그리고 PNG로 저장할 수 있습니다.",
+      image: "./pages/static/img/member-1/posts/post-1-1.jpg",
+      fallback: "./pages/static/img/post-slide-1.svg",
     },
   ],
 };
+
+const postData = window.introstagramPostData || defaultPostData;
 
 let currentSlideIndex = 0;
 
 function createPostHeader(user) {
   const header = document.createElement("header");
   header.className = "post-header";
+  const avatarMarkup = user.avatar
+    ? `<img src="${user.avatar}" alt="" />`
+    : "";
   header.innerHTML = `
-    <div class="profile-dot"></div>
+    <div class="profile-dot">${avatarMarkup}</div>
     <div class="post-meta">
       <strong>${user.name}</strong>
       <span>${user.meta}</span>
@@ -44,37 +39,53 @@ function createPostHeader(user) {
 
 function createPostVisual(slides, activeIndex) {
   const slide = slides[activeIndex];
+  const hasOverlay = Boolean(slide.label || slide.title || slide.description);
+  const isCarousel = slides.length > 1;
   const visual = document.createElement("section");
   visual.className = "post-visual";
   visual.setAttribute("aria-label", "Team project image slide");
   visual.innerHTML = `
-    <img class="post-slide-image" src="${slide.image}" alt="" />
-    <span class="slide-count">${activeIndex + 1}/${slides.length}</span>
-    <button class="slide-button slide-button-prev" type="button" aria-label="Previous image">
-      <span class="slide-button-icon slide-prev-icon"></span>
-    </button>
-    <button class="slide-button slide-button-next" type="button" aria-label="Next image">
-      <span class="slide-button-icon slide-next-icon"></span>
-    </button>
-    <div class="visual-content">
-      <p class="project-label">${slide.label}</p>
-      <h2>${slide.title}</h2>
-      <p>${slide.description}</p>
-    </div>
+    <img class="post-slide-image" src="${slide.image}" alt="" onerror="this.onerror=null; this.src='${slide.fallback || slide.image}'" />
+    ${isCarousel ? `<span class="slide-count">${activeIndex + 1}/${slides.length}</span>` : ""}
+    ${
+      isCarousel
+        ? `<button class="slide-button slide-button-prev" type="button" aria-label="Previous image">
+            <span class="slide-button-icon slide-prev-icon"></span>
+          </button>
+          <button class="slide-button slide-button-next" type="button" aria-label="Next image">
+            <span class="slide-button-icon slide-next-icon"></span>
+          </button>`
+        : ""
+    }
+    ${
+      hasOverlay
+        ? `<div class="visual-content">
+            ${slide.label ? `<p class="project-label">${slide.label}</p>` : ""}
+            ${slide.title ? `<h2>${slide.title}</h2>` : ""}
+            ${slide.description ? `<p>${slide.description}</p>` : ""}
+          </div>`
+        : ""
+    }
   `;
 
-  visual.querySelector(".slide-button-prev").addEventListener("click", () => {
-    moveSlide(-1);
-  });
-  visual.querySelector(".slide-button-next").addEventListener("click", () => {
-    moveSlide(1);
-  });
+  if (isCarousel) {
+    visual.querySelector(".slide-button-prev").addEventListener("click", () => {
+      moveSlide(-1);
+    });
+    visual.querySelector(".slide-button-next").addEventListener("click", () => {
+      moveSlide(1);
+    });
+  }
 
   return visual;
 }
 
 function createPaginationDots(slides, activeIndex) {
   const fragment = document.createDocumentFragment();
+
+  if (slides.length <= 1) {
+    return fragment;
+  }
 
   slides.forEach((slide, index) => {
     const dot = document.createElement("button");
@@ -101,10 +112,20 @@ function renderPost() {
   const headerRoot = document.querySelector("#postHeaderRoot");
   const visualRoot = document.querySelector("#postVisualRoot");
   const paginationRoot = document.querySelector("#postPaginationRoot");
+  const captionRoot = document.querySelector("[data-post-caption]");
+  const commentsLabelRoot = document.querySelector("[data-comments-label]");
 
   headerRoot.replaceChildren(createPostHeader(postData.user));
   visualRoot.replaceChildren(createPostVisual(postData.slides, currentSlideIndex));
   paginationRoot.replaceChildren(createPaginationDots(postData.slides, currentSlideIndex));
+
+  if (captionRoot) {
+    captionRoot.innerHTML = `<strong>${postData.user.name}</strong> ${postData.caption || ""}`;
+  }
+
+  if (commentsLabelRoot && postData.commentsLabel) {
+    commentsLabelRoot.textContent = postData.commentsLabel;
+  }
 }
 
 renderPost();
