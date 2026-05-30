@@ -10,15 +10,17 @@ const directChatData = {
   },
   time: "오전 8:14",
   story: {
-    profile: "🐶",
-    name: "현대퓨처넷",
-    caption: "냐냐냐",
-    title: "하굣잎 ★<br />울어서<br />눈방벙",
+    profile: "../static/img/introstagram_avatar.png",
+    name: "introstagram team",
+    caption: "",
+    title: "",
   },
 };
 
 const directChatRoot = document.querySelector("#directChatRoot");
-const directThreadOpenButton = document.querySelector("[data-direct-thread-open]");
+const directThreadOpenButton = document.querySelector(
+  "[data-direct-thread-open]",
+);
 const directApp = document.querySelector(".direct-app");
 
 function createDirectChatHeader(user) {
@@ -56,13 +58,17 @@ function createDirectChatBody(data) {
       <strong>${data.preview.account}</strong> ${data.preview.text}
     </p>
     <time>${data.time}</time>
-    <article class="direct-story-card">
-      <span class="direct-story-profile">${data.story.profile}</span>
+    <a class="direct-story-card" href="../reels.html" aria-label="릴스 보기">
+      <img
+        class="direct-story-image"
+        src="../static/img/reels/reels-1-thumbnail.png"
+        alt=""
+      />
+      <span class="direct-story-profile"><img src="${data.story.profile}"></img></span>
       <strong>${data.story.name}</strong>
-      <span>${data.story.caption}</span>
       <b>${data.story.title}</b>
       <small>▶</small>
-    </article>
+    </a>
   `;
 
   return body;
