@@ -1,5 +1,9 @@
 const storyPickerButton = document.querySelector("[data-story-picker]");
 const storyImagePicker = document.querySelector("#storyImagePicker");
+const storyList = document.querySelector(".story-list");
+const firstMemberStoryItem = document.querySelector(
+  '[data-highlight="member-1-profile"]',
+);
 const cameraModal = document.querySelector("[data-camera-modal]");
 const cameraPanel = document.querySelector(".story-camera-panel");
 const cameraVideo = document.querySelector("#storyCameraVideo");
@@ -19,6 +23,7 @@ const modalSaveButtons = document.querySelectorAll("[data-modal-save]");
 const modalPublishButtons = document.querySelectorAll("[data-modal-publish]");
 const modalImagePicker = document.querySelector("#storyModalImagePicker");
 const modalBackgroundImage = new Image();
+const publishedStoriesStorageKey = "introstagramPublishedStories";
 
 const arFilters = {
   dog: {
@@ -56,6 +61,7 @@ let modalCurrentColor = "#ffffff";
 let modalCurrentTool = "pen";
 let modalDrawing = false;
 let modalLastPoint = null;
+let publishedStoryItem = null;
 
 function getActiveFilter() {
   return arFilters[activeFilterName] || arFilters.dog;
@@ -454,13 +460,56 @@ function saveModalStoryImage() {
 }
 
 function getPublishedStories() {
-  window.introstagramPublishedStories =
-    window.introstagramPublishedStories || [];
-  return window.introstagramPublishedStories;
+  try {
+    return JSON.parse(localStorage.getItem(publishedStoriesStorageKey) || "[]");
+  } catch (error) {
+    return [];
+  }
 }
 
 function setPublishedStories(stories) {
-  window.introstagramPublishedStories = stories;
+  localStorage.setItem(publishedStoriesStorageKey, JSON.stringify(stories));
+}
+
+function openPublishedStories() {
+  const stories = getPublishedStories();
+
+  if (!stories.length) {
+    return;
+  }
+
+  window.introstagramStoryViewer?.openStoryList(stories, {
+    startIndex: stories.length - 1,
+    origin: "home",
+  });
+}
+
+function renderPublishedStoryItem() {
+  const stories = getPublishedStories();
+
+  if (!stories.length || !storyList || !firstMemberStoryItem) {
+    return;
+  }
+
+  if (!publishedStoryItem) {
+    publishedStoryItem = document.createElement("button");
+    publishedStoryItem.className = "story-item published-story-item";
+    publishedStoryItem.type = "button";
+    publishedStoryItem.setAttribute("aria-label", "View published story");
+    publishedStoryItem.innerHTML = `
+      <span class="story-ring">
+        <span class="story-avatar">
+          <img src="./pages/static/img/introstagram_avatar.png" alt="" />
+        </span>
+      </span>
+      <span>introstagram team</span>
+    `;
+    publishedStoryItem.addEventListener("click", openPublishedStories);
+  }
+
+  if (!publishedStoryItem.isConnected) {
+    firstMemberStoryItem.before(publishedStoryItem);
+  }
 }
 
 function publishModalStory() {
@@ -475,6 +524,7 @@ function publishModalStory() {
     avatar: "./pages/static/img/introstagram_avatar.png",
   });
   setPublishedStories(stories);
+  renderPublishedStoryItem();
   closeStoryCamera();
   window.introstagramStoryViewer?.openStoryList(stories, {
     startIndex: stories.length - 1,
@@ -658,3 +708,4 @@ modalPublishButtons.forEach((button) => {
   button.addEventListener("click", publishModalStory);
 });
 modalImagePicker.addEventListener("change", loadModalEditorImage);
+renderPublishedStoryItem();

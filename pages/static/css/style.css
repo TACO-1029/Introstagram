@@ -469,7 +469,7 @@ a {
   top: 60px;
   z-index: 19;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 8px;
   padding: 16px 14px 11px;
   border-bottom: 1px solid #eeeeee;
@@ -487,6 +487,13 @@ a {
   background: none;
   color: #6f6f6f;
   font-size: 11px;
+}
+
+.story-item > span:last-child {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .story-ring {
