@@ -1841,6 +1841,19 @@ a {
   mask: url("../icons/heart-icon.svg") center / contain no-repeat;
 }
 
+.post-like-button {
+  color: #262626;
+}
+
+.post-like-button.is-liked {
+  color: #ff3040;
+}
+
+.post-like-button.is-liked .comment-like-icon {
+  -webkit-mask-image: url("../icons/heart-filled-icon.svg");
+  mask-image: url("../icons/heart-filled-icon.svg");
+}
+
 .comment-like small {
   margin-top: 2px;
   font-size: 12px;

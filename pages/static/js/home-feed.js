@@ -42,6 +42,7 @@ function normalizePostPaths(postData, postFilePath) {
     normalized.user.avatar = resolveAssetPath(normalized.user.avatar, postUrl);
   }
 
+  normalized.likeKey = postFilePath.replace(/^\.\//, "");
   normalized.slides = normalized.slides.map((slide) => ({
     ...slide,
     image: resolveAssetPath(slide.image, postUrl),

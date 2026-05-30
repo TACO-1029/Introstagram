@@ -15,6 +15,95 @@ const defaultPostData = {
   ],
 };
 
+const postLikesStorageKey = "introstagramPostLikes";
+
+function getPostLikes() {
+  try {
+    return JSON.parse(localStorage.getItem(postLikesStorageKey) || "{}");
+  } catch (error) {
+    return {};
+  }
+}
+
+function setPostLikes(likes) {
+  try {
+    localStorage.setItem(postLikesStorageKey, JSON.stringify(likes));
+  } catch (error) {
+    console.warn("좋아요 상태를 저장하지 못했습니다.", error);
+  }
+}
+
+function normalizePostLikeKey(value) {
+  return String(value || "")
+    .replace(window.location.origin, "")
+    .replace(/^.*?\/pages\//, "pages/")
+    .replace(/^\.\//, "")
+    .replace(/^\//, "");
+}
+
+function getCurrentPostPathKey() {
+  const match = window.location.pathname.match(
+    /pages\/member\/\d+\/posts\/post-\d+\.html$/,
+  );
+
+  return match?.[0] || "";
+}
+
+function getPostLikeKey(data) {
+  const explicitKey = data.likeKey || data.id || getCurrentPostPathKey();
+
+  if (explicitKey) {
+    return normalizePostLikeKey(explicitKey);
+  }
+
+  return normalizePostLikeKey(
+    `${data.user?.name || "post"}:${data.slides?.[0]?.image || ""}`,
+  );
+}
+
+function isPostLiked(postKey) {
+  return Boolean(getPostLikes()[postKey]);
+}
+
+function setPostLiked(postKey, liked) {
+  const likes = getPostLikes();
+  likes[postKey] = Boolean(liked);
+  setPostLikes(likes);
+}
+
+function updatePostLikeButton(button, liked) {
+  button.classList.toggle("is-liked", liked);
+  button.setAttribute("aria-pressed", String(liked));
+  button.setAttribute("aria-label", liked ? "Unlike" : "Like");
+}
+
+function setupPostLikeButton(card, data) {
+  const likeButton = card.querySelector('button[aria-label="Like"], .post-like-button');
+
+  if (!likeButton) {
+    return;
+  }
+
+  const postKey = getPostLikeKey(data);
+  likeButton.type = "button";
+  likeButton.dataset.postLikeButton = "";
+  likeButton.dataset.postLikeKey = postKey;
+  likeButton.classList.add("post-like-button");
+  updatePostLikeButton(likeButton, isPostLiked(postKey));
+
+  if (likeButton.dataset.likeBound === "true") {
+    return;
+  }
+
+  likeButton.dataset.likeBound = "true";
+  likeButton.addEventListener("click", () => {
+    const currentPostKey = likeButton.dataset.postLikeKey;
+    const liked = !isPostLiked(currentPostKey);
+    setPostLiked(currentPostKey, liked);
+    updatePostLikeButton(likeButton, liked);
+  });
+}
+
 function createPostHeader(user) {
   const header = document.createElement("header");
   header.className = "post-header";
@@ -100,7 +189,7 @@ function createPostActions() {
   actions.setAttribute("aria-label", "Post actions");
   actions.innerHTML = `
     <div class="action-group">
-      <button class="icon-button" aria-label="Like">
+      <button class="icon-button post-like-button" type="button" aria-label="Like" aria-pressed="false" data-post-like-button>
         <span class="comment-like-icon"></span>
       </button>
       <button class="icon-button" type="button" aria-label="Comment" data-comments-open>
@@ -182,6 +271,8 @@ function renderPostCard(card, data) {
     if (commentsLabelRoot && data.commentsLabel) {
       commentsLabelRoot.textContent = data.commentsLabel;
     }
+
+    setupPostLikeButton(card, data);
   }
 
   render();
