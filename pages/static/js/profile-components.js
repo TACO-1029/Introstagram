@@ -1,6 +1,6 @@
 const accountProfile = {
-  username: "TACO-1029",
-  handle: "TACO-1029",
+  username: "introstagram team",
+  handle: "introstagram team",
   avatarSrc: "../static/img/introstagram_avatar.png",
   stats: [
     { label: "게시물", value: "0" },
@@ -123,8 +123,6 @@ function renderProfileTabs() {
   return `
     <nav class="profile-tabs" aria-label="Profile content tabs">
       <a class="active" href="#"><span class="grid-icon"></span><span>게시물</span></a>
-      <a href="#"><span class="bookmark-mini"></span><span>저장됨</span></a>
-      <a href="#"><span class="tagged-icon"></span><span>태그됨</span></a>
     </nav>
   `;
 }

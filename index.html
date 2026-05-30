@@ -334,7 +334,7 @@
             <span class="story-viewer-avatar">
               <img src="./pages/static/img/introstagram_avatar.png" alt="" />
             </span>
-            <strong>introstagram_team</strong>
+            <strong>introstagram team</strong>
           </div>
           <div class="story-viewer-image" role="img" aria-label=""></div>
           <div class="story-viewer-copy">
@@ -349,9 +349,11 @@
         aria-label="Team profile summary"
       >
         <section class="profile-summary">
-          <div class="profile-avatar">I</div>
+          <div class="profile-avatar">
+            <img src="./pages/static/img/introstagram_avatar.png" alt="" />
+          </div>
           <div>
-            <strong>introstagram_team</strong>
+            <strong>introstagram team</strong>
             <span>HDF Static Web Project</span>
           </div>
         </section>
@@ -436,7 +438,7 @@
           <video id="storyCameraVideo" autoplay playsinline muted></video>
           <img
             class="story-ar-mask"
-            src="./pages/static/img/dog-face-mask.svg"
+            src="./pages/static/story-filter/dog-face-mask.svg"
             alt=""
             data-ar-mask
             hidden
@@ -463,25 +465,28 @@
               data-camera-capture
               aria-label="Capture photo"
             ></button>
-            <button
-              class="story-camera-mode-button"
-              type="button"
-              data-filter-toggle
-              aria-label="Toggle AR filter"
-            >
-              🐶
-            </button>
-            <button
-              class="story-camera-mode-button"
-              type="button"
-              aria-label="Camera lens"
-            >
-              <img
-                class="story-camera-lens-avatar"
-                src="pages/static/img/introstagram_avatar.png"
-                alt=""
-              />
-            </button>
+            <div class="story-filter-options" aria-label="AR filter options">
+              <button
+                class="story-camera-mode-button"
+                type="button"
+                data-filter-option="dog"
+                aria-label="Dog AR filter"
+              >
+                🐶
+              </button>
+              <button
+                class="story-camera-mode-button"
+                type="button"
+                data-filter-option="hyundai"
+                aria-label="Hyundai DP AR filter"
+              >
+                <img
+                  class="story-filter-preview"
+                  src="./pages/static/story-filter/hyundai-dp-filter.svg"
+                  alt=""
+                />
+              </button>
+            </div>
           </div>
         </div>
         <div class="story-camera-actions">
@@ -494,10 +499,7 @@
             <img src="./pages/static/img/my-story-avatar.svg" alt="" />
           </button>
           <div class="story-camera-tabs" aria-label="Camera modes">
-            <span>게시물</span>
             <strong>스토리</strong>
-            <span>릴스</span>
-            <span>라이브</span>
           </div>
           <button
             class="story-camera-flip"
@@ -507,6 +509,167 @@
             ⟳
           </button>
         </div>
+        <section
+          class="story-modal-editor"
+          data-story-modal-editor
+          hidden
+          aria-label="Story drawing editor"
+        >
+          <header class="story-editor-top">
+            <button
+              class="story-close-button"
+              type="button"
+              data-camera-close
+              aria-label="Close story editor"
+            >
+              ×
+            </button>
+            <div class="story-author">
+              <span class="story-author-avatar"></span>
+              <span>introstagram team</span>
+            </div>
+            <div class="story-tool-icons" aria-label="Story tools">
+              <button
+                class="story-tool-button active"
+                type="button"
+                data-modal-tool="pen"
+                aria-label="Pen"
+              >
+                <span class="story-tool-icon story-pen-tool-icon"></span>
+              </button>
+              <button
+                class="story-tool-button"
+                type="button"
+                data-modal-tool="clear"
+                aria-label="Clear"
+              >
+                <span class="story-tool-icon story-clear-tool-icon"></span>
+              </button>
+              <button
+                class="story-tool-button"
+                type="button"
+                data-modal-save
+                aria-label="Download story image"
+              >
+                <span class="story-tool-icon bootstrap-download-icon"></span>
+              </button>
+              <button
+                class="story-done-button"
+                type="button"
+                data-modal-publish
+                aria-label="Add story to viewer"
+              >
+                ✓
+              </button>
+            </div>
+          </header>
+
+          <canvas
+            id="storyModalCanvas"
+            width="720"
+            height="1280"
+            aria-label="Drawable story canvas"
+          ></canvas>
+
+          <footer class="story-editor-bottom">
+            <div class="story-color-row" aria-label="Drawing colors">
+              <button
+                class="color-dot active"
+                type="button"
+                data-modal-color="#ffffff"
+                style="--dot-color: #ffffff"
+                aria-label="White"
+              ></button>
+              <button
+                class="color-dot"
+                type="button"
+                data-modal-color="#111111"
+                style="--dot-color: #111111"
+                aria-label="Black"
+              ></button>
+              <button
+                class="color-dot"
+                type="button"
+                data-modal-color="#2d9cdb"
+                style="--dot-color: #2d9cdb"
+                aria-label="Blue"
+              ></button>
+              <button
+                class="color-dot"
+                type="button"
+                data-modal-color="#6fcf5f"
+                style="--dot-color: #6fcf5f"
+                aria-label="Green"
+              ></button>
+              <button
+                class="color-dot"
+                type="button"
+                data-modal-color="#ffd15c"
+                style="--dot-color: #ffd15c"
+                aria-label="Yellow"
+              ></button>
+              <button
+                class="color-dot"
+                type="button"
+                data-modal-color="#ff8b3d"
+                style="--dot-color: #ff8b3d"
+                aria-label="Orange"
+              ></button>
+              <button
+                class="color-dot"
+                type="button"
+                data-modal-color="#ff4e5e"
+                style="--dot-color: #ff4e5e"
+                aria-label="Red"
+              ></button>
+              <button
+                class="color-dot"
+                type="button"
+                data-modal-color="#cf1a74"
+                style="--dot-color: #cf1a74"
+                aria-label="Pink"
+              ></button>
+              <button
+                class="color-dot"
+                type="button"
+                data-modal-color="#ab2bd6"
+                style="--dot-color: #ab2bd6"
+                aria-label="Purple"
+              ></button>
+            </div>
+            <label class="story-size-control">
+              <span>Brush</span>
+              <input
+                id="storyModalBrushSize"
+                type="range"
+                min="2"
+                max="34"
+                value="10"
+              />
+            </label>
+            <div class="story-actions">
+              <label class="story-pill-button story-load-button">
+                Load image
+                <input
+                  id="storyModalImagePicker"
+                  type="file"
+                  accept="image/*"
+                />
+              </label>
+              <button class="story-pill-button" type="button" data-modal-save>
+                Save image
+              </button>
+              <button
+                class="story-send-button"
+                type="button"
+                data-camera-close
+                aria-label="Send story"
+              >
+                <span class="icon send"></span>
+              </button>
+            </div>
+          </footer>
+        </section>
       </div>
     </section>
 

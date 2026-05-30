@@ -586,6 +586,40 @@ a {
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
 }
 
+.story-camera-panel.is-editing .story-camera-topbar {
+  display: none;
+}
+
+.story-camera-panel.is-editing .story-camera-preview,
+.story-camera-panel.is-editing .story-camera-actions {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.story-modal-editor {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  overflow: hidden;
+  background: #202024;
+}
+
+.story-modal-editor[hidden] {
+  display: none;
+}
+
+.story-modal-editor canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  touch-action: none;
+}
+
 .story-camera-topbar {
   position: absolute;
   top: 0;
@@ -661,6 +695,14 @@ a {
 .story-camera-mode-button.active {
   background: rgba(255, 255, 255, 0.92);
   color: #111111;
+}
+
+.story-filter-options {
+  display: inline-flex;
+  width: max-content;
+  align-items: center;
+  justify-self: center;
+  gap: 8px;
 }
 
 .story-camera-message {
@@ -744,6 +786,19 @@ a {
   background: rgba(255, 255, 255, 0.16);
   color: #fff;
   font-size: 27px;
+}
+
+.story-filter-options .story-camera-mode-button {
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+}
+
+.story-filter-preview {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  pointer-events: none;
 }
 
 .story-camera-lens-avatar {
@@ -2351,11 +2406,20 @@ a.caption-hashtag {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   border-radius: 50%;
   background: #d8d8d8;
   color: #707070;
   font-weight: 700;
   box-shadow: inset 0 0 0 3px #f8f8f8;
+}
+
+.profile-avatar img,
+.mini-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .profile-avatar {
@@ -3966,7 +4030,6 @@ a.caption-hashtag {
 .story-editor-body {
   min-height: 100vh;
   overflow: hidden;
-  background: linear-gradient(135deg, #cf4fbb 0%, #5b8be8 100%);
 }
 
 .story-editor {
@@ -3978,8 +4041,11 @@ a.caption-hashtag {
 
 .story-canvas-shell {
   position: relative;
+  display: grid;
   width: min(100%, 430px);
-  aspect-ratio: 9 / 16;
+  height: min(886px, calc(100vh - 56px));
+  place-items: center;
+  border-radius: 42px;
   max-height: calc(100vh - 56px);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.24);
@@ -3990,7 +4056,8 @@ a.caption-hashtag {
 .story-canvas-shell canvas {
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
   touch-action: none;
 }
 
@@ -4068,6 +4135,27 @@ a.caption-hashtag {
   border: 2px solid rgba(255, 255, 255, 0.75);
   background: rgba(0, 0, 0, 0.18);
   font-size: 18px;
+}
+
+.story-tool-icon {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background: currentColor;
+  -webkit-mask: var(--story-tool-icon-url) center / contain no-repeat;
+  mask: var(--story-tool-icon-url) center / contain no-repeat;
+}
+
+.story-pen-tool-icon {
+  --story-tool-icon-url: url("../icons/story-pen-tool-icon.svg");
+}
+
+.story-clear-tool-icon {
+  --story-tool-icon-url: url("../icons/story-clear-tool-icon.svg");
+}
+
+.bootstrap-download-icon {
+  --story-tool-icon-url: url("../icons/bootstrap-download-icon.svg");
 }
 
 .story-tool-button.active {
@@ -4860,5 +4948,16 @@ a.caption-hashtag {
 
   .account-profile-bio {
     margin-top: 8px;
+  }
+}
+
+@media (max-width: 899px) {
+  .app-layout-footer.bottom-nav,
+  .account-profile-app
+    #accountProfileBottomNavRoot
+    .app-layout-footer.bottom-nav {
+    height: calc(78px + env(safe-area-inset-bottom, 0px));
+    min-height: calc(78px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
   }
 }
