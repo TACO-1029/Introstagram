@@ -78,7 +78,9 @@ function updatePostLikeButton(button, liked) {
 }
 
 function setupPostLikeButton(card, data) {
-  const likeButton = card.querySelector('button[aria-label="Like"], .post-like-button');
+  const likeButton = card.querySelector(
+    'button[aria-label="Like"], .post-like-button',
+  );
 
   if (!likeButton) {
     return;
@@ -102,6 +104,42 @@ function setupPostLikeButton(card, data) {
     setPostLiked(currentPostKey, liked);
     updatePostLikeButton(likeButton, liked);
   });
+}
+
+function getPostPreviewImage(data, activeIndex) {
+  const slide = data.slides?.[activeIndex] || data.slides?.[0] || {};
+  return slide.image || slide.fallback || "";
+}
+
+function setupPostCommentContext(card, data, activeIndex) {
+  const postKey = getPostLikeKey(data);
+  const previewImage = getPostPreviewImage(data, activeIndex);
+  const commentsOpenButtons = card.querySelectorAll("[data-comments-open]");
+  const commentsLabels = card.querySelectorAll("[data-comments-label]");
+
+  window.introstagramCommentContexts =
+    window.introstagramCommentContexts || {};
+  window.introstagramCommentContexts[postKey] = {
+    postKey,
+    previewImage,
+    userName: data.user?.name || "introstagram_team",
+    userAvatar: data.user?.avatar || "",
+  };
+
+  card.dataset.postKey = postKey;
+  card.dataset.postPreviewImage = previewImage;
+
+  commentsOpenButtons.forEach((button) => {
+    button.dataset.commentsKey = postKey;
+    button.dataset.commentsPreviewImage = previewImage;
+  });
+
+  commentsLabels.forEach((label) => {
+    label.dataset.commentsKey = postKey;
+    label.setAttribute("data-comments-count-label", "");
+  });
+
+  window.introstagramUpdateCommentsCount?.(postKey);
 }
 
 function createPostHeader(user) {
@@ -272,6 +310,7 @@ function renderPostCard(card, data) {
       commentsLabelRoot.textContent = data.commentsLabel;
     }
 
+    setupPostCommentContext(card, data, currentSlideIndex);
     setupPostLikeButton(card, data);
   }
 
