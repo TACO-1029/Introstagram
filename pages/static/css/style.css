@@ -31,21 +31,26 @@ a {
 }
 
 .web-header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 30;
-  height: 60px;
-  border-bottom: 1px solid #dbdbdb;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  width: 245px;
+  border-right: 1px solid #dbdbdb;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(10px);
 }
 
 .web-header-inner {
-  display: grid;
+  display: flex;
+  width: 100%;
   height: 100%;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 28px;
+  max-width: none;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 22px;
+  padding: 26px 16px 22px;
 }
 
 .brand-link,
@@ -57,6 +62,7 @@ a {
 }
 
 .brand-link {
+  margin: 24px 0 10px 8px;
   width: max-content;
   font-size: 34px;
   line-height: 1;
@@ -82,8 +88,28 @@ a {
 
 .web-actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 6px;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.web-actions .icon-button {
+  width: 100%;
+  min-height: 46px;
+  justify-content: flex-start;
+  gap: 14px;
+  border-radius: 8px;
+  padding: 0 10px;
+  font-size: 15px;
+}
+
+.web-actions .icon-button:hover,
+.web-actions .icon-button.active {
+  background: #f4f4f4;
+}
+
+.web-action-label {
+  line-height: 1;
 }
 
 .app-shell {
@@ -125,9 +151,14 @@ a {
   box-shadow: none;
 }
 
+.feed-panel {
+  min-height: 0;
+  overflow: hidden;
+}
+
 .top-bar {
   position: sticky;
-  top: 60px;
+  top: 0;
   z-index: 20;
   display: none;
   height: 54px;
@@ -465,19 +496,27 @@ a {
 }
 
 .story-list {
-  position: sticky;
-  top: 60px;
+  position: relative;
+  top: auto;
   z-index: 19;
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  display: flex;
   gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
   padding: 16px 14px 11px;
   border-bottom: 1px solid #eeeeee;
   background: #fff;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.story-list::-webkit-scrollbar {
+  display: none;
 }
 
 .story-item {
   display: flex;
+  flex: 0 0 96px;
   min-width: 0;
   flex-direction: column;
   align-items: center;
@@ -888,7 +927,7 @@ a {
 .direct-app {
   display: grid;
   min-height: 100vh;
-  grid-template-columns: 76px 560px minmax(0, 1fr);
+  grid-template-columns: 245px 560px minmax(0, 1fr);
   background: #fff;
 }
 
@@ -896,46 +935,48 @@ a {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  align-items: center;
-  gap: 24px;
+  align-items: stretch;
+  gap: 8px;
   border-right: 1px solid #dbdbdb;
-  padding: 28px 0 22px;
+  padding: 26px 16px 22px;
 }
 
-.direct-rail a,
+.direct-rail-logo {
+  display: block;
+  margin: 24px 0 32px 8px;
+  width: max-content;
+  font-family: "Grand Hotel", "Brush Script MT", "Segoe Script", cursive;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.direct-rail a:not(.direct-rail-logo),
 .direct-rail button {
   position: relative;
   display: inline-flex;
-  width: 42px;
-  height: 42px;
+  width: 100%;
+  min-height: 46px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 14px;
+  border-radius: 8px;
+  padding: 0 10px;
+  font-size: 15px;
 }
 
-.direct-rail a[aria-label="Instagram"] {
-  margin-bottom: 28px;
+.direct-rail a:not(.direct-rail-logo):hover,
+.direct-rail a:not(.direct-rail-logo).active {
+  background: #f4f4f4;
 }
 
-.direct-rail a.active::after {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  background: #ff304d;
-  color: #fff;
-  content: "2";
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 16px;
-  text-align: center;
+.direct-rail a:not(.direct-rail-logo).active::after {
+  display: none;
+  content: none;
 }
 
 .direct-rail-avatar {
   overflow: hidden;
-  border-radius: 50%;
 }
 
 .direct-rail-avatar img {
@@ -1847,6 +1888,29 @@ a {
   }
 }
 
+@media (min-width: 900px) and (max-width: 1040px) {
+  .direct-app {
+    grid-template-columns: 78px minmax(360px, 480px) minmax(0, 1fr);
+  }
+
+  .direct-rail {
+    align-items: center;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .direct-rail-logo,
+  .direct-rail-label {
+    display: none;
+  }
+
+  .direct-rail a:not(.direct-rail-logo),
+  .direct-rail button {
+    justify-content: center;
+    padding: 0;
+  }
+}
+
 @media (max-width: 899px) {
   .direct-body {
     display: grid;
@@ -1953,11 +2017,17 @@ a {
   flex-direction: column;
   overflow-y: auto;
   background: #fff;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .home-feed-card {
   flex: 0 0 auto;
   border-bottom: 12px solid #f4f4f4;
+}
+
+.home-feed-card.post-card {
+  overflow: visible;
 }
 
 .home-feed-card:last-child {
@@ -2328,8 +2398,57 @@ a.caption-hashtag {
 }
 
 @media (min-width: 900px) {
+  .app-shell.container-xl {
+    width: auto;
+    max-width: none;
+    height: 100vh;
+    min-height: 100vh;
+    margin-right: 32px;
+    margin-left: 277px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
   .feed-panel {
+    height: 100%;
+    min-height: 0;
     max-width: 625px;
+  }
+}
+
+@supports (height: 100dvh) {
+  @media (min-width: 900px) {
+    .app-layout.app-shell.container-xl {
+      height: 100dvh;
+      min-height: 100dvh;
+    }
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1040px) {
+  .web-header {
+    width: 78px;
+  }
+
+  .web-header-inner {
+    gap: 12px;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .brand-link,
+  .web-action-label {
+    display: none;
+  }
+
+  .web-actions .icon-button {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .app-shell.container-xl {
+    margin-right: 24px;
+    margin-left: 102px;
   }
 }
 
@@ -2364,11 +2483,16 @@ a.caption-hashtag {
   }
 
   .story-list {
-    top: 54px;
+    position: relative;
+    top: auto;
   }
 
   .post-card {
     overflow-y: auto;
+  }
+
+  .home-feed-card.post-card {
+    overflow: visible;
   }
 
   .post-visual {
@@ -2430,6 +2554,10 @@ a.caption-hashtag {
     gap: 2px;
     padding-right: 6px;
     padding-left: 6px;
+  }
+
+  .story-item {
+    flex-basis: 68px;
   }
 
   .story-ring {
