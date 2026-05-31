@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" href="../../static/css/style.css" />
   </head>
-  <body class="member-body">
+  <body class="member-body" data-current-member="dogeonwoo">
     <aside class="member-sidebar" aria-label="Instagram web menu">
       <a class="member-sidebar-logo" href="../../../index.html">Introstagram</a>
       <nav class="member-sidebar-menu">
@@ -30,7 +30,9 @@
         >
         <a class="active" href="./index.html"
           ><span class="mini-avatar photo-avatar"
-            ><img src="../../static/img/introstagram_avatar.webp" alt="" /></span
+            ><img
+              src="../../static/img/introstagram_avatar.webp"
+              alt="" /></span
           ><span>프로필</span></a
         >
       </nav>
@@ -71,13 +73,27 @@
               <dt>게시물</dt>
               <dd>6</dd>
             </div>
-            <div>
+
+            <div
+              class="account-profile-stat-trigger"
+              role="button"
+              tabindex="0"
+              data-profile-connections-open="followers"
+              aria-label="팔로워 목록 보기"
+            >
               <dt>팔로워</dt>
-              <dd>152</dd>
+              <dd>4</dd>
             </div>
-            <div>
+
+            <div
+              class="account-profile-stat-trigger"
+              role="button"
+              tabindex="0"
+              data-profile-connections-open="following"
+              aria-label="팔로잉 목록 보기"
+            >
               <dt>팔로잉</dt>
-              <dd>37</dd>
+              <dd>4</dd>
             </div>
           </dl>
           <div class="profile-bio">
@@ -220,7 +236,64 @@
             <strong></strong>
             <p></p>
           </div>
+          <a
+            class="story-link-chip"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-story-link
+            hidden
+          >
+            <span class="story-link-icon" aria-hidden="true">🔗</span>
+            <span data-story-link-label>LINK</span>
+          </a>
         </div>
+      </section>
+
+      <section
+        class="account-connections-modal"
+        data-profile-connections-modal
+        aria-hidden="true"
+      >
+        <div
+          class="account-connections-backdrop"
+          data-profile-connections-close
+        ></div>
+
+        <section
+          class="account-connections-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="accountConnectionsTitle"
+        >
+          <header class="account-connections-header">
+            <span></span>
+            <h2 id="accountConnectionsTitle">팔로워</h2>
+            <button
+              class="account-connections-close"
+              type="button"
+              data-profile-connections-close
+              aria-label="닫기"
+            >
+              ×
+            </button>
+          </header>
+
+          <label class="account-connections-search">
+            <span class="icon search" aria-hidden="true"></span>
+            <input
+              type="search"
+              placeholder="검색"
+              data-profile-connections-search
+            />
+          </label>
+
+          <section
+            class="account-connections-list"
+            data-profile-connections-list
+            aria-label="Member list"
+          ></section>
+        </section>
       </section>
 
       <nav class="bottom-nav member-bottom-nav" aria-label="Mobile navigation">
@@ -252,16 +325,22 @@
             title: "Blinker",
             text: "",
             image: "../../static/img/member-1/highlights/project-1.webp",
+            linkUrl: "",
+            linkLabel: "",
           },
           {
             title: "Eye-ON",
             text: "",
             image: "../../static/img/member-1/highlights/project-2.webp",
+            linkUrl: "",
+            linkLabel: "",
           },
           {
             title: "Run-Dual",
             text: "",
             image: "../../static/img/member-1/highlights/project-3.webp",
+            linkUrl: "",
+            linkLabel: "",
           },
         ],
         about: [
@@ -301,5 +380,6 @@
       };
     </script>
     <script src="../../static/js/story-viewer.js"></script>
+    <script src="../../static/js/profile-connections-modal.js"></script>
   </body>
 </html>

@@ -10,31 +10,49 @@
     />
     <link rel="stylesheet" href="../static/css/style.css" />
     <link rel="stylesheet" href="../static/css/layout.css" />
+    <link rel="stylesheet" href="../static/css/direct.css" />
   </head>
+
   <body class="direct-body">
     <main class="app-device-frame direct-app" aria-label="Direct message app">
       <aside class="direct-rail" aria-label="Direct navigation">
-        <a href="../../index.html" aria-label="Instagram"
-          ><span class="icon camera"></span
-        ></a>
-        <a href="../../index.html" aria-label="Home"
-          ><span class="icon home"></span
-        ></a>
-        <a href="../reels/index.html" aria-label="Reels"
-          ><span class="icon play-square"></span
-        ></a>
-        <a class="active" href="./index.html" aria-label="Direct messages"
-          ><span class="icon paper-plane-notification"></span
-        ></a>
-        <a href="../location.html" aria-label="Search"
-          ><span class="icon search"></span
-        ></a>
+        <a
+          class="direct-rail-logo"
+          href="../../index.html"
+          aria-label="Instagram"
+        >
+          Introstagram
+        </a>
+
+        <a href="../../index.html" aria-label="Home">
+          <span class="icon home"></span>
+          <span class="direct-rail-label">홈</span>
+        </a>
+
+        <a href="../reels/index.html" aria-label="Reels">
+          <span class="icon play-square"></span>
+          <span class="direct-rail-label">릴스</span>
+        </a>
+
+        <a class="active" href="./index.html" aria-label="Direct messages">
+          <span class="icon paper-plane-notification"></span>
+          <span class="direct-rail-label">메시지</span>
+        </a>
+
+        <a href="../location.html" aria-label="Search">
+          <span class="icon search"></span>
+          <span class="direct-rail-label">알림</span>
+        </a>
+
         <a
           class="direct-rail-avatar"
           href="../profile/index.html"
           aria-label="Profile"
-          ><img src="../static/img/introstagram_avatar.webp" alt=""
-        /></a>
+        >
+          <img src="../static/img/introstagram_avatar.webp" alt="" />
+          <span class="direct-rail-label">프로필</span>
+        </a>
+
         <span class="direct-rail-spacer"></span>
       </aside>
 
@@ -44,7 +62,7 @@
             class="icon camera direct-mobile-logo"
             aria-hidden="true"
           ></span>
-          <h1>현대퓨처넷</h1>
+          <h1>instrogram team</h1>
         </header>
 
         <section class="direct-search" role="search">
@@ -54,11 +72,36 @@
 
         <section class="direct-shortcuts" aria-label="Direct message shortcuts">
           <a class="direct-shortcut" href="#">
-            <span class="direct-bubble">새 소식...</span>
+            <span class="direct-bubble direct-music-bubble">
+              <button
+                class="direct-music-play"
+                type="button"
+                aria-label="음원 재생"
+                data-music-play
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
+
+              <span class="direct-music-copy">
+                <strong>더현대 서울</strong>
+                <small>Full ver. (Song by Zion. T)</small>
+              </span>
+
+              <audio
+                src="../static/music/thehyundai-seoul.mp3"
+                data-music-audio
+                loop
+              ></audio>
+            </span>
+
             <span class="direct-shortcut-avatar">
-              <!-- pages/static/img/introstagram_avatar.webp -->
               <img src="../static/img/introstagram_avatar.webp" alt="" />
             </span>
+
             <strong>내 메모</strong>
           </a>
         </section>
@@ -90,22 +133,88 @@
         class="bottom-nav direct-bottom-nav"
         aria-label="Direct message navigation"
       >
-        <a href="../../index.html" aria-label="Home"
-          ><span class="icon home"></span
-        ></a>
-        <a href="../reels/index.html" aria-label="Reels"
-          ><span class="icon play-square"></span
-        ></a>
-        <a class="active" href="./index.html" aria-label="Direct messages"
-          ><span class="icon paper-plane-notification"></span
-        ></a>
-        <a href="#" aria-label="Search"><span class="icon search"></span></a>
-        <a href="../profile/index.html" aria-label="Profile"
-          ><span class="direct-nav-avatar"
-            ><img src="../static/img/introstagram_avatar.webp" alt="" /></span
-        ></a>
+        <a href="../../index.html" aria-label="Home">
+          <span class="icon home"></span>
+        </a>
+
+        <a href="../reels/index.html" aria-label="Reels">
+          <span class="icon play-square"></span>
+        </a>
+
+        <a class="active" href="./index.html" aria-label="Direct messages">
+          <span class="icon paper-plane-notification"></span>
+        </a>
+
+        <a href="#" aria-label="Search">
+          <span class="icon search"></span>
+        </a>
+
+        <a href="../profile/index.html" aria-label="Profile">
+          <span class="direct-nav-avatar">
+            <img src="../static/img/introstagram_avatar.webp" alt="" />
+          </span>
+        </a>
       </nav>
     </main>
+
     <script src="../static/js/direct-chat-component.js"></script>
+
+    <script>
+      const playButton = document.querySelector("[data-music-play]");
+      const audio = document.querySelector("[data-music-audio]");
+
+      function updateMusicState(isPlaying) {
+        playButton?.classList.toggle("is-playing", isPlaying);
+        playButton?.setAttribute(
+          "aria-label",
+          isPlaying ? "음원 일시정지" : "음원 재생",
+        );
+      }
+
+      async function playMusic() {
+        if (!audio) return;
+
+        try {
+          await audio.play();
+          updateMusicState(true);
+        } catch (error) {
+          updateMusicState(false);
+          console.warn("브라우저 정책으로 자동 재생이 차단되었습니다.", error);
+        }
+      }
+
+      function pauseMusic() {
+        if (!audio) return;
+
+        audio.pause();
+        updateMusicState(false);
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        playMusic();
+      });
+
+      playButton?.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        if (!audio) return;
+
+        if (audio.paused) {
+          playMusic();
+        } else {
+          pauseMusic();
+        }
+      });
+
+      document.addEventListener(
+        "click",
+        () => {
+          if (audio?.paused) {
+            playMusic();
+          }
+        },
+        { once: true },
+      );
+    </script>
   </body>
 </html>

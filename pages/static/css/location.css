@@ -108,6 +108,57 @@
   display: none;
 }
 
+.location-route-distance {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 54px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #009c7d;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  border: 1px solid rgba(22, 163, 74, 0.28);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+  white-space: nowrap;
+}
+
+.location-toggle-all-button {
+  padding-inline: 14px;
+  font-weight: 800;
+}
+
+.location-homepage-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  align-self: flex-end;
+
+  margin-top: 10px;
+  min-height: 30px;
+  padding: 0 12px;
+
+  border-radius: 999px;
+  background: #009c7d;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+
+  white-space: nowrap;
+}
+
+.location-homepage-link:hover {
+  color: #ffffff;
+  background: #067b63;
+}
+
 .location-toggle-button {
   display: inline-flex;
   min-height: 34px;
@@ -295,6 +346,83 @@
   line-height: 1;
   text-overflow: ellipsis;
   transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.location-distance {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: #777;
+}
+
+.location-user-pin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.location-info-overlay {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: min(280px, calc(100vw - 48px));
+  max-width: 280px;
+  padding: 14px 16px;
+
+  border-radius: 18px;
+  background: #ffffff;
+  color: #111111;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: left;
+
+  overflow: hidden;
+}
+
+.location-info-overlay strong {
+  display: block;
+  margin-bottom: 6px;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.location-info-overlay address {
+  margin: 0;
+
+  color: #555555;
+  font-style: normal;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.location-info-overlay small {
+  display: block;
+  margin-top: 10px;
+
+  color: #009c7d;
+  font-size: 12px;
+  font-weight: 800;
+
   white-space: nowrap;
 }
 
