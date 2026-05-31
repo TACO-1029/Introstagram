@@ -10,7 +10,9 @@
     />
     <link rel="stylesheet" href="../../../static/css/style.css" />
   </head>
-  <body class="member-post-body">
+  <body class="member-post-body"
+    data-comment-avatar-src="../../../static/img/introstagram_avatar.webp"
+  >
     <main class="member-post-page">
       <a class="member-post-back" href="../index.html">‹ 프로필로 돌아가기</a>
       <article class="post-card member-post-card">
@@ -21,7 +23,11 @@
             <button class="icon-button" aria-label="Like">
               <span class="comment-like-icon"></span>
             </button>
-            <button class="icon-button" type="button" aria-label="Comment">
+            <button class="icon-button" type="button" aria-label="Comment"
+              data-comments-open
+              data-comments-key="choiwoojin-post-4"
+              data-comments-preview-image="../../../static/img/member-4/posts/post-4-1.webp"
+            >
               <span class="icon comment"></span>
             </button>
             <button class="icon-button" aria-label="Share">
@@ -39,7 +45,13 @@
         </section>
         <section class="caption">
           <p data-post-caption></p>
-          <button type="button" data-comments-label>댓글 1개 모두 보기</button>
+          <button type="button" data-comments-label
+            aria-label="Comment"
+            data-comments-open
+            data-comments-key="choiwoojin-post-4"
+            data-comments-preview-image="../../../static/img/member-4/posts/post-4-1.webp"
+            data-comments-count-label
+          >댓글 1개 모두 보기</button>
         </section>
       </article>
     </main>
@@ -61,5 +73,7 @@
       };
     </script>
     <script src="../../../static/js/post-components.js"></script>
+    <script src="../../../static/js/comments-sheet-component.js"></script>
+    <script src="../../../static/js/comments-sheet.js"></script>
   </body>
 </html>
