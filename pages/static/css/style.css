@@ -2636,6 +2636,44 @@ a.caption-hashtag {
   line-height: 1.45;
 }
 
+.story-link-chip {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  z-index: 20;
+  display: inline-flex;
+  min-width: 132px;
+  height: 48px;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #2f5f93;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  transform: translateX(-50%);
+  backdrop-filter: blur(10px);
+}
+
+.story-link-chip[hidden] {
+  display: none;
+}
+
+.story-link-chip:hover {
+  background: #ffffff;
+  color: #2f5f93;
+}
+
+.story-link-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
 @keyframes storyProgress {
   from {
     width: 0;
