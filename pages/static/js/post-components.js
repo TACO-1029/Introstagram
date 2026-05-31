@@ -2,18 +2,145 @@ const defaultPostData = {
   user: {
     name: "dogeonwoo",
     meta: "도건우",
-    avatar: "./pages/static/img/member-1/profile/dogeonwoo-profile.png",
+    avatar: "./pages/static/img/member-1/profile/dogeonwoo-profile.webp",
   },
   caption:
-    "게시글 설명을 여기에 작성하세요. 사진은 post-1-1.jpg, post-1-2.jpg처럼 교체하면 됩니다.",
+    "게시글 설명을 여기에 작성하세요. 사진은 post-1-1.webp, post-1-2.webp처럼 교체하면 됩니다.",
   commentsLabel: "댓글 1개 모두 보기",
   slides: [
     {
-      image: "./pages/static/img/member-1/posts/post-1-1.jpg",
+      image: "./pages/static/img/member-1/posts/post-1-1.webp",
       fallback: "./pages/static/img/post-slide-1.svg",
     },
   ],
 };
+
+const postLikesStorageKey = "introstagramPostLikes";
+
+function getPostLikes() {
+  try {
+    return JSON.parse(localStorage.getItem(postLikesStorageKey) || "{}");
+  } catch (error) {
+    return {};
+  }
+}
+
+function setPostLikes(likes) {
+  try {
+    localStorage.setItem(postLikesStorageKey, JSON.stringify(likes));
+  } catch (error) {
+    console.warn("좋아요 상태를 저장하지 못했습니다.", error);
+  }
+}
+
+function normalizePostLikeKey(value) {
+  return String(value || "")
+    .replace(window.location.origin, "")
+    .replace(/^.*?\/pages\//, "pages/")
+    .replace(/^\.\//, "")
+    .replace(/^\//, "");
+}
+
+function getCurrentPostPathKey() {
+  const match = window.location.pathname.match(
+    /pages\/member\/\d+\/posts\/post-\d+\.html$/,
+  );
+
+  return match?.[0] || "";
+}
+
+function getPostLikeKey(data) {
+  const explicitKey = data.likeKey || data.id || getCurrentPostPathKey();
+
+  if (explicitKey) {
+    return normalizePostLikeKey(explicitKey);
+  }
+
+  return normalizePostLikeKey(
+    `${data.user?.name || "post"}:${data.slides?.[0]?.image || ""}`,
+  );
+}
+
+function isPostLiked(postKey) {
+  return Boolean(getPostLikes()[postKey]);
+}
+
+function setPostLiked(postKey, liked) {
+  const likes = getPostLikes();
+  likes[postKey] = Boolean(liked);
+  setPostLikes(likes);
+}
+
+function updatePostLikeButton(button, liked) {
+  button.classList.toggle("is-liked", liked);
+  button.setAttribute("aria-pressed", String(liked));
+  button.setAttribute("aria-label", liked ? "Unlike" : "Like");
+}
+
+function setupPostLikeButton(card, data) {
+  const likeButton = card.querySelector(
+    'button[aria-label="Like"], .post-like-button',
+  );
+
+  if (!likeButton) {
+    return;
+  }
+
+  const postKey = getPostLikeKey(data);
+  likeButton.type = "button";
+  likeButton.dataset.postLikeButton = "";
+  likeButton.dataset.postLikeKey = postKey;
+  likeButton.classList.add("post-like-button");
+  updatePostLikeButton(likeButton, isPostLiked(postKey));
+
+  if (likeButton.dataset.likeBound === "true") {
+    return;
+  }
+
+  likeButton.dataset.likeBound = "true";
+  likeButton.addEventListener("click", () => {
+    const currentPostKey = likeButton.dataset.postLikeKey;
+    const liked = !isPostLiked(currentPostKey);
+    setPostLiked(currentPostKey, liked);
+    updatePostLikeButton(likeButton, liked);
+  });
+}
+
+function getPostPreviewImage(data, activeIndex) {
+  const slide = data.slides?.[activeIndex] || data.slides?.[0] || {};
+  return slide.image || slide.fallback || "";
+}
+
+function setupPostCommentContext(card, data, activeIndex) {
+  const postKey = getPostLikeKey(data);
+  const previewImage = getPostPreviewImage(data, activeIndex);
+  const commentsOpenButtons = card.querySelectorAll("[data-comments-open]");
+  const commentsLabels = card.querySelectorAll("[data-comments-label]");
+
+  window.introstagramCommentContexts =
+    window.introstagramCommentContexts || {};
+  window.introstagramCommentContexts[postKey] = {
+    postKey,
+    previewImage,
+    userName: data.user?.name || "introstagram_team",
+    userAvatar: data.user?.avatar || "",
+  };
+
+  card.dataset.postKey = postKey;
+  card.dataset.postPreviewImage = previewImage;
+
+  commentsOpenButtons.forEach((button) => {
+    button.dataset.commentsKey = postKey;
+    button.dataset.commentsPreviewImage = previewImage;
+  });
+
+  commentsLabels.forEach((label) => {
+    label.dataset.commentsKey = postKey;
+    label.setAttribute("data-comments-count-label", "");
+  });
+
+  window.introstagramUpdateCommentsCount?.(postKey);
+}
 
 function createPostHeader(user) {
   const header = document.createElement("header");
@@ -100,7 +227,7 @@ function createPostActions() {
   actions.setAttribute("aria-label", "Post actions");
   actions.innerHTML = `
     <div class="action-group">
-      <button class="icon-button" aria-label="Like">
+      <button class="icon-button post-like-button" type="button" aria-label="Like" aria-pressed="false" data-post-like-button>
         <span class="comment-like-icon"></span>
       </button>
       <button class="icon-button" type="button" aria-label="Comment" data-comments-open>
@@ -182,6 +309,9 @@ function renderPostCard(card, data) {
     if (commentsLabelRoot && data.commentsLabel) {
       commentsLabelRoot.textContent = data.commentsLabel;
     }
+
+    setupPostCommentContext(card, data, currentSlideIndex);
+    setupPostLikeButton(card, data);
   }
 
   render();

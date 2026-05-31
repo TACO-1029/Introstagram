@@ -7,6 +7,13 @@
   --app-layout-padding: 42px 22px;
 }
 
+@supports (height: 100dvh) {
+  :root {
+    --app-device-height: min(844px, calc(100dvh - 32px));
+    --app-device-min-height: min(844px, calc(100dvh - 32px));
+  }
+}
+
 @media (max-width: 899px) {
   .app-shell,
   .direct-body {
@@ -16,7 +23,9 @@
   .app-device-frame {
     width: 100%;
     height: 100vh;
+    height: 100dvh;
     min-height: 100vh;
+    min-height: 100dvh;
     border-radius: 0;
     overflow: hidden;
     box-shadow: none;
@@ -32,7 +41,9 @@
   .app-device-frame {
     width: 100%;
     height: 100vh;
+    height: 100dvh;
     min-height: 100vh;
+    min-height: 100dvh;
     border-radius: 0;
     box-shadow: none;
   }

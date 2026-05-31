@@ -107,15 +107,28 @@ function getDefaultStoryOrigin() {
 }
 
 function startStory(highlightName, trigger) {
-  activeStories = highlightStories[highlightName] || [];
-  activeStoryIndex = 0;
+  const stories = highlightStories[highlightName] || [];
+
+  openStoryList(stories, {
+    origin: trigger?.dataset.storyOrigin || getDefaultStoryOrigin(),
+    profileUrl:
+      trigger?.dataset.profileUrl ||
+      trigger?.getAttribute("href") ||
+      stories[0]?.profileUrl ||
+      "",
+  });
+}
+
+function openStoryList(stories, options = {}) {
+  activeStories = stories || [];
   if (!activeStories.length || !viewer) return;
-  activeStoryOrigin = trigger?.dataset.storyOrigin || getDefaultStoryOrigin();
+  activeStoryIndex = Math.min(
+    Math.max(0, options.startIndex || 0),
+    activeStories.length - 1,
+  );
+  activeStoryOrigin = options.origin || getDefaultStoryOrigin();
   activeStoryProfileUrl =
-    trigger?.dataset.profileUrl ||
-    trigger?.getAttribute("href") ||
-    activeStories[0].profileUrl ||
-    "";
+    options.profileUrl || activeStories[0].profileUrl || "";
   viewer.setAttribute("aria-hidden", "false");
   renderProgressBars();
   renderStory();
@@ -158,4 +171,9 @@ if (viewer && viewerImage && viewerTitle && viewerText && progressRoot) {
   viewer.addEventListener("click", (event) => {
     if (event.target === viewer) closeStory();
   });
+
+  window.introstagramStoryViewer = {
+    openStoryList,
+    startStory,
+  };
 }
