@@ -99,7 +99,7 @@ function stopDrawing() {
 
 function saveImage() {
   const link = document.createElement("a");
-  link.download = "introstagram-story.png";
+  link.download = "introstagram-story.webp";
   link.href = canvas.toDataURL("image/png");
   link.click();
 }
