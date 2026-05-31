@@ -3543,6 +3543,23 @@ a.caption-hashtag {
   line-height: 1.15;
 }
 
+.account-profile-stat-trigger {
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.account-profile-stat-trigger:hover strong,
+.account-profile-stat-trigger:hover span,
+.account-profile-stat-trigger:hover dt,
+.account-profile-stat-trigger:hover dd {
+  color: #555b66;
+}
+
+.account-profile-stat-trigger:focus-visible {
+  outline: 2px solid #0095f6;
+  outline-offset: 6px;
+}
+
 .account-profile-bio {
   display: grid;
   grid-column: 1 / -1;
@@ -3643,6 +3660,193 @@ a.caption-hashtag {
 .account-profile-app .post-grid {
   gap: 2px;
   padding-bottom: 28px;
+}
+
+.account-connections-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 180ms ease,
+    visibility 180ms ease;
+  visibility: hidden;
+}
+
+.account-connections-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.account-connections-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 17, 22, 0.72);
+}
+
+.account-connections-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: min(100%, 560px);
+  max-height: min(78vh, 650px);
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 26px;
+  background: #ffffff;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+  transform: translateY(12px) scale(0.98);
+  transition: transform 180ms ease;
+}
+
+.account-connections-modal.open .account-connections-panel {
+  transform: translateY(0) scale(1);
+}
+
+.account-connections-header {
+  display: grid;
+  min-height: 62px;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  align-items: center;
+  flex: 0 0 auto;
+  border-bottom: 1px solid #e1e5eb;
+  padding: 0 14px;
+}
+
+.account-connections-header h2 {
+  margin: 0;
+  color: #101116;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.account-connections-close {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  border-radius: 50%;
+  color: #101116;
+  font-size: 42px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.account-connections-close:focus-visible {
+  outline: 2px solid #0095f6;
+  outline-offset: 2px;
+}
+
+.account-connections-search {
+  display: grid;
+  min-height: 48px;
+  grid-template-columns: 24px 1fr;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 20px 8px;
+  border-radius: 13px;
+  padding: 0 14px;
+  background: #eff0f2;
+  color: #8c9198;
+}
+
+.account-connections-search .icon {
+  width: 22px;
+  height: 22px;
+  color: #8c9198;
+}
+
+.account-connections-search input {
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #101116;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.account-connections-search input::placeholder {
+  color: #8c9198;
+}
+
+.account-connections-list {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  overflow-y: auto;
+  padding: 8px 20px 20px;
+}
+
+.account-connection-item {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 62px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  border-radius: 16px;
+  padding: 10px 8px;
+  color: #101116;
+}
+
+.account-connection-item:hover {
+  background: #f7f8fa;
+}
+
+.account-connection-avatar {
+  width: 58px;
+  height: 58px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px #dfe3e8;
+}
+
+.account-connection-copy {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.account-connection-copy strong,
+.account-connection-copy small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-connection-copy strong {
+  color: #101116;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.account-connection-copy small {
+  color: #68707a;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.account-connections-empty {
+  margin: 28px 0;
+  color: #68707a;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.account-connections-modal-open {
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
