@@ -8,7 +8,7 @@ const profileConnectionMembers = [
   {
     username: "kimcheolyong",
     name: "김철용",
-    avatarSrc: "../../static/img/member-2/profile/kimcheolyong-profile.jpg",
+    avatarSrc: "../../static/img/member-2/profile/kimcheolyong-profile.webp",
     href: "../2/index.html",
   },
   {
