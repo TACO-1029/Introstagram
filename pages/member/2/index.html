@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kim Cheolyong - Introstagram</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Member 3 - Introstagram</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../../static/css/style.css" />
   </head>
   <body class="member-body">
@@ -41,7 +44,7 @@
           aria-label="Go to main page"
           ><span class="icon home"></span
         ></a>
-        <strong>cheolyong.kim</strong>
+        <strong>jaewonwi</strong>
         <button class="icon-button" aria-label="Menu">
           <span class="menu-lines"></span>
         </button>
@@ -49,16 +52,19 @@
 
       <section class="profile-hero">
         <button
-          class="profile-photo"
+          class="profile-photo photo-profile"
           type="button"
           data-highlight="profile"
-          aria-label="Member 2 스토리 보기"
+          aria-label="김철용 스토리 보기"
         >
-          2
+          <img
+            src="../../static/img/member-2/profile/kimcheolyong-profile.jpg"
+            alt="김철용 프로필 사진"
+          />
         </button>
         <div class="profile-info">
           <div class="profile-title-row">
-            <h1>CheolyongKim</h1>
+            <h1>kimcheolyong</h1>
           </div>
           <dl class="profile-stats">
             <div>
@@ -67,20 +73,19 @@
             </div>
             <div>
               <dt>팔로워</dt>
-              <dd>152</dd>
+              <dd>2001</dd>
             </div>
             <div>
               <dt>팔로잉</dt>
-              <dd>37</dd>
+              <dd>414</dd>
             </div>
           </dl>
           <div class="profile-bio">
-            <strong>김철용 | Developer</strong>
-            <span>본질을 고민하며 Java, Python, C/C++로 성장 중입니다.</span>
-            <span>AI, 데이터, 시스템 저수준까지 발산하고 수렴하는 개발자.</span>
-            <span>Hanyang Univ. Computer Software · KOSA MSA Full-stack</span>
-            <a href="https://github.com/CheolyongKim">github.com/CheolyongKim</a>
-            <a href="mailto:cheolyongkim.kr@gmail.com">cheolyongkim.kr@gmail.com</a>
+            <strong>김철용</strong>
+            <span>긍정적으로 살자</span>
+            <a href="https://cheolyongkim.github.io/"
+              >https://cheolyongkim.github.io/</a
+            >
           </div>
         </div>
       </section>
@@ -96,17 +101,32 @@
       </section>
 
       <nav class="highlight-list" aria-label="Profile highlights">
-        <a href="#" class="highlight-item"
-          ><span class="highlight-new">+</span><span>New</span></a
-        >
         <button class="highlight-item" type="button" data-highlight="project">
-          <span class="highlight-dot"></span><span>Project</span>
+          <span
+            class="highlight-cover"
+            style="
+              --highlight-image: url(&quot;../../static/img/member-3/highlights/project-1.webp&quot;);
+            "
+          ></span>
+          <span>Project</span>
         </button>
         <button class="highlight-item" type="button" data-highlight="about">
-          <span class="highlight-dot"></span><span>About</span>
+          <span
+            class="highlight-cover"
+            style="
+              --highlight-image: url(&quot;../../static/img/member-3/highlights/about-1.webp&quot;);
+            "
+          ></span>
+          <span>About</span>
         </button>
         <button class="highlight-item" type="button" data-highlight="like">
-          <span class="highlight-dot"></span><span>Like</span>
+          <span
+            class="highlight-cover"
+            style="
+              --highlight-image: url(&quot;../../static/img/member-3/highlights/like-1.webp&quot;);
+            "
+          ></span>
+          <span>Like</span>
         </button>
       </nav>
 
@@ -116,16 +136,49 @@
         >
       </nav>
 
-      <section class="post-grid" aria-label="Member 2 posts">
-        <a class="grid-tile tile-b" href="#"><span>Java<br />Backend</span></a>
-        <a class="grid-tile tile-a" href="#"><span>Python<br />AI & Data</span></a>
-        <a class="grid-tile tile-f" href="#"><span>C/C++<br />Systems</span></a>
-        <a class="grid-tile tile-c" href="#"><span>LineTracer<br />Embedded</span></a>
-        <a class="grid-tile tile-d" href="#"><span>YachtDice<br />Game Dev</span></a>
-        <a class="grid-tile tile-e" href="#"><span>HD_DutyFlow<br />MSA Project</span></a>
-        <a class="grid-tile tile-a" href="#"><span>Network<br />HTTP Server</span></a>
-        <a class="grid-tile tile-b" href="#"><span>Hanyang<br />CS Major</span></a>
-        <a class="grid-tile tile-c" href="#"><span>KOSA<br />Full-stack</span></a>
+      <section class="post-grid" aria-label="Member 3 posts">
+        <a
+          class="grid-tile post-template"
+          href="./posts/post-1.html"
+          style="
+            --post-image: url(&quot;../../static/img/member-3/posts/post-1-1.webp&quot;);
+          "
+        ></a>
+        <a
+          class="grid-tile post-template"
+          href="./posts/post-2.html"
+          style="
+            --post-image: url(&quot;../../static/img/member-3/posts/post-2-1.webp&quot;);
+          "
+        ></a>
+        <a
+          class="grid-tile post-template"
+          href="./posts/post-3.html"
+          style="
+            --post-image: url(&quot;../../static/img/member-3/posts/post-3-1.webp&quot;);
+          "
+        ></a>
+        <a
+          class="grid-tile post-template"
+          href="./posts/post-4.html"
+          style="
+            --post-image: url(&quot;../../static/img/member-3/posts/post-4-1.webp&quot;);
+          "
+        ></a>
+        <a
+          class="grid-tile post-template"
+          href="./posts/post-5.html"
+          style="
+            --post-image: url(&quot;../../static/img/member-3/posts/post-5-1.webp&quot;);
+          "
+        ></a>
+        <a
+          class="grid-tile post-template"
+          href="./posts/post-6.html"
+          style="
+            --post-image: url(&quot;../../static/img/member-3/posts/post-6-1.webp&quot;);
+          "
+        ></a>
       </section>
 
       <section
@@ -156,8 +209,13 @@
           </button>
           <div class="story-progress" aria-hidden="true"></div>
           <div class="story-viewer-header">
-            <span class="story-viewer-avatar">2</span>
-            <strong>member_two</strong>
+            <span class="story-viewer-avatar">
+              <img
+                src="../../static/img/member-2/profile/kimcheolyong-profile.jpg"
+                alt=""
+              />
+            </span>
+            <strong>jaewonwi</strong>
           </div>
           <div class="story-viewer-image" role="img" aria-label=""></div>
           <div class="story-viewer-copy">
@@ -189,6 +247,68 @@
       </nav>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      window.introstagramHighlightStories = {
+        profile: [
+          {
+            title: "Story",
+            text: "",
+            video: "../../static/img/member-3/stroies/story-1.mp4",
+          },
+        ],
+        project: [
+          {
+            title: "Project",
+            text: "",
+            image: "../../static/img/member-3/highlights/project-1.webp",
+          },
+          {
+            title: "Project",
+            text: "",
+            image: "../../static/img/member-3/highlights/project-2.webp",
+          },
+          {
+            title: "Project",
+            text: "",
+            image: "../../static/img/member-3/highlights/project-3.webp",
+          },
+          {
+            title: "Project",
+            text: "",
+            image: "../../static/img/member-3/highlights/project-4.webp",
+          },
+        ],
+        about: [
+          {
+            title: "About",
+            text: "",
+            image: "../../static/img/member-3/highlights/about-1.webp",
+          },
+        ],
+        like: [
+          {
+            title: "Like",
+            text: "",
+            image: "../../static/img/member-3/highlights/like-1.webp",
+          },
+          {
+            title: "Like",
+            text: "",
+            image: "../../static/img/member-3/highlights/like-2.webp",
+          },
+          {
+            title: "Like",
+            text: "",
+            image: "../../static/img/member-3/highlights/like-3.webp",
+          },
+          {
+            title: "Like",
+            text: "",
+            image: "../../static/img/member-3/highlights/like-4.webp",
+          },
+        ],
+      };
+    </script>
     <script src="../../static/js/story-viewer.js"></script>
   </body>
 </html>
