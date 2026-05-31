@@ -105,12 +105,10 @@ function createCommentElement(comment) {
 
   commentRow.className = "comment-row";
   copy.className = "comment-copy";
-  username.textContent = comment.username || "me";
+  username.textContent = comment.username || "introstagram team";
   time.textContent = comment.time || formatCommentDateTime(comment.createdAt);
   content.textContent = comment.content;
-  content.className = comment.content?.startsWith("#")
-    ? "comment-hashtag"
-    : "";
+  content.className = comment.content?.startsWith("#") ? "comment-hashtag" : "";
   replyButton.type = "button";
   replyButton.textContent = "답글 달기";
   like.className = "comment-like";
@@ -145,7 +143,7 @@ function addComment(commentContent) {
 
   const newComment = {
     id: Date.now(),
-    username: "me",
+    username: "introstagram team",
     content,
     avatarSrc: commentAvatarSrc,
     createdAt: new Date().toISOString(),
