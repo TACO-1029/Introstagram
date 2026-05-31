@@ -6,9 +6,9 @@ const profileConnectionMembers = [
     href: "../1/index.html",
   },
   {
-    username: "member_two",
-    name: "Member 2",
-    avatarSrc: "../../static/img/introstagram_avatar.webp",
+    username: "kimcheolyong",
+    name: "김철용",
+    avatarSrc: "../../static/img/member-2/profile/kimcheolyong-profile.jpg",
     href: "../2/index.html",
   },
   {
