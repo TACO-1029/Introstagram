@@ -454,7 +454,7 @@ function stopModalDrawing() {
 
 function saveModalStoryImage() {
   const link = document.createElement("a");
-  link.download = "introstagram-story.png";
+  link.download = "introstagram-story.webp";
   link.href = modalCanvas.toDataURL("image/png");
   link.click();
 }
@@ -499,7 +499,7 @@ function renderPublishedStoryItem() {
     publishedStoryItem.innerHTML = `
       <span class="story-ring">
         <span class="story-avatar">
-          <img src="./pages/static/img/introstagram_avatar.png" alt="" />
+          <img src="./pages/static/img/introstagram_avatar.webp" alt="" />
         </span>
       </span>
       <span>introstagram team</span>
@@ -521,7 +521,7 @@ function publishModalStory() {
     text: "",
     image,
     username: "introstagram team",
-    avatar: "./pages/static/img/introstagram_avatar.png",
+    avatar: "./pages/static/img/introstagram_avatar.webp",
   });
   setPublishedStories(stories);
   renderPublishedStoryItem();

@@ -9,7 +9,7 @@ const commentsList = document.querySelector(".comments-list");
 const commentInput = document.querySelector("[data-comment-input]");
 const commentSubmitButton = document.querySelector("[data-comment-submit]");
 const reactionButtons = document.querySelectorAll(".comments-reactions button");
-const commentAvatarSrc = "./pages/static/img/introstagram_avatar.png";
+const commentAvatarSrc = "./pages/static/img/introstagram_avatar.webp";
 const fallbackPostKey = "introstagram-default-post";
 
 let activePostKey = fallbackPostKey;

@@ -1,7 +1,7 @@
 const accountProfile = {
   username: "introstagram team",
   handle: "introstagram team",
-  avatarSrc: "../static/img/introstagram_avatar.png",
+  avatarSrc: "../static/img/introstagram_avatar.webp",
   stats: [
     { label: "게시물", value: "0" },
     { label: "팔로워", value: "4" },
@@ -9,32 +9,32 @@ const accountProfile = {
   ],
   bioLines: [""],
   link: "",
-  highlights: [{ label: "🧙", src: "../static/img/introstagram_avatar.png" }],
+  highlights: [{ label: "🧙", src: "../static/img/introstagram_avatar.webp" }],
 };
 
 const profileConnectionMembers = [
   {
     username: "dogeonwoo",
     name: "도건우",
-    avatarSrc: "../static/img/member-1/profile/dogeonwoo-profile.png",
+    avatarSrc: "../static/img/member-1/profile/dogeonwoo-profile.webp",
     href: "../member/1/index.html",
   },
   {
     username: "member_two",
     name: "Member 2",
-    avatarSrc: "../static/img/introstagram_avatar.png",
+    avatarSrc: "../static/img/introstagram_avatar.webp",
     href: "../member/2/index.html",
   },
   {
     username: "jaewonwi",
     name: "위재원",
-    avatarSrc: "../static/img/member-3/profile/jaewon-profile.png",
+    avatarSrc: "../static/img/member-3/profile/jaewon-profile.webp",
     href: "../member/3/index.html",
   },
   {
     username: "choiwoojin",
     name: "최우진",
-    avatarSrc: "../static/img/member-4/profile/woojin_profile.jpeg",
+    avatarSrc: "../static/img/member-4/profile/woojin_profile.webp",
     href: "../member/4/index.html",
   },
 ];

@@ -2,14 +2,14 @@ const defaultPostData = {
   user: {
     name: "dogeonwoo",
     meta: "도건우",
-    avatar: "./pages/static/img/member-1/profile/dogeonwoo-profile.png",
+    avatar: "./pages/static/img/member-1/profile/dogeonwoo-profile.webp",
   },
   caption:
-    "게시글 설명을 여기에 작성하세요. 사진은 post-1-1.jpg, post-1-2.jpg처럼 교체하면 됩니다.",
+    "게시글 설명을 여기에 작성하세요. 사진은 post-1-1.webp, post-1-2.webp처럼 교체하면 됩니다.",
   commentsLabel: "댓글 1개 모두 보기",
   slides: [
     {
-      image: "./pages/static/img/member-1/posts/post-1-1.jpg",
+      image: "./pages/static/img/member-1/posts/post-1-1.webp",
       fallback: "./pages/static/img/post-slide-1.svg",
     },
   ],

@@ -10,7 +10,7 @@ const directChatData = {
   },
   time: "오전 8:14",
   story: {
-    profile: "../static/img/introstagram_avatar.png",
+    profile: "../static/img/introstagram_avatar.webp",
     name: "introstagram team",
     caption: "",
     title: "",
@@ -61,7 +61,7 @@ function createDirectChatBody(data) {
     <a class="direct-story-card" href="../reels.html" aria-label="릴스 보기">
       <img
         class="direct-story-image"
-        src="../static/img/reels/reels-1-thumbnail.png"
+        src="../static/img/reels/reels-1-thumbnail.webp"
         alt=""
       />
       <span class="direct-story-profile"><img src="${data.story.profile}"></img></span>
