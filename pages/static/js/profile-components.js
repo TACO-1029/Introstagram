@@ -215,7 +215,12 @@ function renderProfilePostGrid() {
         style="--post-image: url('../img/team/posts/post-5-1.png');"
         aria-label="다섯 번째 게시글 보기"
       ></a>
-      <a class="grid-tile tile-f" href="./posts/post-6.html" aria-label="여섯 번째 게시글 보기"></a>
+      <a
+        class="grid-tile tile-f post-template"
+        href="./posts/post-6.html"
+        style="--post-image: url('../img/team/posts/post-6-1.png');"
+        aria-label="여섯 번째 게시글 보기"
+      ></a>
     </section>
   `;
 }
