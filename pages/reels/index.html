@@ -8,16 +8,16 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../static/css/style.css" />
-    <link rel="stylesheet" href="../static/css/layout.css" />
-    <link rel="stylesheet" href="../static/css/reels.css" />
+    <link rel="stylesheet" href="../../static/css/style.css" />
+    <link rel="stylesheet" href="../../static/css/layout.css" />
+    <link rel="stylesheet" href="../../static/css/reels.css" />
   </head>
   <body class="reels-body">
     <main class="app-device-frame reels-frame" aria-label="Reels page">
       <section class="reels-stage" aria-label="Reels content">
         <video
           class="reels-video"
-          src="../static/video/reels-1.mp4"
+          src="../../static/video/reels-1.mp4"
           autoplay
           loop
           playsinline
@@ -40,7 +40,13 @@
         </header>
 
         <aside class="reels-actions" aria-label="Reels actions">
-          <button type="button" aria-label="Like">
+          <button
+            type="button"
+            class="reels-like-button"
+            aria-label="Like"
+            aria-pressed="false"
+            data-reels-like-button
+          >
             <span class="comment-like-icon"></span>
             <small data-reels-likes>10K</small>
           </button>
@@ -61,7 +67,7 @@
           <div class="reels-user-row">
             <img
               class="reels-avatar"
-              src="../static/img/introstagram_avatar.webp"
+              src="../../static/img/introstagram_avatar.webp"
               alt=""
             />
             <strong>introstagram team</strong>
@@ -89,11 +95,11 @@
         <a href="../profile/index.html" aria-label="Profile"
           ><img
             class="nav-profile-avatar"
-            src="../static/img/introstagram_avatar.webp"
+            src="../../static/img/introstagram_avatar.webp"
             alt=""
         /></a>
       </nav>
     </main>
-    <script src="../static/js/reels-player.js"></script>
+    <script src="../../static/js/reels-player.js"></script>
   </body>
 </html>

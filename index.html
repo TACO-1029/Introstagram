@@ -8,8 +8,8 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./pages/static/css/style.css" />
-    <link rel="stylesheet" href="./pages/static/css/layout.css" />
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <link rel="stylesheet" href="./static/css/layout.css" />
   </head>
   <body>
     <header class="web-header">
@@ -57,7 +57,7 @@
           >
             <img
               class="nav-profile-avatar"
-              src="./pages/static/img/introstagram_avatar.webp"
+              src="./static/img/introstagram_avatar.webp"
               alt=""
             />
             <span class="web-action-label">프로필</span>
@@ -98,7 +98,7 @@
             data-story-picker
           >
             <span class="my-story-avatar">
-              <img src="pages/static/img/introstagram_avatar.webp" alt="" />
+              <img src="static/img/introstagram_avatar.webp" alt="" />
               <span class="my-story-plus">+</span>
             </span>
             <span>내 스토리</span>
@@ -118,7 +118,7 @@
             <span class="story-ring">
               <span class="story-avatar">
                 <img
-                  src="./pages/static/img/member-1/profile/dogeonwoo-profile.webp"
+                  src="./static/img/member-1/profile/dogeonwoo-profile.webp"
                   alt=""
                 />
               </span>
@@ -134,7 +134,7 @@
             <span class="story-ring">
               <span class="story-avatar">
                 <img
-                  src="./pages/static/img/member-2/profile/kimcheolyong-profile.webp"
+                  src="./static/img/member-2/profile/kimcheolyong-profile.webp"
                   alt=""
                 />
               </span>
@@ -150,7 +150,7 @@
             <span class="story-ring">
               <span class="story-avatar">
                 <img
-                  src="./pages/static/img/member-3/profile/jaewon-profile.webp"
+                  src="./static/img/member-3/profile/jaewon-profile.webp"
                   alt=""
                 />
               </span>
@@ -166,7 +166,7 @@
             <span class="story-ring">
               <span class="story-avatar">
                 <img
-                  src="./pages/static/img/member-4/profile/woojin_profile.webp"
+                  src="./static/img/member-4/profile/woojin_profile.webp"
                   alt=""
                 />
               </span>
@@ -201,7 +201,7 @@
           <a href="./pages/profile/index.html" aria-label="Profile"
             ><img
               class="nav-profile-avatar"
-              src="./pages/static/img/introstagram_avatar.webp"
+              src="./static/img/introstagram_avatar.webp"
               alt=""
           /></a>
         </nav>
@@ -213,7 +213,7 @@
             class="comments-media-preview"
             aria-label="게시물 이미지 미리보기"
           >
-            <img src="./pages/static/img/post-slide-1.svg" alt="" />
+            <img src="./static/img/post-slide-1.svg" alt="" />
           </section>
           <span class="comments-handle" aria-hidden="true"></span>
           <header class="comments-header">
@@ -239,7 +239,7 @@
               <button type="button">😂</button>
             </div>
             <div class="comments-input-row">
-              <img src="./pages/static/img/introstagram_avatar.webp" alt="" />
+              <img src="./static/img/introstagram_avatar.webp" alt="" />
               <input
                 type="text"
                 placeholder="댓글 추가..."
@@ -288,7 +288,7 @@
           <div class="story-progress" aria-hidden="true"></div>
           <div class="story-viewer-header">
             <span class="story-viewer-avatar">
-              <img src="./pages/static/img/introstagram_avatar.webp" alt="" />
+              <img src="./static/img/introstagram_avatar.webp" alt="" />
             </span>
             <strong>introstagram team</strong>
           </div>
@@ -306,7 +306,7 @@
       >
         <section class="profile-summary">
           <div class="profile-avatar">
-            <img src="./pages/static/img/introstagram_avatar.webp" alt="" />
+            <img src="./static/img/introstagram_avatar.webp" alt="" />
           </div>
           <div>
             <strong>introstagram team</strong>
@@ -319,37 +319,57 @@
             <span>팀원 페이지</span>
             <a href="./index.html">메인</a>
           </div>
-          <a class="member-row" href="./pages/member/1/index.html">
+          <a
+            class="member-row"
+            href="./pages/member/1/index.html"
+            draggable="true"
+            data-member-id="member-1"
+          >
             <span class="mini-avatar">
               <img
-                src="./pages/static/img/member-1/profile/dogeonwoo-profile.webp"
+                src="./static/img/member-1/profile/dogeonwoo-profile.webp"
                 alt=""
               />
             </span>
             <span> <strong>dogeonwoo</strong><small>도건우</small> </span>
           </a>
-          <a class="member-row" href="./pages/member/2/index.html">
+          <a
+            class="member-row"
+            href="./pages/member/2/index.html"
+            draggable="true"
+            data-member-id="member-2"
+          >
             <span class="mini-avatar">
               <img
-                src="./pages/static/img/member-2/profile/kimcheolyong-profile.webp"
+                src="./static/img/member-2/profile/kimcheolyong-profile.webp"
                 alt=""
               />
             </span>
             <span> <strong>kimcheolyong</strong><small>김철용</small> </span>
           </a>
-          <a class="member-row" href="./pages/member/3/index.html">
+          <a
+            class="member-row"
+            href="./pages/member/3/index.html"
+            draggable="true"
+            data-member-id="member-3"
+          >
             <span class="mini-avatar">
               <img
-                src="./pages/static/img/member-3/profile/jaewon-profile.webp"
+                src="./static/img/member-3/profile/jaewon-profile.webp"
                 alt=""
               />
             </span>
             <span> <strong>jaewonwi</strong><small>위재원</small> </span>
           </a>
-          <a class="member-row" href="./pages/member/4/index.html">
+          <a
+            class="member-row"
+            href="./pages/member/4/index.html"
+            draggable="true"
+            data-member-id="member-4"
+          >
             <span class="mini-avatar">
               <img
-                src="./pages/static/img/member-4/profile/woojin_profile.webp"
+                src="./static/img/member-4/profile/woojin_profile.webp"
                 alt=""
               />
             </span>
@@ -359,8 +379,7 @@
 
         <p class="sidebar-note">
           NOTE !! <br />
-          현재 스토리를 로컬 스토리지에 저장하고 있습니다.. 사진은 되도록
-          2장만...
+          현재 스토리를 로컬 스토리지에 저장하고 있습니다.
         </p>
       </aside>
     </main>
@@ -400,7 +419,7 @@
           <video id="storyCameraVideo" autoplay playsinline muted></video>
           <img
             class="story-ar-mask"
-            src="./pages/static/story-filter/dog-face-mask.svg"
+            src="./static/story-filter/dog-face-mask.svg"
             alt=""
             data-ar-mask
             hidden
@@ -444,7 +463,7 @@
               >
                 <img
                   class="story-filter-preview"
-                  src="./pages/static/story-filter/hyundai-dp-filter.svg"
+                  src="./static/story-filter/hyundai-dp-filter.svg"
                   alt=""
                 />
               </button>
@@ -458,7 +477,7 @@
             data-file-fallback
             aria-label="Choose image from files"
           >
-            <img src="./pages/static/img/my-story-avatar.svg" alt="" />
+            <img src="./static/img/my-story-avatar.svg" alt="" />
           </button>
           <div class="story-camera-tabs" aria-label="Camera modes">
             <strong>스토리</strong>
@@ -642,15 +661,26 @@
     ></script>
     <script>
       window.introstagramHighlightStories = {
+        "member-1-profile": [
+          {
+            title: "Story",
+            text: "",
+            username: "dogeonwoo",
+            avatar:
+              "./static/img/member-1/profile/dogeonwoo-profile.webp",
+            profileUrl: "./pages/member/1/index.html",
+            video: "./static/img/member-1/stories/story-1.mp4",
+          },
+        ],
         "member-2-profile": [
           {
             title: "Story",
             text: "",
             username: "kimcheolyong",
             avatar:
-              "./pages/static/img/member-2/profile/kimcheolyong-profile.webp",
+              "./static/img/member-2/profile/kimcheolyong-profile.webp",
             profileUrl: "./pages/member/2/index.html",
-            video: "./pages/static/img/member-2/stories/story-1.mp4",
+            video: "./static/img/member-2/stories/story-1.mp4",
           },
         ],
         "member-3-profile": [
@@ -658,9 +688,9 @@
             title: "Story",
             text: "",
             username: "jaewonwi",
-            avatar: "./pages/static/img/member-3/profile/jaewon-profile.webp",
+            avatar: "./static/img/member-3/profile/jaewon-profile.webp",
             profileUrl: "./pages/member/3/index.html",
-            video: "./pages/static/img/member-3/stories/story-1.mp4",
+            video: "./static/img/member-3/stories/story-1.mp4",
           },
         ],
         "member-4-profile": [
@@ -668,17 +698,18 @@
             title: "Story",
             text: "",
             username: "choiwoojin",
-            avatar: "./pages/static/img/member-4/profile/woojin_profile.webp",
+            avatar: "./static/img/member-4/profile/woojin_profile.webp",
             profileUrl: "./pages/member/4/index.html",
-            video: "./pages/static/img/member-4/stories/story-1.mp4",
+            video: "./static/img/member-4/stories/story-1.mp4",
           },
         ],
       };
     </script>
-    <script src="./pages/static/js/post-components.js"></script>
-    <script src="./pages/static/js/home-feed.js"></script>
-    <script src="./pages/static/js/story-viewer.js"></script>
-    <script src="./pages/static/js/story-picker.js"></script>
-    <script src="./pages/static/js/comments-sheet.js"></script>
+    <script src="./static/js/post-components.js"></script>
+    <script src="./static/js/home-feed.js"></script>
+    <script src="./static/js/story-viewer.js"></script>
+    <script src="./static/js/story-picker.js"></script>
+    <script src="./static/js/comments-sheet.js"></script>
+    <script src="./static/js/member-drag-sort.js"></script>
   </body>
 </html>

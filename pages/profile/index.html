@@ -8,8 +8,8 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../static/css/layout.css" />
-    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../../static/css/layout.css" />
+    <link rel="stylesheet" href="../../static/css/style.css" />
   </head>
   <body class="account-profile-body member-body">
     <aside
@@ -32,7 +32,7 @@
         >
         <a class="active" href="./index.html">
           <span class="mini-avatar account-sidebar-avatar">
-            <img src="../static/img/introstagram_avatar.webp" alt="" />
+            <img src="../../static/img/introstagram_avatar.webp" alt="" />
           </span>
           <span>프로필</span>
         </a>
@@ -52,7 +52,86 @@
       </section>
       <div id="accountProfileBottomNavRoot"></div>
     </main>
+    <section
+      class="story-viewer"
+      id="storyViewer"
+      aria-label="Story highlight viewer"
+      aria-hidden="true"
+    >
+      <button
+        class="story-nav-button story-nav-prev"
+        type="button"
+        aria-label="Previous story"
+        hidden
+      >
+        <span class="slide-button-icon slide-prev-icon"></span>
+      </button>
+      <button
+        class="story-nav-button story-nav-next"
+        type="button"
+        aria-label="Next story"
+        hidden
+      >
+        <span class="slide-button-icon slide-next-icon"></span>
+      </button>
+      <div class="story-viewer-panel">
+        <button class="story-close" type="button" aria-label="Close story">
+          ×
+        </button>
+        <div class="story-progress" aria-hidden="true"></div>
+        <div class="story-viewer-header">
+          <span class="story-viewer-avatar">
+            <img src="../../static/img/introstagram_avatar.webp" alt="" />
+          </span>
+          <strong>introstagram team</strong>
+        </div>
+        <div class="story-viewer-image" role="img" aria-label=""></div>
+        <div class="story-viewer-copy">
+          <strong></strong>
+          <p></p>
+        </div>
+        <a
+          class="story-link-chip"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-story-link
+          hidden
+        >
+          <span class="story-link-icon" aria-hidden="true">🔗</span>
+          <span data-story-link-label>LINK</span>
+        </a>
+      </div>
+    </section>
     <div id="accountProfileConnectionsModalRoot"></div>
-    <script src="../static/js/profile-components.js"></script>
+    <script>
+      window.introstagramHighlightStories = {
+        profile: [
+          {
+            title: "Introstagram",
+            text: "",
+            username: "introstagram team",
+            avatar: "../../static/img/introstagram_avatar.webp",
+            image: "../../static/img/introstagram_avatar.webp",
+            linkUrl: "",
+            linkLabel: "",
+          },
+        ],
+        highlights: [
+          {
+            title: "Project",
+            text: "",
+            username: "introstagram team",
+            avatar: "../../static/img/introstagram_avatar.webp",
+            image: "../../static/img/member-3/highlights/project-1.webp",
+            linkUrl:
+              "https://github.com/HDF11-project1-team1/Team5_Membership_Project",
+            linkLabel: "Link",
+          },
+        ],
+      };
+    </script>
+    <script src="../../static/js/profile-components.js"></script>
+    <script src="../../static/js/story-viewer.js"></script>
   </body>
 </html>
