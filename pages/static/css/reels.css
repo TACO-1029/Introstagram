@@ -119,11 +119,19 @@
   color: #fff;
 }
 
+.reels-like-button.is-liked {
+  color: #ff3040;
+}
+
+.reels-like-button.is-liked .comment-like-icon {
+  -webkit-mask-image: url("../icons/heart-filled-icon.svg");
+  mask-image: url("../icons/heart-filled-icon.svg");
+}
+
 .reels-actions .icon,
 .reels-actions .comment-like-icon {
   width: 34px;
   height: 34px;
-  color: #fff;
 }
 
 .reels-actions small {

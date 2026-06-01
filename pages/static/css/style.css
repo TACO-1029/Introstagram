@@ -269,7 +269,7 @@ a {
 }
 
 .comment-hashtag {
-  color: #3d51ff;
+  color: #385185;
 }
 
 .bookmark {
@@ -2397,7 +2397,7 @@ a.caption-hashtag {
   text-overflow: ellipsis;
 }
 
-.post-template {
+.grid-tile.post-template {
   align-items: flex-start;
   background: var(--post-image), linear-gradient(135deg, #d9d9d9, #f3f3f3);
   background-position: center;
@@ -2405,11 +2405,11 @@ a.caption-hashtag {
   background-size: cover;
 }
 
-.post-template::before {
+.grid-tile.post-template::before {
   opacity: 0.42;
 }
 
-.post-template:empty::after {
+.grid-tile.post-template:empty::after {
   content: none;
 }
 
@@ -3045,6 +3045,10 @@ a.caption-hashtag {
 
 .account-profile-bio span:first-child {
   color: #6a717b;
+}
+
+.account-profile-bio span:last-child {
+  color: #385185;
 }
 
 .account-profile-bio a {
