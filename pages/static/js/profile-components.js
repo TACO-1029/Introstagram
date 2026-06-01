@@ -9,7 +9,9 @@ const accountProfile = {
   ],
   bioLines: [""],
   link: "",
-  highlights: [{ label: "🧙", src: "../static/img/introstagram_avatar.webp" }],
+  highlights: [
+    { label: "projects", src: "../static/img/introstagram_avatar.webp" },
+  ],
 };
 
 const profileConnectionMembers = [
@@ -20,10 +22,10 @@ const profileConnectionMembers = [
     href: "../member/1/index.html",
   },
   {
-    username: "member_two",
-    name: "Member 2",
-    avatarSrc: "../static/img/introstagram_avatar.webp",
-    href: "../member/2/index.html",
+    username: "kimcheolyong",
+    name: "김철용",
+    avatarSrc: "../../static/img/member-2/profile/kimcheolyong-profile.webp",
+    href: "../2/index.html",
   },
   {
     username: "jaewonwi",
@@ -299,8 +301,12 @@ function setProfileConnectionsList(query = "") {
 function openProfileConnectionsModal(type) {
   const modal = document.querySelector("[data-profile-connections-modal]");
   const title = document.querySelector("#accountConnectionsTitle");
-  const searchInput = document.querySelector("[data-profile-connections-search]");
-  const closeButton = document.querySelector("[data-profile-connections-close]");
+  const searchInput = document.querySelector(
+    "[data-profile-connections-search]",
+  );
+  const closeButton = document.querySelector(
+    "[data-profile-connections-close]",
+  );
 
   if (!modal || !title) {
     return;
@@ -332,7 +338,9 @@ function closeProfileConnectionsModal() {
 }
 
 function bindProfileConnectionsModal() {
-  const searchInput = document.querySelector("[data-profile-connections-search]");
+  const searchInput = document.querySelector(
+    "[data-profile-connections-search]",
+  );
 
   document.addEventListener("click", (event) => {
     const trigger = event.target.closest("[data-profile-connections-open]");
@@ -375,7 +383,9 @@ function mountProfile() {
     tabs: document.querySelector("#accountProfileTabsRoot"),
     posts: document.querySelector("#accountProfilePostsRoot"),
     bottomNav: document.querySelector("#accountProfileBottomNavRoot"),
-    connectionsModal: document.querySelector("#accountProfileConnectionsModalRoot"),
+    connectionsModal: document.querySelector(
+      "#accountProfileConnectionsModalRoot",
+    ),
   };
 
   roots.header.innerHTML = renderProfileHeader(accountProfile);

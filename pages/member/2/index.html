@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" href="../../static/css/style.css" />
   </head>
-  <body class="member-body">
+  <body class="member-body" data-current-member="kimcheolyong">
     <aside class="member-sidebar" aria-label="Instagram web menu">
       <a class="member-sidebar-logo" href="../../../index.html">Introstagram</a>
       <nav class="member-sidebar-menu">
@@ -30,7 +30,9 @@
         >
         <a class="active" href="./index.html"
           ><span class="mini-avatar photo-avatar"
-            ><img src="../../static/img/introstagram_avatar.webp" alt="" /></span
+            ><img
+              src="../../static/img/introstagram_avatar.webp"
+              alt="" /></span
           ><span>프로필</span></a
         >
       </nav>
@@ -58,7 +60,7 @@
           aria-label="김철용 스토리 보기"
         >
           <img
-            src="../../static/img/member-2/profile/kimcheolyong-profile.jpg"
+            src="../../static/img/member-2/profile/kimcheolyong-profile.webp"
             alt="김철용 프로필 사진"
           />
         </button>
@@ -71,13 +73,27 @@
               <dt>게시물</dt>
               <dd>6</dd>
             </div>
-            <div>
+
+            <div
+              class="account-profile-stat-trigger"
+              role="button"
+              tabindex="0"
+              data-profile-connections-open="followers"
+              aria-label="팔로워 목록 보기"
+            >
               <dt>팔로워</dt>
-              <dd>2001</dd>
+              <dd>4</dd>
             </div>
-            <div>
+
+            <div
+              class="account-profile-stat-trigger"
+              role="button"
+              tabindex="0"
+              data-profile-connections-open="following"
+              aria-label="팔로잉 목록 보기"
+            >
               <dt>팔로잉</dt>
-              <dd>414</dd>
+              <dd>4</dd>
             </div>
           </dl>
           <div class="profile-bio">
@@ -105,7 +121,7 @@
           <span
             class="highlight-cover"
             style="
-              --highlight-image: url(&quot;../../static/img/member-2/highlights/project-4.jpg&quot;);
+              --highlight-image: url(&quot;../../static/img/member-2/highlights/project-4.webp&quot;);
             "
           ></span>
           <span>Project</span>
@@ -114,7 +130,7 @@
           <span
             class="highlight-cover"
             style="
-              --highlight-image: url(&quot;../../static/img/member-2/highlights/about-1.jpg&quot;);
+              --highlight-image: url(&quot;../../static/img/member-2/highlights/about-1.webp&quot;);
             "
           ></span>
           <span>About</span>
@@ -123,7 +139,7 @@
           <span
             class="highlight-cover"
             style="
-              --highlight-image: url(&quot;../../static/img/member-2/highlights/like-1.jpg&quot;);
+              --highlight-image: url(&quot;../../static/img/member-2/highlights/like-1.webp&quot;);
             "
           ></span>
           <span>Like</span>
@@ -141,42 +157,42 @@
           class="grid-tile post-template"
           href="./posts/post-1.html"
           style="
-            --post-image: url(&quot;../../static/img/member-2/posts/post-1-1.jpg&quot;);
+            --post-image: url(&quot;../../static/img/member-2/posts/post-1-1.webp&quot;);
           "
         ></a>
         <a
           class="grid-tile post-template"
           href="./posts/post-2.html"
           style="
-            --post-image: url(&quot;../../static/img/member-2/posts/post-2-1.jpg&quot;);
+            --post-image: url(&quot;../../static/img/member-2/posts/post-2-1.webp&quot;);
           "
         ></a>
         <a
           class="grid-tile post-template"
           href="./posts/post-3.html"
           style="
-            --post-image: url(&quot;../../static/img/member-2/posts/post-3-1.jpg&quot;);
+            --post-image: url(&quot;../../static/img/member-2/posts/post-3-1.webp&quot;);
           "
         ></a>
         <a
           class="grid-tile post-template"
           href="./posts/post-4.html"
           style="
-            --post-image: url(&quot;../../static/img/member-2/posts/post-4-1.jpg&quot;);
+            --post-image: url(&quot;../../static/img/member-2/posts/post-4-1.webp&quot;);
           "
         ></a>
         <a
           class="grid-tile post-template"
           href="./posts/post-5.html"
           style="
-            --post-image: url(&quot;../../static/img/member-2/posts/post-5-1.jpg&quot;);
+            --post-image: url(&quot;../../static/img/member-2/posts/post-5-1.webp&quot;);
           "
         ></a>
         <a
           class="grid-tile post-template"
           href="./posts/post-6.html"
           style="
-            --post-image: url(&quot;../../static/img/member-2/posts/post-6-1.jpg&quot;);
+            --post-image: url(&quot;../../static/img/member-2/posts/post-6-1.webp&quot;);
           "
         ></a>
       </section>
@@ -211,7 +227,7 @@
           <div class="story-viewer-header">
             <span class="story-viewer-avatar">
               <img
-                src="../../static/img/member-2/profile/kimcheolyong-profile.jpg"
+                src="../../static/img/member-2/profile/kimcheolyong-profile.webp"
                 alt=""
               />
             </span>
@@ -222,9 +238,64 @@
             <strong></strong>
             <p></p>
           </div>
+          <a
+            class="story-link-chip"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-story-link
+            hidden
+          >
+            <span class="story-link-icon" aria-hidden="true">🔗</span>
+            <span data-story-link-label>LINK</span>
+          </a>
         </div>
       </section>
+      <section
+        class="account-connections-modal"
+        data-profile-connections-modal
+        aria-hidden="true"
+      >
+        <div
+          class="account-connections-backdrop"
+          data-profile-connections-close
+        ></div>
 
+        <section
+          class="account-connections-panel"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="accountConnectionsTitle"
+        >
+          <header class="account-connections-header">
+            <span></span>
+            <h2 id="accountConnectionsTitle">팔로워</h2>
+            <button
+              class="account-connections-close"
+              type="button"
+              data-profile-connections-close
+              aria-label="닫기"
+            >
+              ×
+            </button>
+          </header>
+
+          <label class="account-connections-search">
+            <span class="icon search" aria-hidden="true"></span>
+            <input
+              type="search"
+              placeholder="검색"
+              data-profile-connections-search
+            />
+          </label>
+
+          <section
+            class="account-connections-list"
+            data-profile-connections-list
+            aria-label="Member list"
+          ></section>
+        </section>
+      </section>
       <nav class="bottom-nav member-bottom-nav" aria-label="Mobile navigation">
         <a href="../../../index.html" aria-label="Home"
           ><span class="icon home"></span
@@ -260,50 +331,59 @@
           {
             title: "Project",
             text: "",
-            image: "../../static/img/member-2/highlights/project-1.png",
+            image: "../../static/img/member-2/highlights/project-1.webp",
+            linkUrl: "",
+            linkLabel: "",
           },
           {
             title: "Project",
             text: "",
-            image: "../../static/img/member-2/highlights/project-2.png",
+            image: "../../static/img/member-2/highlights/project-2.webp",
+            linkUrl: "",
+            linkLabel: "",
           },
           {
             title: "Project",
             text: "",
-            image: "../../static/img/member-2/highlights/project-3.png",
+            image: "../../static/img/member-2/highlights/project-3.webp",
+            linkUrl: "",
+            linkLabel: "",
           },
           {
             title: "Project",
             text: "",
-            image: "../../static/img/member-2/highlights/project-4.jpg",
+            image: "../../static/img/member-2/highlights/project-4.webp",
+            linkUrl: "",
+            linkLabel: "",
           },
         ],
         about: [
           {
             title: "About",
             text: "",
-            image: "../../static/img/member-2/highlights/about-1.jpg",
+            image: "../../static/img/member-2/highlights/about-1.webp",
           },
           {
             title: "About",
             text: "",
-            image: "../../static/img/member-2/highlights/about-2.jpg",
+            image: "../../static/img/member-2/highlights/about-2.webp",
           },
         ],
         like: [
           {
             title: "Like",
             text: "",
-            image: "../../static/img/member-2/highlights/like-1.jpg",
+            image: "../../static/img/member-2/highlights/like-1.webp",
           },
           {
             title: "Like",
             text: "",
-            image: "../../static/img/member-2/highlights/like-2.jpg",
+            image: "../../static/img/member-2/highlights/like-2.webp",
           },
         ],
       };
     </script>
     <script src="../../static/js/story-viewer.js"></script>
+    <script src="../../static/js/profile-connections-modal.js"></script>
   </body>
 </html>

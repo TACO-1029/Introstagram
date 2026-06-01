@@ -12,7 +12,7 @@ const reelsItems = [
   },
   {
     src: "../static/video/reels-2.mp4",
-    caption: "KOSA 교육생 김햄찌 VLOG 2편",
+    caption: "🥘 김햄찌의 k밥상 먹방",
     likes: "12K",
   },
 ];

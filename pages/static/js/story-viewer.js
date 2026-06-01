@@ -10,6 +10,8 @@ const storyHeaderName = viewer?.querySelector(".story-viewer-header strong");
 const storyPrevButton = viewer?.querySelector(".story-nav-prev");
 const storyNextButton = viewer?.querySelector(".story-nav-next");
 const storyCloseButton = viewer?.querySelector(".story-close");
+const storyLink = viewer?.querySelector("[data-story-link]");
+const storyLinkLabel = viewer?.querySelector("[data-story-link-label]");
 let storyTimer = null;
 let activeStories = [];
 let activeStoryIndex = 0;
@@ -28,6 +30,24 @@ function updateStoryControls() {
   if (!storyPrevButton || !storyNextButton) return;
   storyPrevButton.hidden = activeStoryIndex <= 0;
   storyNextButton.hidden = activeStoryIndex >= activeStories.length - 1;
+}
+
+function updateStoryLink(story) {
+  if (!storyLink) return;
+
+  if (story.linkUrl) {
+    storyLink.href = story.linkUrl;
+    storyLink.hidden = false;
+
+    if (storyLinkLabel) {
+      storyLinkLabel.textContent = story.linkLabel || "LINK";
+    }
+
+    return;
+  }
+
+  storyLink.hidden = true;
+  storyLink.removeAttribute("href");
 }
 
 function renderStory() {
@@ -62,6 +82,7 @@ function renderStory() {
 
   viewerTitle.textContent = story.title || "";
   viewerText.textContent = story.text || "";
+  updateStoryLink(story);
   progressBars.forEach((bar, index) => {
     bar.classList.toggle("done", index < activeStoryIndex);
     bar.classList.toggle("active", index === activeStoryIndex);
@@ -168,6 +189,9 @@ if (viewer && viewerImage && viewerTitle && viewerText && progressRoot) {
   storyPrevButton?.addEventListener("click", () => moveStory(-1));
   storyNextButton?.addEventListener("click", () => moveStory(1));
   storyCloseButton?.addEventListener("click", closeStory);
+  storyLink?.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
   viewer.addEventListener("click", (event) => {
     if (event.target === viewer) closeStory();
   });

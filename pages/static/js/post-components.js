@@ -111,9 +111,27 @@ function getPostPreviewImage(data, activeIndex) {
   return slide.image || slide.fallback || "";
 }
 
+function getPostCommentKey(card, data) {
+  return (
+    data.commentKey ||
+    card.querySelector("[data-comments-open][data-comments-key]")?.dataset
+      .commentsKey ||
+    getPostLikeKey(data)
+  );
+}
+
+function getPostCommentPreviewImage(card, data, activeIndex) {
+  return (
+    data.commentPreviewImage ||
+    card.querySelector("[data-comments-open][data-comments-preview-image]")
+      ?.dataset.commentsPreviewImage ||
+    getPostPreviewImage(data, activeIndex)
+  );
+}
+
 function setupPostCommentContext(card, data, activeIndex) {
-  const postKey = getPostLikeKey(data);
-  const previewImage = getPostPreviewImage(data, activeIndex);
+  const postKey = getPostCommentKey(card, data);
+  const previewImage = getPostCommentPreviewImage(card, data, activeIndex);
   const commentsOpenButtons = card.querySelectorAll("[data-comments-open]");
   const commentsLabels = card.querySelectorAll("[data-comments-label]");
 
