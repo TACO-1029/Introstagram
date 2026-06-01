@@ -10,7 +10,11 @@ const accountProfile = {
   bioLines: [""],
   link: "",
   highlights: [
-    { label: "projects", src: "../static/img/introstagram_avatar.webp" },
+    {
+      key: "profile",
+      label: "highlights",
+      src: "../../static/img/introstagram_avatar.webp",
+    },
   ],
 };
 
@@ -24,8 +28,8 @@ const profileConnectionMembers = [
   {
     username: "kimcheolyong",
     name: "김철용",
-    avatarSrc: "../../static/img/member-2/profile/kimcheolyong-profile.webp",
-    href: "../2/index.html",
+    avatarSrc: "../static/img/member-2/profile/kimcheolyong-profile.webp",
+    href: "../member/2/index.html",
   },
   {
     username: "jaewonwi",
@@ -148,7 +152,9 @@ function renderProfileActions() {
     <section class="mobile-actions account-profile-actions" aria-label="Profile actions">
       <button type="button">프로필 편집</button>
       <button type="button">보관함 보기</button>
-      <button type="button">⌄</button>
+      <button type="button" aria-label="More profile options">
+        <span class="account-profile-chevron" aria-hidden="true"></span>
+      </button>
     </section>
   `;
 }
@@ -157,11 +163,16 @@ function renderProfileHighlights(profile) {
   const highlightMarkup = profile.highlights
     .map(
       (highlight) => `
-        <a class="highlight-item account-highlight" href="#">
-          <span class="highlight-dot account-highlight-photo">
-            <img src="${highlight.src}" alt="" />
-          </span>
-          <strong>${highlight.label}</strong>
+        <a
+          class="highlight-item account-highlight"
+          href="#"
+          data-highlight="${highlight.key}"
+        >
+          <span
+            class="highlight-cover"
+            style="--highlight-image: url('${highlight.src}');"
+          ></span>
+          <span>${highlight.label}</span>
         </a>
       `,
     )
@@ -185,12 +196,42 @@ function renderProfileTabs() {
 function renderProfilePostGrid() {
   return `
     <section class="post-grid" aria-label="Member 1 posts">
-      <a class="grid-tile tile-a" href="#"><span>UI</span></a>
-      <a class="grid-tile tile-b" href="#"><span>HTML</span></a>
-      <a class="grid-tile tile-c" href="#"><span>CSS</span></a>
-      <a class="grid-tile tile-d" href="#"><span>Team</span></a>
-      <a class="grid-tile tile-e" href="#"><span>Intro</span></a>
-      <a class="grid-tile tile-f" href="#"><span>Web</span></a>
+      <a
+        class="grid-tile tile-a post-template"
+        href="./posts/post-1.html"
+        style="--post-image: url('../img/team/posts/post-1-1.webp');"
+        aria-label="첫 번째 게시글 보기"
+      ></a>
+      <a
+        class="grid-tile tile-b post-template"
+        href="./posts/post-2.html"
+        style="--post-image: url('../img/team/posts/post-2-1.webp');"
+        aria-label="두 번째 게시글 보기"
+      ></a>
+      <a
+        class="grid-tile tile-c post-template"
+        href="./posts/post-3.html"
+        style="--post-image: url('../img/team/posts/post-3-1.webp');"
+        aria-label="세 번째 게시글 보기"
+      ></a>
+      <a
+        class="grid-tile tile-d post-template"
+        href="./posts/post-4.html"
+        style="--post-image: url('../img/team/posts/post-4-1.webp');"
+        aria-label="네 번째 게시글 보기"
+      ></a>
+      <a
+        class="grid-tile tile-e post-template"
+        href="./posts/post-5.html"
+        style="--post-image: url('../img/team/posts/post-5-1.webp');"
+        aria-label="다섯 번째 게시글 보기"
+      ></a>
+      <a
+        class="grid-tile tile-f post-template"
+        href="./posts/post-6.html"
+        style="--post-image: url('../img/team/posts/post-6-1.webp');"
+        aria-label="여섯 번째 게시글 보기"
+      ></a>
     </section>
   `;
 }

@@ -6,7 +6,6 @@ const defaultPostData = {
   },
   caption:
     "게시글 설명을 여기에 작성하세요. 사진은 post-1-1.webp, post-1-2.webp처럼 교체하면 됩니다.",
-  commentsLabel: "댓글 1개 모두 보기",
   slides: [
     {
       image: "./pages/static/img/member-1/posts/post-1-1.webp",
@@ -16,6 +15,7 @@ const defaultPostData = {
 };
 
 const postLikesStorageKey = "introstagramPostLikes";
+const postCommentsStorageKey = "introstagram_comments_by_post";
 
 function getPostLikes() {
   try {
@@ -31,6 +31,22 @@ function setPostLikes(likes) {
   } catch (error) {
     console.warn("좋아요 상태를 저장하지 못했습니다.", error);
   }
+}
+
+function getStoredPostCommentsByPost() {
+  try {
+    return JSON.parse(localStorage.getItem(postCommentsStorageKey) || "{}");
+  } catch (error) {
+    return {};
+  }
+}
+
+function getStoredPostCommentsCount(postKey) {
+  return getStoredPostCommentsByPost()[postKey]?.length || 0;
+}
+
+function getPostCommentsLabel(postKey) {
+  return `댓글 ${getStoredPostCommentsCount(postKey)}개 모두 보기`;
 }
 
 function normalizePostLikeKey(value) {
@@ -155,6 +171,7 @@ function setupPostCommentContext(card, data, activeIndex) {
   commentsLabels.forEach((label) => {
     label.dataset.commentsKey = postKey;
     label.setAttribute("data-comments-count-label", "");
+    label.textContent = getPostCommentsLabel(postKey);
   });
 
   window.introstagramUpdateCommentsCount?.(postKey);
@@ -276,7 +293,7 @@ function createCaption() {
       data-comments-label
       data-comments-count-label
     >
-      댓글 1개 모두 보기
+      댓글 보기
     </button>
   `;
 
@@ -289,7 +306,6 @@ function renderPostCard(card, data) {
   const visualRoot = card.querySelector("[data-post-visual-root]");
   const paginationRoot = card.querySelector("[data-post-pagination-root]");
   const captionRoot = card.querySelector("[data-post-caption]");
-  const commentsLabelRoot = card.querySelector("[data-comments-label]");
 
   function renderAtIndex(index) {
     currentSlideIndex = index;
@@ -322,10 +338,6 @@ function renderPostCard(card, data) {
 
     if (captionRoot) {
       captionRoot.innerHTML = `<strong>${data.user.name}</strong> ${data.caption || ""}`;
-    }
-
-    if (commentsLabelRoot && data.commentsLabel) {
-      commentsLabelRoot.textContent = data.commentsLabel;
     }
 
     setupPostCommentContext(card, data, currentSlideIndex);
