@@ -3,6 +3,9 @@ const reelsStage = document.querySelector(".reels-stage");
 const reelsSoundButton = document.querySelector("[data-reels-sound]");
 const reelsCaption = document.querySelector(".reels-copy p");
 const reelsLikes = document.querySelector("[data-reels-likes]");
+const reelsLikeButton = document.querySelector("[data-reels-like-button]");
+
+const REELS_LIKES_STORAGE_KEY = "introstagramReelsLikes";
 
 const reelsItems = [
   {
@@ -24,6 +27,52 @@ let swipeStartY = 0;
 let swipeMoved = false;
 
 const reelTransitionDelay = 240;
+
+function getStoredReelsLikes() {
+  try {
+    return JSON.parse(localStorage.getItem(REELS_LIKES_STORAGE_KEY) || "{}");
+  } catch (error) {
+    return {};
+  }
+}
+
+function setStoredReelsLikes(likes) {
+  try {
+    localStorage.setItem(REELS_LIKES_STORAGE_KEY, JSON.stringify(likes));
+  } catch (error) {
+    console.warn("릴스 좋아요 상태를 저장하지 못했습니다.", error);
+  }
+}
+
+function getActiveReelsLikeKey() {
+  return reelsItems[activeReelIndex]?.src || `reels-${activeReelIndex}`;
+}
+
+function isActiveReelLiked() {
+  return Boolean(getStoredReelsLikes()[getActiveReelsLikeKey()]);
+}
+
+function setActiveReelLiked(liked) {
+  const likes = getStoredReelsLikes();
+  likes[getActiveReelsLikeKey()] = Boolean(liked);
+  setStoredReelsLikes(likes);
+}
+
+function updateReelsLikeButton() {
+  if (!reelsLikeButton) {
+    return;
+  }
+
+  const liked = isActiveReelLiked();
+  reelsLikeButton.classList.toggle("is-liked", liked);
+  reelsLikeButton.setAttribute("aria-pressed", String(liked));
+  reelsLikeButton.setAttribute("aria-label", liked ? "Unlike" : "Like");
+}
+
+function toggleReelsLike() {
+  setActiveReelLiked(!isActiveReelLiked());
+  updateReelsLikeButton();
+}
 
 function updateSoundButton() {
   if (!reelsSoundButton || !reelsVideo) {
@@ -145,6 +194,8 @@ async function showReel(index, direction) {
       reelsLikes.textContent = nextReel.likes;
     }
 
+    updateReelsLikeButton();
+
     try {
       await reelsVideo.play();
     } catch (error) {
@@ -184,6 +235,12 @@ function handleSwipeEnd(clientX, clientY) {
 reelsSoundButton?.addEventListener("click", (event) => {
   event.stopPropagation();
   toggleReelsSound();
+});
+
+reelsLikeButton?.addEventListener("click", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  toggleReelsLike();
 });
 
 reelsStage?.addEventListener("click", (event) => {
@@ -241,4 +298,5 @@ reelsStage?.addEventListener("pointerup", (event) => {
   handleSwipeEnd(event.clientX, event.clientY);
 });
 
+updateReelsLikeButton();
 playReelsWithSound();
