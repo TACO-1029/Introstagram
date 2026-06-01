@@ -24,8 +24,9 @@ const profileConnectionMembers = [
   {
     username: "kimcheolyong",
     name: "김철용",
-    avatarSrc: "../../static/img/member-2/profile/kimcheolyong-profile.webp",
-    href: "../2/index.html",
+    // pages/static/img/member-2/profile/kimcheolyong-profile.webp
+    avatarSrc: "../static/img/member-2/profile/kimcheolyong-profile.webp",
+    href: "../member/2/index.html",
   },
   {
     username: "jaewonwi",
@@ -148,7 +149,9 @@ function renderProfileActions() {
     <section class="mobile-actions account-profile-actions" aria-label="Profile actions">
       <button type="button">프로필 편집</button>
       <button type="button">보관함 보기</button>
-      <button type="button">⌄</button>
+      <button type="button" aria-label="More profile options">
+        <span class="account-profile-chevron" aria-hidden="true"></span>
+      </button>
     </section>
   `;
 }

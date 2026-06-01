@@ -2136,7 +2136,7 @@ a.caption-hashtag {
 .profile-title-row h1 {
   margin: 0 10px 0 0;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 800;
 }
 
 .profile-button {
@@ -3005,8 +3005,8 @@ a.caption-hashtag {
 }
 
 .account-profile-stats strong {
-  font-size: clamp(20px, 5vw, 31px);
-  font-weight: 900;
+  font-size: clamp(18px, 5vw, 20px);
+  font-weight: 800;
   line-height: 1;
 }
 
@@ -3063,13 +3063,22 @@ a.caption-hashtag {
 }
 
 .account-profile-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 0;
-  height: 64px;
+  height: 50px;
   border-radius: 13px;
   background: #f0f1f4;
   color: #101116;
-  font-size: clamp(18px, 4vw, 25px);
+  font-size: clamp(16px, 4vw, 18px);
   font-weight: 900;
+}
+
+.account-profile-actions .account-profile-chevron {
+  width: 11px;
+  height: 11px;
+  transform: translateY(-2px) rotate(45deg);
 }
 
 .account-highlight-list {
@@ -3500,15 +3509,18 @@ a.caption-hashtag {
   }
 
   .account-profile-actions {
-    gap: 10px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 42px;
+    gap: 8px;
     padding-right: 18px;
-    padding-bottom: 30px;
+    padding-bottom: 24px;
     padding-left: 18px;
   }
 
   .account-profile-actions button {
-    height: 50px;
+    height: 40px;
     border-radius: 10px;
+    font-size: 15px;
+    font-weight: 800;
   }
 
   .account-highlight-list {
