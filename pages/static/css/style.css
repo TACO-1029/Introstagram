@@ -3083,9 +3083,10 @@ a.caption-hashtag {
 
 .account-highlight-list {
   display: flex;
-  gap: clamp(14px, 3vw, 24px);
+  gap: 28px;
   overflow-x: auto;
-  padding: 0 28px 34px;
+  padding: 6px 0 38px;
+  border-bottom: 1px solid #dbdbdb;
   scrollbar-width: none;
 }
 
@@ -3094,42 +3095,9 @@ a.caption-hashtag {
 }
 
 .account-highlight {
-  display: grid;
   width: 86px;
   flex: 0 0 auto;
-  justify-items: center;
-  gap: 10px;
-  color: #101116;
-}
-
-.account-highlight span {
-  display: inline-flex;
-  width: 82px;
-  height: 82px;
-  align-items: center;
-  justify-content: center;
-  border: 5px solid #d9dde2;
-  border-radius: 50%;
-  background: #ffffff;
-}
-
-.account-highlight img {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.account-highlight strong {
-  max-width: 104px;
-  overflow: hidden;
-  color: #111111;
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 1.1;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  color: #262626;
 }
 
 .account-profile-app
@@ -3412,33 +3380,14 @@ a.caption-hashtag {
   }
 
   .account-highlight-list {
-    gap: 20px;
-    overflow: visible;
-    padding: 0 0 36px;
+    gap: 28px;
+    overflow-x: auto;
+    padding: 6px 0 38px;
     border-bottom: 1px solid #dbdbdb;
   }
 
   .account-highlight {
-    width: 76px;
-    gap: 8px;
-    font-size: 12px;
-    font-weight: 700;
-  }
-
-  .account-highlight .account-highlight-photo {
-    width: 66px;
-    height: 66px;
-    border: 1px solid #dbdbdb;
-  }
-
-  .account-highlight img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .account-highlight strong {
-    font-size: 12px;
-    font-weight: 700;
+    width: 86px;
   }
 
   .account-profile-app .post-grid {
@@ -3524,27 +3473,13 @@ a.caption-hashtag {
   }
 
   .account-highlight-list {
-    padding-right: 18px;
-    padding-left: 18px;
+    gap: 18px;
+    padding: 5px 16px 22px;
+    border-bottom: 1px solid #eeeeee;
   }
 
   .account-highlight {
-    width: 72px;
-  }
-
-  .account-highlight span {
     width: 68px;
-    height: 68px;
-    border-width: 4px;
-  }
-
-  .account-highlight img {
-    width: 58px;
-    height: 58px;
-  }
-
-  .account-highlight strong {
-    font-size: 14px;
   }
 
   .account-profile-app

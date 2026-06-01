@@ -21,6 +21,12 @@ let activeStoryProfileUrl = "";
 const defaultStoryUsername = storyHeaderName?.textContent || "";
 const defaultStoryAvatarMarkup = storyHeaderAvatar?.innerHTML || "";
 
+function resolveStoryAssetUrl(src) {
+  if (!src) return "";
+
+  return new URL(src, window.location.href).href;
+}
+
 function renderProgressBars() {
   progressRoot.style.gridTemplateColumns = `repeat(${activeStories.length}, 1fr)`;
   progressRoot.replaceChildren(...activeStories.map(() => document.createElement("span")));
@@ -59,20 +65,23 @@ function renderStory() {
     viewerImage.style.removeProperty("--story-image");
     const video = document.createElement("video");
     video.className = "story-viewer-video";
-    video.src = story.video;
+    video.src = resolveStoryAssetUrl(story.video);
     video.autoplay = true;
     video.muted = true;
     video.loop = true;
     video.playsInline = true;
     viewerImage.append(video);
   } else {
-    viewerImage.style.setProperty("--story-image", `url('${story.image}')`);
+    viewerImage.style.setProperty(
+      "--story-image",
+      `url('${resolveStoryAssetUrl(story.image)}')`,
+    );
   }
 
   viewerImage.setAttribute("aria-label", story.title);
   if (storyHeaderAvatar) {
     storyHeaderAvatar.innerHTML = story.avatar
-      ? `<img src="${story.avatar}" alt="" />`
+      ? `<img src="${resolveStoryAssetUrl(story.avatar)}" alt="" />`
       : defaultStoryAvatarMarkup;
   }
 

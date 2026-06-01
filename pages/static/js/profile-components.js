@@ -10,7 +10,11 @@ const accountProfile = {
   bioLines: [""],
   link: "",
   highlights: [
-    { label: "projects", src: "../static/img/introstagram_avatar.webp" },
+    {
+      key: "profile",
+      label: "highlights",
+      src: "../../static/img/introstagram_avatar.webp",
+    },
   ],
 };
 
@@ -24,7 +28,6 @@ const profileConnectionMembers = [
   {
     username: "kimcheolyong",
     name: "김철용",
-    // pages/static/img/member-2/profile/kimcheolyong-profile.webp
     avatarSrc: "../static/img/member-2/profile/kimcheolyong-profile.webp",
     href: "../member/2/index.html",
   },
@@ -160,11 +163,16 @@ function renderProfileHighlights(profile) {
   const highlightMarkup = profile.highlights
     .map(
       (highlight) => `
-        <a class="highlight-item account-highlight" href="#">
-          <span class="highlight-dot account-highlight-photo">
-            <img src="${highlight.src}" alt="" />
-          </span>
-          <strong>${highlight.label}</strong>
+        <a
+          class="highlight-item account-highlight"
+          href="#"
+          data-highlight="${highlight.key}"
+        >
+          <span
+            class="highlight-cover"
+            style="--highlight-image: url('${highlight.src}');"
+          ></span>
+          <span>${highlight.label}</span>
         </a>
       `,
     )
