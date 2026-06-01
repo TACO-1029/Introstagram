@@ -185,12 +185,37 @@ function renderProfileTabs() {
 function renderProfilePostGrid() {
   return `
     <section class="post-grid" aria-label="Member 1 posts">
-      <a class="grid-tile tile-a" href="#"><span>UI</span></a>
-      <a class="grid-tile tile-b" href="#"><span>HTML</span></a>
-      <a class="grid-tile tile-c" href="#"><span>CSS</span></a>
-      <a class="grid-tile tile-d" href="#"><span>Team</span></a>
-      <a class="grid-tile tile-e" href="#"><span>Intro</span></a>
-      <a class="grid-tile tile-f" href="#"><span>Web</span></a>
+      <a
+        class="grid-tile tile-a post-template"
+        href="./posts/post-1.html"
+        style="--post-image: url('../img/team/posts/post-1-1.png');"
+        aria-label="첫 번째 게시글 보기"
+      ></a>
+      <a
+        class="grid-tile tile-b post-template"
+        href="./posts/post-2.html"
+        style="--post-image: url('../img/team/posts/post-2-1.png');"
+        aria-label="두 번째 게시글 보기"
+      ></a>
+      <a
+        class="grid-tile tile-c post-template"
+        href="./posts/post-3.html"
+        style="--post-image: url('../img/team/posts/post-3-1.png');"
+        aria-label="세 번째 게시글 보기"
+      ></a>
+      <a
+        class="grid-tile tile-d post-template"
+        href="./posts/post-4.html"
+        style="--post-image: url('../img/team/posts/post-4-1.png');"
+        aria-label="네 번째 게시글 보기"
+      ></a>
+      <a
+        class="grid-tile tile-e post-template"
+        href="./posts/post-5.html"
+        style="--post-image: url('../img/team/posts/post-5-1.png');"
+        aria-label="다섯 번째 게시글 보기"
+      ></a>
+      <a class="grid-tile tile-f" href="./posts/post-6.html" aria-label="여섯 번째 게시글 보기"></a>
     </section>
   `;
 }
