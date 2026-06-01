@@ -1679,6 +1679,22 @@ a.caption-hashtag {
   align-items: center;
   gap: 11px;
   padding: 9px 0;
+  border-radius: 8px;
+  cursor: grab;
+  transition:
+    background-color 0.18s ease,
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.member-row:active {
+  cursor: grabbing;
+}
+
+.member-row.dragging {
+  background: #f4f5f7;
+  opacity: 0.58;
+  transform: scale(0.98);
 }
 
 .mini-avatar {
