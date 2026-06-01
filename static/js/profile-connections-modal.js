@@ -2,31 +2,31 @@ const profileConnectionMembers = [
   {
     username: "dogeonwoo",
     name: "도건우",
-    avatarSrc: "../../static/img/member-1/profile/dogeonwoo-profile.webp",
+    avatarSrc: "../../../static/img/member-1/profile/dogeonwoo-profile.webp",
     href: "../1/index.html",
   },
   {
     username: "kimcheolyong",
     name: "김철용",
-    avatarSrc: "../../static/img/member-2/profile/kimcheolyong-profile.webp",
+    avatarSrc: "../../../static/img/member-2/profile/kimcheolyong-profile.webp",
     href: "../2/index.html",
   },
   {
     username: "jaewonwi",
     name: "위재원",
-    avatarSrc: "../../static/img/member-3/profile/jaewon-profile.webp",
+    avatarSrc: "../../../static/img/member-3/profile/jaewon-profile.webp",
     href: "../3/index.html",
   },
   {
     username: "choiwoojin",
     name: "최우진",
-    avatarSrc: "../../static/img/member-4/profile/woojin_profile.webp",
+    avatarSrc: "../../../static/img/member-4/profile/woojin_profile.webp",
     href: "../4/index.html",
   },
   {
     username: "introstagram team",
     name: "introstagram team",
-    avatarSrc: "../../static/img/introstagram_avatar.webp",
+    avatarSrc: "../../../static/img/introstagram_avatar.webp",
     href: "../../profile/index.html",
   },
 ];

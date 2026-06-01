@@ -1,7 +1,7 @@
 const COMMENT_STORAGE_KEY = "introstagram_comments_by_post";
 const commentAvatarSrc =
   document.body.dataset.commentAvatarSrc ||
-  "./pages/static/img/introstagram_avatar.webp";
+  "./static/img/introstagram_avatar.webp";
 const fallbackPostKey = "introstagram-default-post";
 const commentsSheet =
   window.ensureIntrostagramCommentsSheet?.({ avatarSrc: commentAvatarSrc }) ||
@@ -101,7 +101,7 @@ if (!commentsSheet) {
       return src;
     }
 
-    if (src.includes("pages/static/img/introstagram_avatar.webp")) {
+    if (src.includes("static/img/introstagram_avatar.webp")) {
       return commentAvatarSrc;
     }
 

@@ -27,7 +27,7 @@ const publishedStoriesStorageKey = "introstagramPublishedStories";
 
 const arFilters = {
   dog: {
-    src: "./pages/static/story-filter/dog-face-mask.svg",
+    src: "./static/story-filter/dog-face-mask.svg",
     aspectRatio: 1,
     anchor: "nose",
     anchorX: 0.5,
@@ -38,7 +38,7 @@ const arFilters = {
     fallbackTopRatio: 0.09,
   },
   hyundai: {
-    src: "./pages/static/story-filter/hyundai-dp-filter.svg",
+    src: "./static/story-filter/hyundai-dp-filter.svg",
     aspectRatio: 290 / 76,
     anchor: "forehead",
     anchorX: 0.5,
@@ -499,7 +499,7 @@ function renderPublishedStoryItem() {
     publishedStoryItem.innerHTML = `
       <span class="story-ring">
         <span class="story-avatar">
-          <img src="./pages/static/img/introstagram_avatar.webp" alt="" />
+          <img src="./static/img/introstagram_avatar.webp" alt="" />
         </span>
       </span>
       <span>introstagram team</span>
@@ -521,7 +521,7 @@ function publishModalStory() {
     text: "",
     image,
     username: "introstagram team",
-    avatar: "./pages/static/img/introstagram_avatar.webp",
+    avatar: "./static/img/introstagram_avatar.webp",
   });
   setPublishedStories(stories);
   renderPublishedStoryItem();

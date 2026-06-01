@@ -9,12 +9,12 @@ const REELS_LIKES_STORAGE_KEY = "introstagramReelsLikes";
 
 const reelsItems = [
   {
-    src: "../static/video/reels-1.mp4",
+    src: "../../static/video/reels-1.mp4",
     caption: "KOSA 교육생 김햄찌 VLOG 1편",
     likes: "10K",
   },
   {
-    src: "../static/video/reels-2.mp4",
+    src: "../../static/video/reels-2.mp4",
     caption: "🥘 김햄찌의 k밥상 먹방",
     likes: "12K",
   },

@@ -12,7 +12,7 @@ const directChatData = {
   },
   time: "오전 8:14",
   story: {
-    profile: "../static/img/introstagram_avatar.webp",
+    profile: "../../static/img/introstagram_avatar.webp",
     name: "introstagram team",
     caption: "",
     title: "",
@@ -118,10 +118,10 @@ function createDirectChatBody(data) {
       <strong>${data.preview.account}</strong> ${data.preview.text}
     </p>
     <time>${data.time}</time>
-    <a class="direct-story-card" href="../reels.html" aria-label="릴스 보기">
+    <a class="direct-story-card" href="../reels/index.html" aria-label="릴스 보기">
       <img
         class="direct-story-image"
-        src="../static/img/reels/reels-1-thumbnail.webp"
+        src="../../static/img/reels/reels-1-thumbnail.webp"
         alt=""
       />
       <span class="direct-story-profile">
@@ -169,7 +169,7 @@ function createDirectEmptyState() {
   emptyState.innerHTML = `
     <img
       class="direct-empty-chat-icon"
-      src="../static/icons/direct-empty-message-icon.svg"
+      src="../../static/icons/direct-empty-message-icon.svg"
       alt=""
     />
     <h2>내 메시지</h2>

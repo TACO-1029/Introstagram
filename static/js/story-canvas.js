@@ -12,7 +12,7 @@ let currentTool = "pen";
 let drawing = false;
 let lastPoint = null;
 
-backgroundImage.src = sessionStorage.getItem("introstagramStoryImage") || "../static/img/story-background.svg";
+backgroundImage.src = sessionStorage.getItem("introstagramStoryImage") || "../../static/img/story-background.svg";
 backgroundImage.addEventListener("load", resetCanvas);
 
 function resetCanvas() {

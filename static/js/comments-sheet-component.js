@@ -2,14 +2,14 @@
   function getDefaultAvatarSrc() {
     return (
       document.body.dataset.commentAvatarSrc ||
-      "./pages/static/img/introstagram_avatar.webp"
+      "./static/img/introstagram_avatar.webp"
     );
   }
 
   function getDefaultPreviewSrc() {
     return (
       document.body.dataset.commentPreviewSrc ||
-      "./pages/static/img/post-slide-1.svg"
+      "./static/img/post-slide-1.svg"
     );
   }
 
