@@ -13,7 +13,7 @@ const accountProfile = {
     {
       key: "profile",
       label: "highlights",
-      src: "../../static/img/introstagram_avatar.webp",
+      src: "../img/introstagram_avatar.webp",
     },
   ],
 };
